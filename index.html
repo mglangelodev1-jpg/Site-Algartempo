@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algartempo - Trabalho Temporário & Recursos Humanos | Algarve e Portugal</title>
+  <meta name="description" content="A Algartempo é líder em soluções de trabalho temporário, recrutamento e seleção e gestão de recursos humanos no Algarve e a nível nacional. Conectamos talento às melhores empresas.">
+  <meta name="keywords" content="Algartempo, trabalho temporário, recursos humanos, recrutamento, emprego algarve, feiras de emprego, hotelaria, construção, faro, portimão, albufeira">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Algartempo - Trabalho Temporário & Recursos Humanos">
+  <meta property="og:description" content="Soluções ágeis e qualificadas de Recursos Humanos e Trabalho Temporário.">
+  <meta property="og:image" content="FROTA.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="FROTA.png">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#101c44',
+              dark: '#0b1120',
+              blue: '#0284c7',
+              sky: '#38bdf8',
+              cyan: '#06b6d4',
+              accent: '#2563eb'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- Top Announcement / Contact Bar -->
+  <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-2">
+          <i class="fas fa-shield-alt text-sky-400"></i>
+          <strong class="text-white">Alvará IEFP Nº 450</strong> (Empresa Certificada)
+        </span>
+        <span class="hidden md:flex items-center gap-2 text-slate-300">
+          <i class="fas fa-map-marker-alt text-sky-400"></i>
+          Sede no Algarve com cobertura nacional
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="tel:+351289800000" class="flex items-center gap-1.5 hover:text-sky-400 transition-colors">
+          <i class="fas fa-phone text-sky-400"></i>
+          <span>+351 289 800 000</span>
+        </a>
+        <span class="text-slate-700">|</span>
+        <a href="mailto:geral@algartempo.pt" class="flex items-center gap-1.5 hover:text-sky-400 transition-colors">
+          <i class="fas fa-envelope text-sky-400"></i>
+          <span>geral@algartempo.pt</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Logo -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <img src="FROTA.png" alt="Algartempo Logo" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
+          <a href="#inicio" class="hover:text-blue-600 transition-colors py-2">Início</a>
+          <a href="#sobre" class="hover:text-blue-600 transition-colors py-2">Sobre Nós</a>
+          <a href="#servicos" class="hover:text-blue-600 transition-colors py-2">Serviços</a>
+          <a href="#vagas" class="hover:text-blue-600 transition-colors py-2">Vagas de Emprego</a>
+          <a href="#eventos" class="flex items-center gap-1.5 text-blue-600 font-bold bg-blue-50 px-3 py-1.5 rounded-full border border-blue-200 hover:bg-blue-100 transition-colors">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Eventos & Feiras
+          </a>
+          <a href="#empresas" class="hover:text-blue-600 transition-colors py-2">Para Empresas</a>
+          <a href="#contactos" class="hover:text-blue-600 transition-colors py-2">Contactos</a>
+        </nav>
+
+        <!-- CTA Buttons -->
+        <div class="hidden md:flex items-center gap-3">
+          <button onclick="openApplyModal('Candidatura Espontânea')" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:border-blue-600 hover:text-blue-600 font-semibold text-xs tracking-wide transition-all duration-200">
+            Candidatura Espontânea
+          </button>
+          <button onclick="openB2BModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white font-semibold text-xs tracking-wide shadow-md shadow-blue-500/20 hover:shadow-lg transition-all duration-200 flex items-center gap-2">
+            <span>Pedir Proposta</span>
+            <i class="fas fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none" aria-label="Abrir Menu">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
+      <a href="#inicio" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50">Início</a>
+      <a href="#sobre" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50">Sobre Nós</a>
+      <a href="#servicos" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50">Serviços</a>
+      <a href="#vagas" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50">Vagas de Emprego</a>
+      <a href="#eventos" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-semibold text-blue-600 bg-blue-50 font-bold">
+        <i class="fas fa-calendar-alt mr-2"></i> Eventos & Feiras a que Vamos
+      </a>
+      <a href="#empresas" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50">Para Empresas</a>
+      <a href="#contactos" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50">Contactos</a>
+      
+      <div class="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
+        <button onclick="openApplyModal('Candidatura Espontânea')" class="w-full py-3 text-center rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm">
+          Candidatura Espontânea
+        </button>
+        <button onclick="openB2BModal()" class="w-full py-3 text-center rounded-xl bg-blue-600 text-white font-semibold text-sm shadow-md">
+          Pedir Proposta B2B
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="relative overflow-hidden pt-12 pb-20 md:py-24 bg-gradient-to-b from-slate-900 via-brand-navy to-slate-900 text-white">
+    <!-- Background visual elements -->
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]"></div>
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-xs font-semibold text-sky-300">
+            <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+            <span>Especialistas em Trabalho Temporário & Recrutamento</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
+            Conectamos o <span class="text-gradient-cyan">talento certo</span> à oportunidade ideal.
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Há mais de duas décadas a liderar soluções flexíveis, legais e inovadoras de recursos humanos no Algarve e em Portugal. O seu parceiro de confiança para candidatos e empresas.
+          </p>
+
+          <!-- Action Buttons / Pathways -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#vagas" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-2xl shadow-xl shadow-sky-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+              <i class="fas fa-search"></i>
+              <span>Procurar Emprego</span>
+            </a>
+            <button onclick="openB2BModal()" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-2xl backdrop-blur-md transition-all flex items-center justify-center gap-3">
+              <i class="fas fa-building text-sky-300"></i>
+              <span>Contratar Talentos</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 border-t border-white/10">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-sky-400"></i>
+              <span>Processos 100% em Conformidade Legal</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-sky-400"></i>
+              <span>Colocação Ágil em 24h/48h</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-sky-400"></i>
+              <span>Acompanhamento Personalizado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Card -->
+        <div class="lg:col-span-5">
+          <div class="glass-panel-dark rounded-3xl p-6 sm:p-8 relative shadow-2xl border border-white/10">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center text-white font-bold">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-white text-sm">Painel de Oportunidades</h3>
+                  <p class="text-xs text-slate-400">Atualizado diariamente</p>
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> +120 Vagas
+              </span>
+            </div>
+
+            <!-- Quick Search Bar Inside Hero -->
+            <div class="space-y-4">
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+                <label class="block text-xs font-semibold text-slate-300 mb-2">Que tipo de função procura?</label>
+                <div class="flex items-center gap-2 bg-slate-900/80 rounded-xl px-3.5 py-2.5 border border-white/10">
+                  <i class="fas fa-briefcase text-sky-400 text-sm"></i>
+                  <input type="text" id="hero-job-input" placeholder="Ex: Rececionista, Eletricista, Logística..." class="bg-transparent text-sm text-white placeholder-slate-500 focus:outline-none w-full">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-3 text-center">
+                  <span class="block text-2xl font-bold text-white">48h</span>
+                  <span class="text-[11px] text-slate-400">Tempo Médio Resposta</span>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-3 text-center">
+                  <span class="block text-2xl font-bold text-sky-400">98%</span>
+                  <span class="text-[11px] text-slate-400">Taxa de Satisfação</span>
+                </div>
+              </div>
+
+              <!-- Next Event Banner inside Hero Widget -->
+              <a href="#eventos" class="block bg-gradient-to-r from-blue-600/40 to-sky-600/30 border border-sky-500/30 rounded-2xl p-4 hover:border-sky-400/60 transition-all group">
+                <div class="flex items-center justify-between text-xs text-sky-300 font-semibold mb-1">
+                  <span class="flex items-center gap-1.5"><i class="fas fa-calendar-star"></i> Próximo Evento</span>
+                  <span class="text-white group-hover:translate-x-1 transition-transform">Ver todos <i class="fas fa-chevron-right text-[10px]"></i></span>
+                </div>
+                <p class="text-sm font-bold text-white line-clamp-1">Bolsa de Empregabilidade Algarve 2026</p>
+                <p class="text-xs text-slate-300">24 e 25 de Março • Stand B14 (Portimão)</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Counters Section -->
+  <section id="stats-section" class="py-12 bg-white border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-extrabold text-blue-600 mb-1 flex items-center justify-center">
+            <span>+</span><span class="counter-val" data-target="20">0</span>
+          </div>
+          <p class="text-sm font-semibold text-slate-800">Anos de Experiência</p>
+          <p class="text-xs text-slate-500">Know-how consolidado no setor</p>
+        </div>
+
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1 flex items-center justify-center">
+            <span>+</span><span class="counter-val" data-target="15000">0</span>
+          </div>
+          <p class="text-sm font-semibold text-slate-800">Candidatos Colocados</p>
+          <p class="text-xs text-slate-500">Vidas e carreiras impulsionadas</p>
+        </div>
+
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-extrabold text-sky-500 mb-1 flex items-center justify-center">
+            <span>+</span><span class="counter-val" data-target="450">0</span>
+          </div>
+          <p class="text-sm font-semibold text-slate-800">Empresas Clientes</p>
+          <p class="text-xs text-slate-500">Parcerias duradouras B2B</p>
+        </div>
+
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-extrabold text-emerald-600 mb-1 flex items-center justify-center">
+            <span class="counter-val" data-target="100">0</span><span>%</span>
+          </div>
+          <p class="text-sm font-semibold text-slate-800">Rigor & Legalidade</p>
+          <p class="text-xs text-slate-500">Alvará IEFP e RGPD estrito</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Sobre a Algartempo -->
+  <section id="sobre" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Image Composition -->
+        <div class="lg:col-span-6 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80" alt="Equipa Algartempo Recursos Humanos" class="w-full h-96 object-cover">
+            </div>
+            <!-- Floating Badge -->
+            <div class="absolute -bottom-6 -right-4 sm:right-6 bg-white rounded-2xl p-5 shadow-xl border border-slate-100 max-w-xs">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <i class="fas fa-handshake text-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-sm">Proximidade Humana</h4>
+                  <p class="text-xs text-slate-500">Apoio contínuo e dedicado</p>
+                </div>
+              </div>
+              <p class="text-xs text-slate-600">Tratamos cada candidato e cada empresa com atenção personalizada e soluções customizadas.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider">
+            Sobre a Algartempo
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Mais do que recrutar, construímos <span class="text-gradient">pontes de sucesso</span>.
+          </h2>
+
+          <p class="text-slate-600 leading-relaxed">
+            Fundada no Algarve e com forte projeção em todo o território nacional, a <strong>Algartempo</strong> é uma empresa devidamente credenciada pelo IEFP dedicada à prestação de serviços de Trabalho Temporário, Recrutamento e Seleção e Consultoria de Recursos Humanos.
+          </p>
+
+          <p class="text-slate-600 leading-relaxed">
+            Compreendemos as especificidades da sazonalidade, da dinâmica empresarial e da exigência dos vários setores produtivos. A nossa missão é responder com rapidez cirúrgica, flexibilidade e absoluta conformidade com o código do trabalho.
+          </p>
+
+          <!-- Core Pillars -->
+          <div class="grid sm:grid-cols-2 gap-4 pt-2">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm">Rigor Jurídico</h4>
+                <p class="text-xs text-slate-500">Total transparência laboral e segurança contratual.</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-stopwatch"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm">Rapidez de Resposta</h4>
+                <p class="text-xs text-slate-500">Capacidade de mobilização imediata de equipas.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="#contactos" class="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 text-sm">
+              <span>Conheça as nossas instalações e equipa</span>
+              <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Serviços & Soluções -->
+  <section id="servicos" class="py-20 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-3">
+          As Nossas Soluções
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Serviços Integrados de Recursos Humanos
+        </h2>
+        <p class="text-slate-600 mt-4 text-base">
+          Flexibilidade operacional e excelência em recrutamento para maximizar a produtividade da sua empresa.
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1: Trabalho Temporário -->
+        <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200/80 hover-card-effect relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-2xl mb-6 shadow-md shadow-blue-500/30 group-hover:scale-110 transition-transform">
+            <i class="fas fa-user-clock"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Trabalho Temporário</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Resposta rápida a picos de atividade sazonal, substituições de baixas/férias e projetos com prazos específicos. Gestão contratual, salarial e legal completa pela Algartempo.
+          </p>
+          <ul class="space-y-2.5 text-xs text-slate-700 border-t border-slate-200 pt-4">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-600"></i> Redução de custos administrativos</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-600"></i> Flexibilidade de escala e horários</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-600"></i> Gestão de seguros e medicina no trabalho</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Recrutamento e Seleção -->
+        <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200/80 hover-card-effect relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-2xl mb-6 shadow-md shadow-sky-500/30 group-hover:scale-110 transition-transform">
+            <i class="fas fa-user-check"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Recrutamento & Seleção</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Identificação e atração de perfis especializados, quadros médios e superiores. Avaliação psicotécnica, entrevistas por competências e testes técnicos rigorosos.
+          </p>
+          <ul class="space-y-2.5 text-xs text-slate-700 border-t border-slate-200 pt-4">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-sky-500"></i> Base de dados com milhares de talentos</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-sky-500"></i> Triagem minuciosa e validação de referências</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-sky-500"></i> Garantia de reposição contratual</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Outsourcing & Gestão de Pessoal -->
+        <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200/80 hover-card-effect relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-brand-navy text-white flex items-center justify-center text-2xl mb-6 shadow-md shadow-slate-900/30 group-hover:scale-110 transition-transform">
+            <i class="fas fa-users-cog"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Outsourcing Operacional</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Externalização de áreas operacionais (limpezas industriais, logística, eventos, atendimento). Foco no core business da sua empresa com supervisão no terreno.
+          </p>
+          <ul class="space-y-2.5 text-xs text-slate-700 border-t border-slate-200 pt-4">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-navy"></i> Otimização e controlo de performance</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-navy"></i> Coordenação e liderança de equipas</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-navy"></i> Relatórios periódicos de produtividade</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Setores de Atuação -->
+      <div class="mt-16 bg-gradient-to-r from-slate-900 to-brand-navy rounded-3xl p-8 sm:p-12 text-white">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <h3 class="text-2xl font-bold mb-2">Setores de Atuação Prioritários</h3>
+          <p class="text-slate-300 text-sm">Dispomos de equipas dedicadas e especializadas em cada indústria.</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors">
+            <i class="fas fa-hotel text-sky-400 text-2xl mb-2"></i>
+            <p class="font-semibold text-sm">Hotelaria & Turismo</p>
+            <p class="text-[11px] text-slate-400">Restaurantes, Resorts, Bares</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors">
+            <i class="fas fa-hard-hat text-sky-400 text-2xl mb-2"></i>
+            <p class="font-semibold text-sm">Construção Civil</p>
+            <p class="text-[11px] text-slate-400">Obras, AVAC, Eletricidade</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors">
+            <i class="fas fa-seedling text-sky-400 text-2xl mb-2"></i>
+            <p class="font-semibold text-sm">Agricultura & Pesca</p>
+            <p class="text-[11px] text-slate-400">Colheitas, Estufas, Embalamento</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors">
+            <i class="fas fa-warehouse text-sky-400 text-2xl mb-2"></i>
+            <p class="font-semibold text-sm">Logística & Indústria</p>
+            <p class="text-[11px] text-slate-400">Armazém, Distribuição, Produção</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors col-span-2 sm:col-span-1">
+            <i class="fas fa-headset text-sky-400 text-2xl mb-2"></i>
+            <p class="font-semibold text-sm">Serviços & Apoio</p>
+            <p class="text-[11px] text-slate-400">Administrativo, Contact Center</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION: EVENTOS & FEIRAS A QUE A EMPRESA VAI (NOVO REQUISITO) -->
+  <section id="eventos" class="py-20 bg-gradient-to-b from-slate-50 to-blue-50/40 border-t border-slate-200/80 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-3">
+            <i class="fas fa-calendar-alt text-blue-600"></i> Presença em Eventos & Feiras
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Próximos Eventos em que a <span class="text-gradient">Algartempo</span> estará Presente
+          </h2>
+          <p class="text-slate-600 mt-2 text-base max-w-2xl">
+            Participe nos maiores fóruns de emprego, feiras de turismo e conferências de recursos humanos. Visite o nosso stand, entregue o seu currículo em mão ou marque uma reunião estratégica para a sua empresa!
+          </p>
+        </div>
+
+        <!-- Filter tabs for events -->
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterEventsTab('todos', this)" class="event-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-md">
+            Todos os Eventos
+          </button>
+          <button onclick="filterEventsTab('feira-emprego', this)" class="event-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200">
+            Feiras de Emprego
+          </button>
+          <button onclick="filterEventsTab('conferencia', this)" class="event-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200">
+            Conferências B2B
+          </button>
+        </div>
+      </div>
+
+      <!-- Events Dynamic Grid -->
+      <div id="events-container" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Event CTA Banner -->
+      <div class="mt-12 bg-white rounded-3xl p-8 border border-blue-200 shadow-xl shadow-blue-500/5 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-lg">Organiza um evento ou feira de emprego?</h4>
+            <p class="text-xs text-slate-600">Convide a Algartempo para participar como oradora, parceira institucional ou expositora.</p>
+          </div>
+        </div>
+        <a href="#contactos" class="px-6 py-3 bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold rounded-xl transition-colors whitespace-nowrap">
+          Contactar Departamento de Comunicação
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Vagas de Emprego / Portal do Candidato -->
+  <section id="vagas" class="py-20 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-3">
+            Oportunidades de Carreira
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Vagas em Destaque
+          </h2>
+          <p class="text-slate-600 mt-2 text-base">
+            Encontre o trabalho certo para si. Filtre por setor ou localização e candidate-se em segundos.
+          </p>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <span id="jobs-count" class="px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200">
+            A carregar vagas...
+          </span>
+          <button onclick="openApplyModal('Candidatura Espontânea')" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs rounded-xl transition-colors flex items-center gap-2 shadow-sm">
+            <i class="fas fa-file-upload"></i>
+            <span>Candidatura Geral</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Controls Bar -->
+      <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 sm:p-5 mb-8 shadow-sm">
+        <div class="grid sm:grid-cols-12 gap-3">
+          
+          <!-- Search input -->
+          <div class="sm:col-span-6 relative">
+            <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input type="text" id="job-search-input" placeholder="Pesquisar por cargo, palavra-chave ou competência..." class="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+          </div>
+
+          <!-- Category filter -->
+          <div class="sm:col-span-3">
+            <select id="job-category-select" class="w-full py-2.5 px-3 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+              <option value="todos">Todos os Setores</option>
+              <option value="hotelaria">Hotelaria & Restauração</option>
+              <option value="construcao">Construção & Técnica</option>
+              <option value="logistica">Logística & Armazém</option>
+              <option value="administrativo">Administrativo & RH</option>
+            </select>
+          </div>
+
+          <!-- Location filter -->
+          <div class="sm:col-span-3">
+            <select id="job-location-select" class="w-full py-2.5 px-3 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+              <option value="todos">Todas as Localizações</option>
+              <option value="Faro">Faro / Loulé</option>
+              <option value="Albufeira">Albufeira / Vilamoura</option>
+              <option value="Portimão">Portimão / Lagos</option>
+              <option value="Tavira">Tavira / Sotavento</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Jobs Grid -->
+      <div id="jobs-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Injected via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Para Empresas (B2B) -->
+  <section id="empresas" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-bold uppercase tracking-wider border border-sky-500/30">
+            Soluções B2B para Empresas
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+            Precisa de reforçar a sua equipa com <span class="text-gradient-cyan">rapidez e segurança</span>?
+          </h2>
+
+          <p class="text-slate-300 text-base leading-relaxed">
+            Elimine a sobrecarga administrativa e os riscos associados ao recrutamento. A Algartempo encarrega-se de todo o processo de seleção, admissão, processamento salarial e cumprimento legal, permitindo que se foque no crescimento do seu negócio.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 mt-1">
+                <i class="fas fa-check text-xs"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Flexibilidade sem encargos fixos</h4>
+                <p class="text-xs text-slate-400">Ajuste o número de colaboradores conforme as oscilações da procura no mercado.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 mt-1">
+                <i class="fas fa-check text-xs"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Assessoria Jurídico-Laboral Permanente</h4>
+                <p class="text-xs text-slate-400">Garantia total de cumprimento do Código do Trabalho e normas de segurança.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 mt-1">
+                <i class="fas fa-check text-xs"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Gestor de Conta Dedicado</h4>
+                <p class="text-xs text-slate-400">Um único interlocutor para todas as suas necessidades e pedidos urgentes.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-wrap gap-4">
+            <button onclick="openB2BModal()" class="px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-2xl shadow-xl shadow-sky-500/20 transition-all flex items-center gap-3">
+              <span>Solicitar Orçamento / Proposta</span>
+              <i class="fas fa-file-contract"></i>
+            </button>
+            <a href="tel:+351289800000" class="px-6 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-2xl transition-colors flex items-center gap-2 text-sm">
+              <i class="fas fa-phone text-sky-400"></i>
+              <span>Falar com Consultor</span>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="lg:col-span-5">
+          <!-- B2B Quick Calculator / Card -->
+          <div class="bg-slate-800/90 border border-slate-700 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
+            <h3 class="text-xl font-bold text-white mb-2">Pedido Rápido de Talentos</h3>
+            <p class="text-xs text-slate-400 mb-6">Indique as suas necessidades e receba candidatos pré-selecionados.</p>
+
+            <form onsubmit="handleB2BSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Nome da Empresa</label>
+                <input type="text" name="company_name" required placeholder="Ex: Hotel & Resort Algarvio Lda" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500">
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Setor</label>
+                  <select required class="w-full px-3 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-sky-500">
+                    <option value="hotelaria">Hotelaria / Turismo</option>
+                    <option value="construcao">Construção Civil</option>
+                    <option value="logistica">Logística</option>
+                    <option value="outro">Outro Setor</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Nº Colaboradores</label>
+                  <select required class="w-full px-3 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-sky-500">
+                    <option>1 a 5 pessoas</option>
+                    <option>6 a 15 pessoas</option>
+                    <option>+15 pessoas</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">E-mail Profissional</label>
+                <input type="email" required placeholder="direcao@empresa.pt" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Contacto Telefónico</label>
+                <input type="tel" required placeholder="912 345 678" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500">
+              </div>
+
+              <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs tracking-wider uppercase transition-colors shadow-lg shadow-blue-600/30">
+                Enviar Solicitação Imediata
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Testemunhos & Confiança -->
+  <section class="py-20 bg-slate-50 border-t border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-3">
+          Testemunhos
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          A Confiança de Quem Trabalha Connosco
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Testimonial 1 -->
+        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm italic mb-6">
+              "A Algartempo tem sido o nosso braço direito em todas as épocas altas no Algarve. A capacidade de fornecer profissionais qualificados em 24 horas é inigualável."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">
+              MR
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-xs">Manuel Rodrigues</h4>
+              <p class="text-[11px] text-slate-500">Diretor de Recursos Humanos, Grupo Hoteleiro</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm italic mb-6">
+              "Conheci a equipa da Algartempo na feira de emprego de Faro. Submeti o meu currículo e numa semana estava colocado numa excelente empresa onde passei a efetivo."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm">
+              TS
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-xs">Tiago Silva</h4>
+              <p class="text-[11px] text-slate-500">Técnico de Manutenção Colocado</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm italic mb-6">
+              "O rigor documental, a pontualidade nos vencimentos e a atenção humana com os colaboradores fazem da Algartempo a empresa de trabalho temporário mais séria da região."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm">
+              CA
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-xs">Carla Antunes</h4>
+              <p class="text-[11px] text-slate-500">Gestora Operacional de Logística</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Contactos & Localização -->
+  <section id="contactos" class="py-20 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid lg:grid-cols-12 gap-12">
+        
+        <!-- Contact Information -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider">
+            Contacte-nos
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Estamos Prontos para Ajudar
+          </h2>
+
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Visite a nossa sede no Algarve, fale diretamente com os nossos consultores ou envie-nos uma mensagem.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm">Sede Central</h4>
+                <p class="text-xs text-slate-600">Avenida 5 de Outubro, Faro - Algarve, Portugal</p>
+                <p class="text-xs text-slate-400 mt-1">Atendimento presencial: 09:00 - 18:00 (Seg a Sex)</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="w-10 h-10 rounded-xl bg-sky-500 text-white flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm">Linha Direta de Atendimento</h4>
+                <p class="text-xs text-slate-600 font-medium">+351 289 800 000 / +351 910 000 000</p>
+                <p class="text-xs text-slate-400 mt-1">Apoio a candidatos e empresas</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm">Endereços de E-mail</h4>
+                <p class="text-xs text-slate-600">Candidaturas: <a href="mailto:recrutamento@algartempo.pt" class="text-blue-600 underline">recrutamento@algartempo.pt</a></p>
+                <p class="text-xs text-slate-600">Empresas & B2B: <a href="mailto:comercial@algartempo.pt" class="text-blue-600 underline">comercial@algartempo.pt</a></p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-7">
+          <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl shadow-slate-200/50">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Envie-nos uma Mensagem</h3>
+            <p class="text-xs text-slate-500 mb-6">Preencha o formulário abaixo e entraremos em contacto brevemente.</p>
+
+            <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Nome Completo *</label>
+                  <input type="text" required placeholder="O seu nome" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-blue-600 focus:bg-white transition-all">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Contacto Telefónico *</label>
+                  <input type="tel" required placeholder="912 345 678" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-blue-600 focus:bg-white transition-all">
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">E-mail *</label>
+                  <input type="email" required placeholder="exemplo@email.pt" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-blue-600 focus:bg-white transition-all">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Assunto</label>
+                  <select class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-blue-600 focus:bg-white transition-all">
+                    <option>Informações Gerais</option>
+                    <option>Candidatura a Emprego</option>
+                    <option>Contratação para Empresas</option>
+                    <option>Presença em Feiras / Eventos</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Mensagem *</label>
+                <textarea rows="4" required placeholder="Escreva aqui a sua mensagem ou questão..." class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"></textarea>
+              </div>
+
+              <div class="flex items-start gap-2 pt-2">
+                <input type="checkbox" id="rgpd-consent" required class="mt-1 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+                <label for="rgpd-consent" class="text-[11px] text-slate-500 leading-tight">
+                  Autorizo o tratamento dos meus dados para efeitos de contacto pela Algartempo, de acordo com o Regulamento Geral sobre a Proteção de Dados (RGPD).
+                </label>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs tracking-wider uppercase transition-colors shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
+                <i class="fas fa-paper-plane"></i>
+                <span>Enviar Mensagem</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-400 text-xs pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <img src="FROTA.png" alt="Algartempo Logo" class="h-12 w-auto bg-white p-2 rounded-xl">
+          <p class="text-xs text-slate-400 leading-relaxed pr-6">
+            A <strong>Algartempo</strong> é a referência em Trabalho Temporário, Recrutamento Especializado e Gestão de Recursos Humanos no Algarve e em Portugal.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="#" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-blue-600 text-white flex items-center justify-center transition-colors">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-blue-600 text-white flex items-center justify-center transition-colors">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-blue-600 text-white flex items-center justify-center transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Acesso Rápido -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm tracking-wide">Navegação</h4>
+          <ul class="space-y-2">
+            <li><a href="#inicio" class="hover:text-sky-400 transition-colors">Início</a></li>
+            <li><a href="#sobre" class="hover:text-sky-400 transition-colors">Sobre Nós</a></li>
+            <li><a href="#servicos" class="hover:text-sky-400 transition-colors">Serviços RH</a></li>
+            <li><a href="#vagas" class="hover:text-sky-400 transition-colors">Bolsa de Vagas</a></li>
+            <li><a href="#eventos" class="text-sky-400 font-semibold hover:underline">Eventos & Feiras</a></li>
+            <li><a href="#empresas" class="hover:text-sky-400 transition-colors">Para Empresas</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Setores -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm tracking-wide">Setores</h4>
+          <ul class="space-y-2">
+            <li><a href="#servicos" class="hover:text-sky-400 transition-colors">Hotelaria & Restauração</a></li>
+            <li><a href="#servicos" class="hover:text-sky-400 transition-colors">Construção Civil & AVAC</a></li>
+            <li><a href="#servicos" class="hover:text-sky-400 transition-colors">Agricultura & Fruticultura</a></li>
+            <li><a href="#servicos" class="hover:text-sky-400 transition-colors">Logística & Armazém</a></li>
+            <li><a href="#servicos" class="hover:text-sky-400 transition-colors">Serviços Administrativos</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Legal & Alvará -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm tracking-wide">Informação Legal</h4>
+          <p class="text-[11px] leading-relaxed text-slate-400">
+            Sociedade de Trabalho Temporário com Alvará emitido pelo Instituto do Emprego e Formação Profissional (IEFP) Nº 450.
+          </p>
+          <div class="pt-2 space-y-1.5">
+            <a href="#" class="block text-slate-400 hover:text-white transition-colors text-[11px]"><i class="fas fa-file-contract mr-1 text-sky-400"></i> Política de Privacidade & RGPD</a>
+            <a href="#" class="block text-slate-400 hover:text-white transition-colors text-[11px]"><i class="fas fa-shield-alt mr-1 text-sky-400"></i> Termos e Condições</a>
+            <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" class="block text-slate-400 hover:text-white transition-colors text-[11px]"><i class="fas fa-book mr-1 text-sky-400"></i> Livro de Reclamações Online</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+        <p>&copy; 2026 Algartempo - Trabalho Temporário, Lda. Todos os direitos reservados.</p>
+        <p class="text-slate-500">Desenvolvido com excelência e tecnologia de ponta.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/351910000000?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20Algartempo." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl whatsapp-float" title="Falar no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- MODAL 1: Candidatura a Emprego -->
+  <div id="apply-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden modal-overlay bg-slate-900/70 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl modal-container relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeApplyModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="mb-5">
+        <span class="inline-block px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[11px] font-bold uppercase tracking-wider mb-2">Candidatura</span>
+        <h3 class="text-xl font-bold text-slate-900">Candidatar à Oportunidade</h3>
+        <p id="apply-modal-job-name" class="text-sm font-semibold text-blue-600 mt-1">Candidatura Espontânea</p>
+      </div>
+
+      <form onsubmit="handleCandidateSubmit(event)" class="space-y-4">
+        <input type="hidden" id="apply-job-title" value="Candidatura Espontânea">
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Nome Completo *</label>
+          <input type="text" required placeholder="O seu nome completo" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Telefone *</label>
+            <input type="tel" required placeholder="912 345 678" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">E-mail *</label>
+            <input type="email" required placeholder="seu@email.pt" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Concelho / Zona de Residência</label>
+          <input type="text" placeholder="Ex: Faro, Portimão, Albufeira, Olhão..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Anexar Currículo (CV) *</label>
+          <div class="border-2 border-dashed border-slate-200 hover:border-blue-400 rounded-2xl p-4 text-center cursor-pointer bg-slate-50 transition-colors">
+            <i class="fas fa-cloud-upload-alt text-2xl text-blue-500 mb-1"></i>
+            <p class="text-xs text-slate-700 font-semibold">Clique para selecionar o ficheiro</p>
+            <p class="text-[10px] text-slate-400">PDF, DOC ou DOCX (Máx. 10MB)</p>
+            <input type="file" required accept=".pdf,.doc,.docx" class="hidden">
+          </div>
+        </div>
+
+        <div class="flex items-start gap-2 pt-1">
+          <input type="checkbox" id="modal-consent" required class="mt-1 rounded text-blue-600">
+          <label for="modal-consent" class="text-[11px] text-slate-500">
+            Concordo com a inclusão dos meus dados na base de dados de recrutamento da Algartempo.
+          </label>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs tracking-wider uppercase transition-colors shadow-lg shadow-blue-500/20">
+          Submeter Candidatura
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Pedido de Proposta B2B -->
+  <div id="b2b-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden modal-overlay bg-slate-900/70 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl modal-container relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeB2BModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="mb-5">
+        <span class="inline-block px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-bold uppercase tracking-wider mb-2">Empresas & B2B</span>
+        <h3 class="text-xl font-bold text-slate-900">Solicitar Proposta de Recursos Humanos</h3>
+        <p class="text-xs text-slate-500 mt-1">Receba uma proposta detalhada e personalizada para a sua empresa em 24h.</p>
+      </div>
+
+      <form onsubmit="handleB2BSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Empresa / Grupo *</label>
+          <input type="text" name="company_name" required placeholder="Nome da sua empresa" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Pessoa de Contacto *</label>
+            <input type="text" required placeholder="Nome" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Cargo / Função</label>
+            <input type="text" placeholder="Ex: Diretor de RH, Gerente" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Telefone *</label>
+            <input type="tel" required placeholder="912 345 678" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">E-mail Profissional *</label>
+            <input type="email" required placeholder="direcao@empresa.pt" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Serviço Pretendido</label>
+          <select class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+            <option>Trabalho Temporário (Reforço sazonal / substituições)</option>
+            <option>Recrutamento e Seleção de Quadros</option>
+            <option>Outsourcing de Serviços Operacionais</option>
+            <option>Outro / Consultoria em RH</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Descreva brevemente as necessidades</label>
+          <textarea rows="3" placeholder="Funções a preencher, número de pessoas, data de início pretendida..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white font-bold rounded-xl text-xs tracking-wider uppercase transition-all shadow-lg shadow-blue-500/20">
+          Solicitar Proposta Gratuita
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Agendamento em Eventos / Feiras -->
+  <div id="event-meeting-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden modal-overlay bg-slate-900/70 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl modal-container relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeEventMeetingModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="mb-5">
+        <span class="inline-block px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[11px] font-bold uppercase tracking-wider mb-2">Encontro Presencial</span>
+        <h3 class="text-xl font-bold text-slate-900">Agendar Reunião no Stand</h3>
+        <p id="meeting-event-name" class="text-sm font-bold text-blue-600 mt-1">Nome do Evento</p>
+        <p id="meeting-event-date" class="text-xs text-slate-500 mt-0.5">Data do Evento</p>
+      </div>
+
+      <form onsubmit="handleEventMeetingSubmit(event)" class="space-y-4">
+        <input type="hidden" id="meeting-event-title" value="">
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">O seu Perfil *</label>
+          <select class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+            <option>Candidato(a) - Quero entregar CV / Entrevista rápida</option>
+            <option>Empresário / Diretor de RH - Quero contratar talentos</option>
+            <option>Parceiro Institucional / Estudante</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Nome Completo *</label>
+          <input type="text" name="meeting_name" required placeholder="O seu nome" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Telefone *</label>
+            <input type="tel" required placeholder="912 345 678" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">E-mail *</label>
+            <input type="email" required placeholder="seu@email.pt" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Horário Preferencial de Visita</label>
+          <select class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-blue-600">
+            <option>Manhã (10:00 - 12:30)</option>
+            <option>Tarde (14:00 - 17:30)</option>
+            <option>Final da Tarde (18:00+)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs tracking-wider uppercase transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+          <i class="fas fa-calendar-check"></i>
+          <span>Confirmar Agendamento</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white border-l-4 border-emerald-500 shadow-2xl rounded-xl py-3 px-5 text-slate-800 translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+    <i id="toast-icon" class="fas fa-check-circle text-emerald-500 text-lg"></i>
+    <span id="toast-text" class="text-xs font-semibold">Operação realizada com sucesso!</span>
+  </div>
+
+  <!-- JavaScript Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

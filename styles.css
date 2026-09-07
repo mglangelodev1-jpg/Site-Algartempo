@@ -1,0 +1,148 @@
+/* Algartempo Custom Styles */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-navy: #101c44;
+  --primary-blue: #0284c7;
+  --primary-light: #38bdf8;
+  --accent-cyan: #06b6d4;
+  --dark-bg: #0b1120;
+  --card-bg: #ffffff;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #1e293b;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Gradients */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #101c44 0%, #1e3a8a 50%, #0284c7 100%);
+}
+
+.bg-hero-glow {
+  background: radial-gradient(circle at 50% 20%, rgba(2, 132, 199, 0.15) 0%, rgba(16, 28, 68, 0.05) 50%, transparent 70%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #101c44 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hover effects */
+.hover-card-effect {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-card-effect:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -10px rgba(2, 132, 199, 0.15);
+}
+
+/* Pulse animation for Live badges */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s infinite ease-in-out;
+}
+
+/* Floating WhatsApp button */
+.whatsapp-float {
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.55);
+}
+
+/* Custom Tag Badges */
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Modal Transitions */
+.modal-overlay {
+  transition: opacity 0.3s ease-out;
+}
+
+.modal-container {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.modal-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-hidden .modal-container {
+  transform: scale(0.95) translateY(15px);
+  opacity: 0;
+}
+
+/* Event date box */
+.event-date-box {
+  background: linear-gradient(135deg, #0284c7 0%, #1e3a8a 100%);
+}
+
+/* Toast Notification */
+#toast {
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
