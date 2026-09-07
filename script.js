@@ -1,169 +1,155 @@
-// Algartempo - Interactive Scripts
+/**
+ * Algartempo — "Pessoas que movem o Algarve."
+ * Interactive Engine & Real-time Controllers
+ */
 
-// Sample Job Postings Data
+// Job Opportunities Data (Realistic regional opportunities in Algarve)
 const jobPostings = [
   {
     id: 1,
-    title: "Rececionista de Hotel 4*/5*",
+    title: "Chefe de Turno / Empregado(a) de Mesa",
     category: "hotelaria",
-    location: "Albufeira / Vilamoura",
-    type: "Full-Time / Temporário",
-    salary: "950€ - 1.250€ / mês",
-    posted: "Hoje",
-    description: "Procuramos profissionais comunicativos, com fluência em Inglês e gosto pelo atendimento ao cliente para unidade hoteleira de referência.",
-    tags: ["Inglês Fluente", "Experiência Prévia", "Turnos Rotativos", "Entrada Imediata"]
+    categoryLabel: "Hotelaria & Restauração",
+    location: "Albufeira",
+    locationLabel: "Albufeira / Vilamoura",
+    type: "Full-Time",
+    contractTag: "Contrato Direto / Época",
+    salaryNote: "Salário compatível com a função + Sub. Alimentação",
+    description: "Integração em equipa de referência no setor hoteleiro do Algarve. Atendimento de sala, gestão de pedidos e acolhimento com padrão de excelência.",
+    requirements: ["Experiência em Restauração/Hotelaria", "Domínio de Inglês", "Boa Apresentação"]
   },
   {
     id: 2,
-    title: "Técnico de Manutenção e Climatização",
+    title: "Técnico de AVAC e Refrigeração Industrial",
     category: "construcao",
-    location: "Faro / Loulé",
-    type: "Full-Time / Contrato com perspetiva de continuidade",
-    salary: "1.200€ - 1.500€ / mês",
-    posted: "Há 1 dia",
-    description: "Empresa do setor de climatização e AVAC procura técnico com carteira profissional e carta de condução para assistência técnica.",
-    tags: ["TIM / AVAC", "Carta Condução B", "Experiência 2+ anos"]
+    categoryLabel: "Construção & Manutenção",
+    location: "Faro",
+    locationLabel: "Faro / Olhão",
+    type: "Full-Time",
+    contractTag: "Continuidade / Efetivo",
+    salaryNote: "Vencimento base + Isenção + Viatura de serviço",
+    description: "Manutenção preventiva e corretiva de sistemas de climatização em edifícios comerciais e unidades hoteleiras na zona central do Algarve.",
+    requirements: ["Certificação TIM / Gases Fluorados", "Carta de Condução B", "Autonomia Técnica"]
   },
   {
     id: 3,
-    title: "Empregado(a) de Mesa / Bar",
-    category: "hotelaria",
-    location: "Portimão / Lagos",
+    title: "Operador de Logística & Condução de Empilhador",
+    category: "logistica",
+    categoryLabel: "Logística & Armazém",
+    location: "Loule",
+    locationLabel: "Loulé / São Brás",
     type: "Full-Time",
-    salary: "900€ - 1.150€ + Gorjetas",
-    posted: "Há 2 dias",
-    description: "Excelente oportunidade para integrar equipa dinâmica em restaurante conceituado no Barlavento Algarvio. Bom ambiente e progressão.",
-    tags: ["Atendimento", "Línguas Estrangeiras", "Dinamismo"]
+    contractTag: "Turno Diurno Fixo",
+    salaryNote: "Salário Base + Subsídio de Turno e Alimentação",
+    description: "Recepção, conferência de mercadorias, expedição de encomendas e arrumação de entreposto logístico com recurso a empilhador.",
+    requirements: ["Certificado de Condução de Empilhador", "Sentido de Responsabilidade", "Residência Próxima"]
   },
   {
     id: 4,
-    title: "Operador de Logística e Empilhador",
-    category: "logistica",
-    location: "São Brás de Alportel / Olhão",
-    type: "Full-Time / Turno Fixo",
-    salary: "880€ - 1.050€ / mês",
-    posted: "Há 3 dias",
-    description: "Preparação de encomendas (picking), organização de armazém e condução de empilhador com certificado válido.",
-    tags: ["Certificado Empilhador", "Picking", "Responsabilidade"]
+    title: "Rececionista Bilingue (M/F)",
+    category: "hotelaria",
+    categoryLabel: "Hotelaria & Turismo",
+    location: "Lagos",
+    locationLabel: "Lagos / Portimão",
+    type: "Full-Time",
+    contractTag: "Reforço e Continuidade",
+    salaryNote: "Pacote salarial atrativo + Prémios de época",
+    description: "Check-in / check-out de hóspedes, atendimento telefónico e apoio geral aos serviços de concierge num resort no Barlavento Algarvio.",
+    requirements: ["Fluência em Inglês e Português (outra língua valorizada)", "Atitude Proativa", "Disponibilidade de Turnos"]
   },
   {
     id: 5,
-    title: "Assistente Administrativo(a) & RH",
+    title: "Assistente Administrativo(a) & Suporte Operacional",
     category: "administrativo",
+    categoryLabel: "Apoio Administrativo",
     location: "Faro",
-    type: "Full-Time / Substituição Licença",
-    salary: "1.000€ - 1.200€ / mês",
-    posted: "Há 4 dias",
-    description: "Gestão documental, apoio ao processamento salarial, atendimento telefónico e suporte ao departamento de recrutamento.",
-    tags: ["Excel Avançado", "Organização", "Comunicação"]
+    locationLabel: "Faro (Sede)",
+    type: "Full-Time",
+    contractTag: "Entrada Imediata",
+    salaryNote: "Remuneração de acordo com o perfil e experiência",
+    description: "Gestão documental, apoio ao processamento de assiduidades, atendimento a clientes e arquivo no polo central de Faro.",
+    requirements: ["Bons conhecimentos de Excel/Office", "Rigor e Organização", "Gosto pelo Contacto Humano"]
   },
   {
     id: 6,
-    title: "Encarregado de Obra Civil",
-    category: "construcao",
-    location: "Tavira / Vila Real de Sto. António",
+    title: "Operador de Produção & Embalamento",
+    category: "industria",
+    categoryLabel: "Indústria & Agroalimentar",
+    location: "Tavira",
+    locationLabel: "Tavira / VRSA",
     type: "Full-Time",
-    salary: "1.600€ - 2.000€ / mês",
-    posted: "Há 5 dias",
-    description: "Supervisão de equipas em obra residencial de luxo, controlo de prazos, medições e cumprimento de normas de segurança.",
-    tags: ["Liderança", "Leitura de Projetos", "Experiência Comprovada"]
+    contractTag: "Época Alta / Flexível",
+    salaryNote: "Salário Base + Horas Noturnas (quando aplicável)",
+    description: "Apoio à linha de embalamento, triagem de produto alimentar e cumprimento rigoroso das normas de higiene e segurança alimentar (HACCP).",
+    requirements: ["Robustez Física e Agilidade", "Pontualidade", "Disponibilidade Imediata"]
   }
 ];
 
-// Sample Events & Fairs Data
-const companyEvents = [
+// Fairs and In-person Events
+const regionalEvents = [
   {
     id: 1,
     title: "Bolsa de Empregabilidade Algarve 2026",
-    category: "feira-emprego",
-    dateDay: "24-25",
-    dateMonth: "MAR",
-    fullDate: "24 e 25 de Março de 2026",
-    time: "09:30 - 18:00",
-    location: "Centro de Congressos do Arade, Parchal - Portimão",
-    booth: "Stand B14 (Piso 1)",
-    tag: "Feira de Emprego & Turismo",
-    status: "Confirmado",
-    description: "Estaremos presentes no maior evento de emprego do Algarve! Venha entregar o seu CV diretamente à nossa equipa de recrutadores ou agende uma reunião para a sua empresa.",
-    highlight: true
+    edition: "Presença Confirmada",
+    dateBadge: "MAR 2026",
+    location: "Portimão — Centro de Congressos do Arade",
+    stand: "Stand Algartempo",
+    description: "O ponto de encontro anual entre talentos e as principais entidades empregadoras do Algarve. Agende uma conversa direta com os nossos consultores de recrutamento.",
+    type: "Feira de Emprego Regional"
   },
   {
     id: 2,
-    title: "Mostra de Emprego & Carreiras da Universidade do Algarve",
-    category: "academico",
-    dateDay: "15",
-    dateMonth: "ABR",
-    fullDate: "15 de Abril de 2026",
-    time: "10:00 - 17:30",
-    location: "Campus de Gambelas, UAlg - Faro",
-    booth: "Espaço Empresas - Stand 08",
-    tag: "Estágios & Jovens Talentos",
-    status: "Inscrições Abertas",
-    description: "Apresentação de programas de estágio, oportunidades de primeiro emprego e saídas profissionais para recém-licenciados e estudantes universitários.",
-    highlight: false
-  },
-  {
-    id: 3,
-    title: "Fórum Regional de Recursos Humanos & Hospitalidade",
-    category: "conferencia",
-    dateDay: "08",
-    dateMonth: "MAI",
-    fullDate: "8 de Maio de 2026",
-    time: "14:00 - 19:00",
-    location: "Hotel Quinta do Lago, Almancil",
-    booth: "Painel de Oradores & Networking Lounge",
-    tag: "Conferência B2B",
-    status: "Exclusivo Empresas",
-    description: "Mesa redonda sobre 'A Retenção de Talento e a Flexibilidade no Trabalho Temporário em 2026', com intervenção da direção da Algartempo.",
-    highlight: true
-  },
-  {
-    id: 4,
-    title: "FATACIL 2026 - Espaço Negócios e Empreendedorismo",
-    category: "exposicao",
-    dateDay: "21-30",
-    dateMonth: "AGO",
-    fullDate: "21 a 30 de Agosto de 2026",
-    time: "18:00 - 24:00",
-    location: "Parque de Feiras e Exposições, Lagoa",
-    booth: "Pavilhão Institucional - Stand 42",
-    tag: "Feira Multissetorial",
-    status: "Presença Anual",
-    description: "Visite o nosso stand na maior feira do sul do país. Atendimento personalizado para candidatos e empresários de todos os setores.",
-    highlight: false
+    title: "Dia Aberto de Recrutamento — Faro & Portimão",
+    edition: "Sessão Presencial",
+    dateBadge: "ABR 2026",
+    location: "Polos Algartempo (Faro e Portimão)",
+    stand: "Atendimento Personalizado",
+    description: "Entrevistas rápidas e validação de perfil para vagas de entrada imediata em Hotelaria, Logística e Manutenção no Algarve.",
+    type: "Recrutamento Expresso"
   }
 ];
 
-// Document Ready
+// State for B2B Interactive Selector
+const b2bState = {
+  headcount: '1–5',
+  timeframe: 'Esta Semana',
+  sector: 'Hotelaria & Restauração'
+};
+
+// Document Initialization
 document.addEventListener('DOMContentLoaded', () => {
-  renderJobs();
+  renderJobs(jobPostings);
   renderEvents();
-  initCounters();
+  initB2BSelector();
+  initFilters();
+  initStepNarrative();
   initMobileMenu();
   initModals();
-  initFilters();
+  initScrollAnimations();
 });
 
-// Render Job Postings
-function renderJobs(filteredJobs = jobPostings) {
-  const container = document.getElementById('jobs-container');
-  const countBadge = document.getElementById('jobs-count');
-  
+// Render Jobs in Modern Grid
+function renderJobs(jobsToRender = jobPostings) {
+  const container = document.getElementById('jobs-list-container');
+  const countBadge = document.getElementById('jobs-count-badge');
+
   if (countBadge) {
-    countBadge.textContent = `${filteredJobs.length} vagas disponíveis`;
+    countBadge.textContent = `${jobsToRender.length} Oportunidades`;
   }
 
   if (!container) return;
 
-  if (filteredJobs.length === 0) {
+  if (jobsToRender.length === 0) {
     container.innerHTML = `
-      <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
-        <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-search text-2xl"></i>
+      <div class="col-span-full text-center py-16 px-6 bg-slate-900/60 border border-slate-800 rounded-3xl">
+        <div class="w-16 h-16 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+          <i class="fas fa-search"></i>
         </div>
-        <h3 class="text-xl font-bold text-slate-800 mb-2">Nenhuma vaga encontrada</h3>
-        <p class="text-slate-600 max-w-md mx-auto mb-6">Não encontramos ofertas que correspondam aos filtros selecionados. Envie a sua candidatura espontânea!</p>
-        <button onclick="openApplyModal('Candidatura Espontânea')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/20 transition-all">
+        <h4 class="text-xl font-display font-bold text-white mb-2">Sem oportunidades correspondentes</h4>
+        <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">
+          Não encontrámos vagas com os filtros atuais. Pode submeter a sua candidatura espontânea para novas aberturas.
+        </p>
+        <button onclick="openApplyModal('Candidatura Espontânea — Sem Filtros')" class="px-6 py-3 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all">
           Submeter Candidatura Espontânea
         </button>
       </div>
@@ -171,259 +157,260 @@ function renderJobs(filteredJobs = jobPostings) {
     return;
   }
 
-  container.innerHTML = filteredJobs.map(job => `
-    <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover-card-effect flex flex-col justify-between relative overflow-hidden group">
-      <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-500 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  container.innerHTML = jobsToRender.map(job => `
+    <article class="editorial-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
       <div>
-        <div class="flex items-start justify-between gap-3 mb-3">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
-            job.category === 'hotelaria' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
-            job.category === 'construcao' ? 'bg-orange-50 text-orange-700 border border-orange-200' :
-            job.category === 'logistica' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
-            'bg-sky-50 text-sky-700 border border-sky-200'
-          }">
-            <i class="fas ${
-              job.category === 'hotelaria' ? 'fa-hotel' :
-              job.category === 'construcao' ? 'fa-hard-hat' :
-              job.category === 'logistica' ? 'fa-truck-loading' :
-              'fa-briefcase'
-            } text-[10px]"></i>
-            ${job.category}
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono-accent font-semibold uppercase tracking-wider bg-sky-500/10 text-sky-400 border border-sky-500/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+            ${job.categoryLabel}
           </span>
-          <span class="text-xs text-slate-400 flex items-center gap-1">
-            <i class="far fa-clock"></i> ${job.posted}
+          <span class="text-xs font-mono-accent text-slate-400">
+            <i class="fas fa-map-marker-alt text-sky-400 mr-1"></i> ${job.locationLabel}
           </span>
         </div>
 
-        <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
+        <h3 class="text-xl sm:text-2xl font-display font-bold text-white group-hover:text-sky-400 transition-colors mb-3 leading-snug">
           ${job.title}
         </h3>
 
-        <p class="text-sm text-slate-600 mb-4 line-clamp-2">
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">
           ${job.description}
         </p>
 
-        <div class="space-y-2 mb-5">
-          <div class="flex items-center text-xs text-slate-600 gap-2">
-            <i class="fas fa-map-marker-alt text-blue-500 w-4"></i>
-            <span>${job.location}</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 py-4 border-y border-slate-800/80 mb-6 text-xs text-slate-300">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-file-contract text-sky-400 w-4"></i>
+            <span>${job.contractTag}</span>
           </div>
-          <div class="flex items-center text-xs text-slate-600 gap-2">
-            <i class="fas fa-euro-sign text-emerald-500 w-4"></i>
-            <span class="font-semibold text-slate-700">${job.salary}</span>
-          </div>
-          <div class="flex items-center text-xs text-slate-600 gap-2">
-            <i class="fas fa-user-clock text-sky-500 w-4"></i>
-            <span>${job.type}</span>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-wallet text-emerald-400 w-4"></i>
+            <span>${job.salaryNote}</span>
           </div>
         </div>
 
         <div class="flex flex-wrap gap-1.5 mb-6">
-          ${job.tags.map(tag => `
-            <span class="bg-slate-50 text-slate-600 border border-slate-200/60 px-2.5 py-1 rounded-md text-[11px]">
-              ${tag}
+          ${job.requirements.map(req => `
+            <span class="text-[11px] font-mono-accent text-slate-400 bg-slate-800/60 border border-slate-700/50 px-2.5 py-1 rounded-lg">
+              ${req}
             </span>
           `).join('')}
         </div>
       </div>
 
-      <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-        <button onclick="openApplyModal('${job.title.replace(/'/g, "\\'")}')" class="w-full py-2.5 px-4 bg-slate-900 hover:bg-blue-600 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2">
-          <span>Candidatar Agora</span>
+      <div class="pt-2 flex items-center gap-3">
+        <button onclick="openApplyModal('${job.title.replace(/'/g, "\\'")}')" class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg shadow-sky-500/10">
+          <span>Candidatar a esta Oportunidade</span>
           <i class="fas fa-arrow-right text-xs"></i>
         </button>
       </div>
-    </div>
+    </article>
   `).join('');
 }
 
-// Render Events & Fairs
-function renderEvents(filter = 'todos') {
-  const container = document.getElementById('events-container');
+// Render Fairs and Events
+function renderEvents() {
+  const container = document.getElementById('events-list-container');
   if (!container) return;
 
-  const filtered = filter === 'todos' ? companyEvents : companyEvents.filter(e => e.category === filter);
-
-  container.innerHTML = filtered.map(evt => `
-    <div class="bg-white rounded-2xl border ${evt.highlight ? 'border-blue-300 ring-2 ring-blue-500/10' : 'border-slate-200'} p-6 shadow-sm hover-card-effect relative overflow-hidden flex flex-col justify-between">
-      ${evt.highlight ? '<div class="absolute top-0 right-0 bg-gradient-to-l from-blue-600 to-sky-500 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-4 rounded-bl-xl shadow-sm">Destaque</div>' : ''}
-      <div>
-        <div class="flex items-start gap-4 mb-5">
-          <!-- Calendar Box -->
-          <div class="flex-shrink-0 w-16 h-16 rounded-2xl event-date-box text-white flex flex-col items-center justify-center shadow-md">
-            <span class="text-xs font-semibold uppercase tracking-wider text-sky-200">${evt.dateMonth}</span>
-            <span class="text-xl font-extrabold leading-tight">${evt.dateDay}</span>
-          </div>
-
-          <div>
-            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 mb-1 border border-blue-100">
-              ${evt.tag}
-            </span>
-            <h3 class="text-lg font-bold text-slate-900 leading-snug">
-              ${evt.title}
-            </h3>
-          </div>
+  container.innerHTML = regionalEvents.map(evt => `
+    <div class="editorial-card rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="flex items-start gap-4">
+        <div class="w-16 h-16 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex flex-col items-center justify-center font-display font-bold flex-shrink-0">
+          <span class="text-[10px] tracking-wider uppercase text-slate-400 font-mono-accent">Presença</span>
+          <span class="text-sm text-sky-300">${evt.dateBadge}</span>
         </div>
-
-        <p class="text-sm text-slate-600 mb-5 leading-relaxed">
-          ${evt.description}
-        </p>
-
-        <div class="bg-slate-50 rounded-xl p-3.5 space-y-2 mb-6 border border-slate-100">
-          <div class="flex items-center text-xs text-slate-700 gap-2">
-            <i class="far fa-calendar-alt text-blue-600 w-4"></i>
-            <span class="font-medium">${evt.fullDate} (${evt.time})</span>
-          </div>
-          <div class="flex items-center text-xs text-slate-700 gap-2">
-            <i class="fas fa-map-marker-alt text-rose-500 w-4"></i>
-            <span>${evt.location}</span>
-          </div>
-          <div class="flex items-center text-xs text-slate-700 gap-2">
-            <i class="fas fa-store text-amber-500 w-4"></i>
-            <span class="font-semibold text-slate-900">${evt.booth}</span>
-          </div>
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-mono-accent text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 mb-1.5">
+            ${evt.edition}
+          </span>
+          <h4 class="text-lg sm:text-xl font-display font-bold text-white mb-1">${evt.title}</h4>
+          <p class="text-slate-400 text-xs sm:text-sm mb-2"><i class="fas fa-map-marker-alt text-sky-400 mr-1.5"></i>${evt.location}</p>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">${evt.description}</p>
         </div>
       </div>
 
-      <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
-        <button onclick="openEventMeetingModal('${evt.title.replace(/'/g, "\\'")}', '${evt.fullDate}')" class="flex-1 py-2.5 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-sm">
-          <i class="fas fa-calendar-check"></i>
+      <div class="w-full md:w-auto flex-shrink-0">
+        <button onclick="openEventMeetingModal('${evt.title.replace(/'/g, "\\'")}', '${evt.location}')" class="w-full md:w-auto py-3 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-mono-accent text-xs font-semibold border border-slate-700 transition-colors flex items-center justify-center gap-2">
+          <i class="fas fa-calendar-check text-sky-400"></i>
           <span>Agendar Reunião no Stand</span>
         </button>
-        <a href="https://maps.google.com/?q=${encodeURIComponent(evt.location)}" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs transition-colors flex items-center justify-center" title="Ver Localização no Mapa">
-          <i class="fas fa-directions"></i>
-        </a>
       </div>
     </div>
   `).join('');
 }
 
-// Filter Logic for Jobs
-function initFilters() {
-  const searchInput = document.getElementById('job-search-input');
-  const categorySelect = document.getElementById('job-category-select');
-  const locationSelect = document.getElementById('job-location-select');
+// Interactive Step Narrative (01 TU -> 02 PROCURAS -> 03 NÓS LIGAMOS -> 04 COMEÇA)
+function initStepNarrative() {
+  const skillChips = document.querySelectorAll('.skill-chip');
+  skillChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      skillChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
 
-  function applyJobFilters() {
-    const query = (searchInput?.value || '').toLowerCase().trim();
-    const category = categorySelect?.value || 'todos';
-    const loc = locationSelect?.value || 'todos';
+      const targetSector = chip.getAttribute('data-sector');
+      const sectorSelect = document.getElementById('filter-sector');
+      if (sectorSelect) {
+        sectorSelect.value = targetSector;
+      }
 
-    const filtered = jobPostings.filter(job => {
-      const matchQuery = !query || 
-        job.title.toLowerCase().includes(query) ||
-        job.description.toLowerCase().includes(query) ||
-        job.tags.some(t => t.toLowerCase().includes(query));
+      // Smooth scroll to jobs
+      const jobsSection = document.getElementById('vagas');
+      if (jobsSection) {
+        jobsSection.scrollIntoView({ behavior: 'smooth' });
+      }
 
-      const matchCategory = category === 'todos' || job.category === category;
-      const matchLocation = loc === 'todos' || job.location.toLowerCase().includes(loc.toLowerCase());
-
-      return matchQuery && matchCategory && matchLocation;
+      applyFilters();
     });
-
-    renderJobs(filtered);
-  }
-
-  searchInput?.addEventListener('input', applyJobFilters);
-  categorySelect?.addEventListener('change', applyJobFilters);
-  locationSelect?.addEventListener('change', applyJobFilters);
+  });
 }
 
-// Event Filter Tabs
-function filterEventsTab(category, btnElement) {
-  const tabs = document.querySelectorAll('.event-tab-btn');
-  tabs.forEach(tab => {
-    tab.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-    tab.classList.add('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+// B2B 3-Step Interactive Selector
+function initB2BSelector() {
+  const headcountBtns = document.querySelectorAll('.b2b-headcount-btn');
+  const timeframeBtns = document.querySelectorAll('.b2b-timeframe-btn');
+  const sectorBtns = document.querySelectorAll('.b2b-sector-btn');
+
+  headcountBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      headcountBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      b2bState.headcount = btn.getAttribute('data-value');
+      updateB2BSummary();
+    });
   });
 
-  if (btnElement) {
-    btnElement.classList.remove('bg-white', 'text-slate-700', 'hover:bg-slate-100');
-    btnElement.classList.add('bg-blue-600', 'text-white', 'shadow-md');
-  }
-
-  renderEvents(category);
-}
-
-// Animated Statistics Counter
-function initCounters() {
-  const counters = document.querySelectorAll('.counter-val');
-  let animated = false;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !animated) {
-        animated = true;
-        counters.forEach(counter => {
-          const target = +counter.getAttribute('data-target');
-          const duration = 2000;
-          const step = Math.ceil(target / (duration / 25));
-          let current = 0;
-
-          const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              counter.textContent = target.toLocaleString('pt-PT');
-              clearInterval(timer);
-            } else {
-              counter.textContent = current.toLocaleString('pt-PT');
-            }
-          }, 25);
-        });
-      }
+  timeframeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      timeframeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      b2bState.timeframe = btn.getAttribute('data-value');
+      updateB2BSummary();
     });
-  }, { threshold: 0.2 });
+  });
 
-  const statsSection = document.getElementById('stats-section');
-  if (statsSection) {
-    observer.observe(statsSection);
+  sectorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sectorBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      b2bState.sector = btn.getAttribute('data-value');
+      updateB2BSummary();
+    });
+  });
+
+  updateB2BSummary();
+}
+
+function updateB2BSummary() {
+  const summaryEl = document.getElementById('b2b-summary-text');
+  if (summaryEl) {
+    summaryEl.textContent = `${b2bState.headcount} pessoas • Para: ${b2bState.timeframe} • Área: ${b2bState.sector}`;
   }
 }
 
-// Mobile Menu
+function triggerB2BModalWithState() {
+  openB2BModal(b2bState);
+}
+
+// Job Filter Engine
+function initFilters() {
+  const searchInput = document.getElementById('filter-search');
+  const sectorSelect = document.getElementById('filter-sector');
+  const locationSelect = document.getElementById('filter-location');
+  const locationChips = document.querySelectorAll('.location-chip');
+
+  if (searchInput) searchInput.addEventListener('input', applyFilters);
+  if (sectorSelect) sectorSelect.addEventListener('change', applyFilters);
+  if (locationSelect) locationSelect.addEventListener('change', applyFilters);
+
+  locationChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      locationChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const loc = chip.getAttribute('data-location');
+      if (locationSelect) {
+        locationSelect.value = loc;
+      }
+      applyFilters();
+    });
+  });
+}
+
+function applyFilters() {
+  const searchVal = (document.getElementById('filter-search')?.value || '').toLowerCase().trim();
+  const sectorVal = document.getElementById('filter-sector')?.value || 'todos';
+  const locVal = document.getElementById('filter-location')?.value || 'todos';
+
+  const filtered = jobPostings.filter(job => {
+    const matchesSearch = !searchVal ||
+      job.title.toLowerCase().includes(searchVal) ||
+      job.description.toLowerCase().includes(searchVal) ||
+      job.requirements.some(r => r.toLowerCase().includes(searchVal)) ||
+      job.locationLabel.toLowerCase().includes(searchVal);
+
+    const matchesSector = sectorVal === 'todos' || job.category === sectorVal;
+    const matchesLocation = locVal === 'todos' || 
+      job.location.toLowerCase() === locVal.toLowerCase() ||
+      job.locationLabel.toLowerCase().includes(locVal.toLowerCase());
+
+    return matchesSearch && matchesSector && matchesLocation;
+  });
+
+  renderJobs(filtered);
+}
+
+// Mobile Menu Drawer
 function initMobileMenu() {
   const toggleBtn = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navLinks = document.querySelectorAll('.mobile-nav-link');
+  const closeBtn = document.getElementById('mobile-menu-close');
+  const drawer = document.getElementById('mobile-drawer');
+  const links = document.querySelectorAll('.mobile-drawer-link');
 
-  if (!toggleBtn || !mobileMenu) return;
-
-  toggleBtn.addEventListener('click', () => {
-    const isHidden = mobileMenu.classList.contains('hidden');
-    if (isHidden) {
-      mobileMenu.classList.remove('hidden');
-      toggleBtn.innerHTML = '<i class="fas fa-times text-xl"></i>';
-    } else {
-      mobileMenu.classList.add('hidden');
-      toggleBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+  function openDrawer() {
+    if (drawer) {
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
     }
-  });
+  }
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      toggleBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
-    });
-  });
+  function closeDrawer() {
+    if (drawer) {
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (toggleBtn) toggleBtn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  links.forEach(l => l.addEventListener('click', closeDrawer));
 }
 
-// Modals Management
+// Modal Engine
 function initModals() {
-  // Close modals with Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeAllModals();
     }
   });
+
+  // Backdrop click
+  const modals = document.querySelectorAll('.modal-overlay');
+  modals.forEach(m => {
+    m.addEventListener('click', (e) => {
+      if (e.target === m) {
+        closeAllModals();
+      }
+    });
+  });
 }
 
 function openApplyModal(jobTitle = 'Candidatura Espontânea') {
   const modal = document.getElementById('apply-modal');
-  const jobTitleInput = document.getElementById('apply-job-title');
-  const titleDisplay = document.getElementById('apply-modal-job-name');
+  const titleDisplay = document.getElementById('apply-modal-job-title');
+  const hiddenInput = document.getElementById('apply-job-input');
 
-  if (jobTitleInput) jobTitleInput.value = jobTitle;
   if (titleDisplay) titleDisplay.textContent = jobTitle;
+  if (hiddenInput) hiddenInput.value = jobTitle;
 
   if (modal) {
     modal.classList.remove('modal-hidden');
@@ -439,8 +426,18 @@ function closeApplyModal() {
   }
 }
 
-function openB2BModal() {
+function openB2BModal(prefill = null) {
   const modal = document.getElementById('b2b-modal');
+  if (prefill) {
+    const headInput = document.getElementById('b2b-input-headcount');
+    const timeInput = document.getElementById('b2b-input-timeframe');
+    const secInput = document.getElementById('b2b-input-sector');
+
+    if (headInput) headInput.value = prefill.headcount;
+    if (timeInput) timeInput.value = prefill.timeframe;
+    if (secInput) secInput.value = prefill.sector;
+  }
+
   if (modal) {
     modal.classList.remove('modal-hidden');
     document.body.style.overflow = 'hidden';
@@ -455,15 +452,13 @@ function closeB2BModal() {
   }
 }
 
-function openEventMeetingModal(eventTitle, eventDate) {
-  const modal = document.getElementById('event-meeting-modal');
-  const titleInput = document.getElementById('meeting-event-title');
-  const titleDisplay = document.getElementById('meeting-event-name');
-  const dateDisplay = document.getElementById('meeting-event-date');
+function openEventMeetingModal(eventTitle, eventLocation) {
+  const modal = document.getElementById('event-modal');
+  const titleEl = document.getElementById('event-modal-title');
+  const locEl = document.getElementById('event-modal-location');
 
-  if (titleInput) titleInput.value = eventTitle;
-  if (titleDisplay) titleDisplay.textContent = eventTitle;
-  if (dateDisplay) dateDisplay.textContent = eventDate;
+  if (titleEl) titleEl.textContent = eventTitle;
+  if (locEl) locEl.textContent = eventLocation;
 
   if (modal) {
     modal.classList.remove('modal-hidden');
@@ -472,7 +467,7 @@ function openEventMeetingModal(eventTitle, eventDate) {
 }
 
 function closeEventMeetingModal() {
-  const modal = document.getElementById('event-meeting-modal');
+  const modal = document.getElementById('event-modal');
   if (modal) {
     modal.classList.add('modal-hidden');
     document.body.style.overflow = '';
@@ -485,64 +480,76 @@ function closeAllModals() {
   closeEventMeetingModal();
 }
 
-// Toast Notifications System
-function showToast(message, type = 'success') {
+// Toast Feedback System
+function showToast(message, iconClass = 'fa-check-circle text-emerald-400') {
   const toast = document.getElementById('toast');
-  const toastText = document.getElementById('toast-text');
+  const toastText = document.getElementById('toast-message');
   const toastIcon = document.getElementById('toast-icon');
 
   if (!toast || !toastText) return;
 
   toastText.textContent = message;
-  
-  if (type === 'success') {
-    toastIcon.className = 'fas fa-check-circle text-emerald-500 text-lg';
-    toast.className = 'fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white border-l-4 border-emerald-500 shadow-2xl rounded-xl py-3 px-5 text-slate-800 translate-y-0 opacity-100';
-  } else {
-    toastIcon.className = 'fas fa-info-circle text-blue-500 text-lg';
-    toast.className = 'fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white border-l-4 border-blue-500 shadow-2xl rounded-xl py-3 px-5 text-slate-800 translate-y-0 opacity-100';
-  }
+  if (toastIcon) toastIcon.className = `fas ${iconClass} text-lg`;
+
+  toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+  toast.classList.add('translate-y-0', 'opacity-100');
 
   setTimeout(() => {
-    toast.className = 'fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white border-l-4 border-emerald-500 shadow-2xl rounded-xl py-3 px-5 text-slate-800 translate-y-20 opacity-0 pointer-events-none';
+    toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+    toast.classList.remove('translate-y-0', 'opacity-100');
   }, 4500);
 }
 
-// Form Submission Handlers
+// Form Handlers
 function handleCandidateSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const name = form.querySelector('input[type="text"]').value;
-  
+  const name = form.querySelector('input[name="candidate_name"]')?.value || 'Candidato(a)';
   closeApplyModal();
   form.reset();
-  showToast(`Obrigado ${name}! A sua candidatura foi submetida com sucesso à equipa da Algartempo.`, 'success');
+  showToast(`Obrigado ${name}! A sua candidatura foi registada. A equipa da Algartempo entrará em contacto.`);
 }
 
 function handleB2BSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const company = form.querySelector('input[name="company_name"]')?.value || 'empresa';
-  
+  const company = form.querySelector('input[name="company_name"]')?.value || 'sua empresa';
   closeB2BModal();
   form.reset();
-  showToast(`Pedido de proposta recebido com sucesso! O nosso consultor de RH entrará em contacto hoje.`, 'success');
+  showToast(`Pedido para ${company} recebido. O nosso consultor de RH enviará a proposta nas próximas 24h.`);
 }
 
 function handleEventMeetingSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const name = form.querySelector('input[name="meeting_name"]')?.value || '';
-  
   closeEventMeetingModal();
   form.reset();
-  showToast(`Reunião agendada com sucesso! Enviámos a confirmação e o bilhete de stand para o seu e-mail.`, 'success');
+  showToast(`Reunião no stand agendada com sucesso! Enviámos os detalhes para o seu contacto.`);
 }
 
-function handleContactSubmit(e) {
+function handleDirectContact(e) {
   e.preventDefault();
   const form = e.target;
-  
   form.reset();
-  showToast(`Mensagem enviada com sucesso! Responderemos no prazo máximo de 24 horas.`, 'success');
+  showToast(`Mensagem enviada com sucesso! Responderemos o mais brevemente possível.`);
+}
+
+// Scroll Intersection Reveal
+function initScrollAnimations() {
+  const reveals = document.querySelectorAll('.reveal-item');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
 }
