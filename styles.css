@@ -1,151 +1,143 @@
-/* Algartempo — Editorial Humano & Premium Design System */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,600&display=swap');
+/* Algartempo — Editorial & Humano Design System */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600&display=swap');
 
 :root {
-  /* Paleta Humana & Algarvia: Mar, Luz, Areia e Terra */
-  --alg-navy: #0d1b2a;
-  --alg-marine: #1b263b;
+  --alg-bg: #faf8f5;
+  --alg-bg-alt: #f4efe6;
+  --alg-bg-white: #ffffff;
   --alg-blue: #0284c7;
-  --alg-sky: #0ea5e9;
-  --alg-sand: #fbf9f5;
-  --alg-cream: #f4efe6;
-  --alg-warm-border: #e8e2d5;
+  --alg-blue-dark: #0369a1;
+  --alg-navy: #0f172a;
+  --alg-sand: #e8e1d3;
   --alg-terracotta: #c25e17;
   --alg-ochre: #d97706;
-  --alg-slate: #475569;
-  --alg-text-dark: #0f172a;
+  --alg-text-main: #0f172a;
+  --alg-text-muted: #526071;
+  --alg-border: #e2d9cc;
 }
 
 html {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--alg-bg);
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--alg-sand);
-  color: var(--alg-text-dark);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--alg-bg);
+  color: var(--alg-text-main);
   overflow-x: hidden;
 }
 
 .font-heading {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em;
 }
 
-.font-editorial-italic {
+.font-serif-italic {
   font-family: 'Newsreader', Georgia, serif;
   font-style: italic;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #f4efe6;
+  background: var(--alg-bg);
 }
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0284c7;
+  background: var(--alg-blue);
 }
 
-/* Tipografia Editorial Balanceada */
-.text-hero-title {
-  font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+/* Tipografia Editorial */
+.text-hero-editorial {
+  font-size: clamp(2.4rem, 5.2vw, 4.25rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
 }
 
-.text-section-title {
-  font-size: clamp(2rem, 3.8vw, 3.25rem);
+.text-section-editorial {
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
   line-height: 1.1;
   letter-spacing: -0.025em;
 }
 
-/* Cartões Editoriais Quentes */
-.editorial-paper {
-  background: #ffffff;
-  border: 1px solid var(--alg-warm-border);
-  box-shadow: 0 4px 20px -4px rgba(13, 27, 42, 0.05);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.editorial-paper:hover {
-  border-color: #0284c7;
-  transform: translateY(-3px);
-  box-shadow: 0 16px 30px -8px rgba(13, 27, 42, 0.08);
-}
-
-.editorial-dark-paper {
-  background: #0d1b2a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f8fafc;
-}
-
-/* Imagens com Tratamento Editorial */
-.editorial-image-frame {
+/* Molduras de Fotografia Editorial */
+.editorial-photo-container {
   position: relative;
   overflow: hidden;
   border-radius: 1.5rem;
+  background-color: #0f172a;
 }
 
-.editorial-image-frame img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.editorial-photo-container img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.editorial-image-frame:hover img {
-  transform: scale(1.03);
+.editorial-photo-container:hover img {
+  transform: scale(1.025);
 }
 
-/* Botões Interativos do Configurador B2B */
-.b2b-pill {
-  cursor: pointer;
-  transition: all 0.2s ease;
-  user-select: none;
+/* Linhas e Separações */
+.border-alg {
+  border-color: var(--alg-border);
 }
 
-.b2b-pill.active {
-  background: #0d1b2a !important;
-  color: #ffffff !important;
-  border-color: #0d1b2a !important;
-  font-weight: 700 !important;
+/* Botões Editoriais */
+.btn-primary-alg {
+  background-color: var(--alg-blue);
+  color: #ffffff;
+  transition: all 0.25s ease;
 }
 
-/* Animações Subtis de Scroll */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+.btn-primary-alg:hover {
+  background-color: var(--alg-blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px -5px rgba(2, 132, 199, 0.3);
 }
 
-.reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.btn-secondary-alg {
+  background-color: transparent;
+  color: var(--alg-text-main);
+  border: 1px solid var(--alg-text-main);
+  transition: all 0.25s ease;
 }
 
-/* Floating WhatsApp */
-.whatsapp-float {
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
-  transition: all 0.3s ease;
+.btn-secondary-alg:hover {
+  background-color: var(--alg-text-main);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
-.whatsapp-float:hover {
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+/* Faixa de Localidades (Ticker) */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* Modais */
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Modal Core Styles */
 .modal-overlay {
   transition: opacity 0.25s ease-out;
 }
 
 .modal-container {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-out;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease-out;
 }
 
 .modal-hidden {
@@ -154,6 +146,17 @@ body {
 }
 
 .modal-hidden .modal-container {
-  transform: scale(0.97) translateY(12px);
+  transform: scale(0.97) translateY(10px);
   opacity: 0;
+}
+
+/* Floating WhatsApp */
+.whatsapp-float {
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  transition: all 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
 }
