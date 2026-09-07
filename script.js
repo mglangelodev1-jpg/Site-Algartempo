@@ -141,15 +141,15 @@ function renderJobs(jobsToRender = jobPostings) {
 
   if (jobsToRender.length === 0) {
     container.innerHTML = `
-      <div class="col-span-full text-center py-16 px-6 bg-slate-900/60 border border-slate-800 rounded-3xl">
-        <div class="w-16 h-16 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+      <div class="col-span-full text-center py-12 px-6 bg-white border border-slate-200 rounded-2xl">
+        <div class="w-14 h-14 rounded-full bg-sky-50 text-sky-600 flex items-center justify-center mx-auto mb-3 text-xl">
           <i class="fas fa-search"></i>
         </div>
-        <h4 class="text-xl font-display font-bold text-white mb-2">Sem oportunidades correspondentes</h4>
-        <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">
-          Não encontrámos vagas com os filtros atuais. Pode submeter a sua candidatura espontânea para novas aberturas.
+        <h4 class="text-lg font-heading font-bold text-slate-800 mb-1">Sem oportunidades correspondentes</h4>
+        <p class="text-slate-500 text-xs max-w-md mx-auto mb-5">
+          Não encontrámos vagas com os filtros atuais. Podes submeter a tua candidatura espontânea diretamente.
         </p>
-        <button onclick="openApplyModal('Candidatura Espontânea — Sem Filtros')" class="px-6 py-3 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all">
+        <button onclick="openApplyModal('Candidatura Espontânea — Sem Filtros')" class="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs uppercase tracking-wider transition-all">
           Submeter Candidatura Espontânea
         </button>
       </div>
@@ -158,50 +158,49 @@ function renderJobs(jobsToRender = jobPostings) {
   }
 
   container.innerHTML = jobsToRender.map(job => `
-    <article class="editorial-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+    <article class="editorial-paper rounded-2xl p-6 sm:p-7 flex flex-col justify-between group">
       <div>
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono-accent font-semibold uppercase tracking-wider bg-sky-500/10 text-sky-400 border border-sky-500/20">
-            <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wider bg-sky-50 text-sky-800 border border-sky-200">
             ${job.categoryLabel}
           </span>
-          <span class="text-xs font-mono-accent text-slate-400">
-            <i class="fas fa-map-marker-alt text-sky-400 mr-1"></i> ${job.locationLabel}
+          <span class="text-xs text-slate-500 font-medium">
+            <i class="fas fa-map-marker-alt text-sky-600 mr-1"></i> ${job.locationLabel}
           </span>
         </div>
 
-        <h3 class="text-xl sm:text-2xl font-display font-bold text-white group-hover:text-sky-400 transition-colors mb-3 leading-snug">
+        <h3 class="text-lg sm:text-xl font-heading font-bold text-slate-900 group-hover:text-sky-600 transition-colors mb-2.5 leading-snug">
           ${job.title}
         </h3>
 
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
           ${job.description}
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 py-4 border-y border-slate-800/80 mb-6 text-xs text-slate-300">
+        <div class="space-y-2 py-3 border-y border-slate-100 mb-5 text-xs text-slate-700">
           <div class="flex items-center gap-2">
-            <i class="fas fa-file-contract text-sky-400 w-4"></i>
+            <i class="fas fa-file-contract text-sky-600 w-4"></i>
             <span>${job.contractTag}</span>
           </div>
           <div class="flex items-center gap-2">
-            <i class="fas fa-wallet text-emerald-400 w-4"></i>
-            <span>${job.salaryNote}</span>
+            <i class="fas fa-wallet text-emerald-600 w-4"></i>
+            <span class="font-semibold text-slate-900">${job.salaryNote}</span>
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-1.5 mb-6">
+        <div class="flex flex-wrap gap-1.5 mb-5">
           ${job.requirements.map(req => `
-            <span class="text-[11px] font-mono-accent text-slate-400 bg-slate-800/60 border border-slate-700/50 px-2.5 py-1 rounded-lg">
+            <span class="text-[11px] text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-md font-medium">
               ${req}
             </span>
           `).join('')}
         </div>
       </div>
 
-      <div class="pt-2 flex items-center gap-3">
-        <button onclick="openApplyModal('${job.title.replace(/'/g, "\\'")}')" class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg shadow-sky-500/10">
-          <span>Candidatar a esta Oportunidade</span>
-          <i class="fas fa-arrow-right text-xs"></i>
+      <div class="pt-2">
+        <button onclick="openApplyModal('${job.title.replace(/'/g, "\\'")}')" class="w-full py-3 px-4 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm">
+          <span>Candidatar a esta Vaga</span>
+          <i class="fas fa-arrow-right text-[10px]"></i>
         </button>
       </div>
     </article>
@@ -214,26 +213,26 @@ function renderEvents() {
   if (!container) return;
 
   container.innerHTML = regionalEvents.map(evt => `
-    <div class="editorial-card rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <div class="editorial-paper rounded-2xl p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
       <div class="flex items-start gap-4">
-        <div class="w-16 h-16 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex flex-col items-center justify-center font-display font-bold flex-shrink-0">
-          <span class="text-[10px] tracking-wider uppercase text-slate-400 font-mono-accent">Presença</span>
-          <span class="text-sm text-sky-300">${evt.dateBadge}</span>
+        <div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 flex flex-col items-center justify-center font-heading font-bold flex-shrink-0">
+          <span class="text-[9px] tracking-wider uppercase text-emerald-600 font-semibold">Presença</span>
+          <span class="text-xs text-emerald-900">${evt.dateBadge}</span>
         </div>
         <div>
-          <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-mono-accent text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 mb-1.5">
+          <span class="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-bold text-emerald-800 bg-emerald-100 mb-1">
             ${evt.edition}
           </span>
-          <h4 class="text-lg sm:text-xl font-display font-bold text-white mb-1">${evt.title}</h4>
-          <p class="text-slate-400 text-xs sm:text-sm mb-2"><i class="fas fa-map-marker-alt text-sky-400 mr-1.5"></i>${evt.location}</p>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">${evt.description}</p>
+          <h4 class="text-base sm:text-lg font-heading font-bold text-slate-900 mb-0.5">${evt.title}</h4>
+          <p class="text-slate-500 text-xs mb-1.5"><i class="fas fa-map-marker-alt text-sky-600 mr-1"></i>${evt.location}</p>
+          <p class="text-slate-600 text-xs leading-relaxed max-w-2xl">${evt.description}</p>
         </div>
       </div>
 
       <div class="w-full md:w-auto flex-shrink-0">
-        <button onclick="openEventMeetingModal('${evt.title.replace(/'/g, "\\'")}', '${evt.location}')" class="w-full md:w-auto py-3 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-mono-accent text-xs font-semibold border border-slate-700 transition-colors flex items-center justify-center gap-2">
+        <button onclick="openEventMeetingModal('${evt.title.replace(/'/g, "\\'")}', '${evt.location}')" class="w-full md:w-auto py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2">
           <i class="fas fa-calendar-check text-sky-400"></i>
-          <span>Agendar Reunião no Stand</span>
+          <span>Agendar no Stand</span>
         </button>
       </div>
     </div>
