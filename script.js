@@ -95,7 +95,8 @@ const regionalEvents = [
     location: "Portimão — Centro de Congressos do Arade",
     stand: "Stand Algartempo",
     description: "O ponto de encontro anual entre talentos e as principais entidades empregadoras do Algarve. Agende uma conversa direta com os nossos consultores de recrutamento.",
-    type: "Feira de Emprego Regional"
+    type: "Feira de Emprego Regional",
+    image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80"
   },
   {
     id: 2,
@@ -105,7 +106,8 @@ const regionalEvents = [
     location: "Polos Algartempo (Faro e Portimão)",
     stand: "Atendimento Personalizado",
     description: "Entrevistas rápidas e validação de perfil para vagas de entrada imediata em Hotelaria, Logística e Manutenção no Algarve.",
-    type: "Recrutamento Expresso"
+    type: "Recrutamento Expresso",
+    image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80"
   }
 ];
 
@@ -213,29 +215,32 @@ function renderEvents() {
   if (!container) return;
 
   container.innerHTML = regionalEvents.map(evt => `
-    <div class="editorial-paper rounded-2xl p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <div class="flex items-start gap-4">
-        <div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 flex flex-col items-center justify-center font-heading font-bold flex-shrink-0">
-          <span class="text-[9px] tracking-wider uppercase text-emerald-600 font-semibold">Presença</span>
-          <span class="text-xs text-emerald-900">${evt.dateBadge}</span>
-        </div>
-        <div>
-          <span class="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-bold text-emerald-800 bg-emerald-100 mb-1">
-            ${evt.edition}
-          </span>
-          <h4 class="text-base sm:text-lg font-heading font-bold text-slate-900 mb-0.5">${evt.title}</h4>
-          <p class="text-slate-500 text-xs mb-1.5"><i class="fas fa-map-marker-alt text-sky-600 mr-1"></i>${evt.location}</p>
-          <p class="text-slate-600 text-xs leading-relaxed max-w-2xl">${evt.description}</p>
-        </div>
+    <article class="event-editorial">
+      <div class="event-editorial__image">
+        <img src="${evt.image}" alt="${evt.title}" loading="lazy">
       </div>
 
-      <div class="w-full md:w-auto flex-shrink-0">
-        <button onclick="openEventMeetingModal('${evt.title.replace(/'/g, "\\'")}', '${evt.location}')" class="w-full md:w-auto py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2">
-          <i class="fas fa-calendar-check text-sky-400"></i>
-          <span>Agendar no Stand</span>
-        </button>
+      <div class="event-editorial__content">
+        <div class="event-editorial__date">
+          <span>Presença</span>
+          <strong>${evt.dateBadge}</strong>
+        </div>
+
+        <div class="event-editorial__details">
+          <span class="event-editorial__status">${evt.edition}</span>
+          <h3>${evt.title}</h3>
+          <p class="event-editorial__location"><i class="fas fa-map-marker-alt"></i>${evt.location}</p>
+          <p class="event-editorial__description">${evt.description}</p>
+        </div>
+
+        <div class="event-editorial__action">
+          <button onclick="openEventMeetingModal('${evt.title.replace(/'/g, "\\'")}', '${evt.location.replace(/'/g, "\\'")}')">
+            <i class="fas fa-calendar-check"></i>
+            <span>Agendar no Stand</span>
+          </button>
+        </div>
       </div>
-    </div>
+    </article>
   `).join('');
 }
 
