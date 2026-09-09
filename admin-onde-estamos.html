@@ -33,6 +33,49 @@
       display: flex;
     }
 
+.admin-header {
+    height: 62px;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.admin-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-header-logo {
+    width: 145px;
+    background: white;
+    padding: 7px 9px;
+    border-radius: 6px;
+}
+
+.admin-header-title {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.admin-header-logout {
+    border: 1px solid #475569;
+    background: transparent;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.admin-header-logout:hover {
+    background: #1e293b;
+}
+
 .sidebar {
     width: 230px;
     background: white;
@@ -564,57 +607,83 @@
 
 <body>
 
+<body>
+
+<header class="admin-header">
+    <div class="admin-header-left">
+        <img
+            src="logo.png"
+            alt="Algartempo"
+            class="admin-header-logo"
+        >
+
+        <span class="admin-header-title">
+            Backoffice
+        </span>
+    </div>
+
+    <button
+        type="button"
+        id="logoutButton"
+        class="admin-header-logout"
+    >
+        Sair
+    </button>
+</header>
+
 <div class="layout">
 
-<aside class="sidebar">
-    <p class="sidebar-title">
-        GESTÃO
-    </p>
+    <aside class="sidebar">
 
-    <a
-        class="nav-item"
-        href="admin-dashboard.html"
-    >
-        Dashboard
-    </a>
+        <p class="sidebar-title">
+            GESTÃO
+        </p>
 
-    <a
-        class="nav-item"
-        href="admin-feiras.html"
-    >
-        Feiras
-    </a>
+        <a
+            class="nav-item"
+            href="admin-dashboard.html"
+        >
+            Dashboard
+        </a>
 
-    <a
-        class="nav-item"
-        href="admin-oportunidades.html"
-    >
-        Oportunidades
-    </a>
+        <a
+            class="nav-item"
+            href="admin-feiras.html"
+        >
+            Feiras
+        </a>
 
-    <a
-        class="nav-item active"
-        href="admin-onde-estamos.html"
-    >
-        Onde Estamos
-    </a>
+        <a
+            class="nav-item"
+            href="admin-oportunidades.html"
+        >
+            Oportunidades
+        </a>
 
-    <span class="nav-item disabled">
-        Equipa
-    </span>
+        <a
+            class="nav-item active"
+            href="admin-onde-estamos.html"
+        >
+            Onde Estamos
+        </a>
 
-    <span class="nav-item disabled">
-        Empresas
-    </span>
+        <span class="nav-item disabled">
+            Equipa
+        </span>
 
-    <span class="nav-item disabled">
-        Página Inicial
-    </span>
+        <span class="nav-item disabled">
+            Empresas
+        </span>
 
-    <span class="nav-item disabled">
-        Media
-    </span>
-</aside>
+        <span class="nav-item disabled">
+            Página Inicial
+        </span>
+
+        <span class="nav-item disabled">
+            Media
+        </span>
+
+    </aside>
 
   <main class="main">
 
