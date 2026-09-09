@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Backoffice Algartempo</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f6f4f0;color:#0f172a;font-family:Arial,sans-serif}.topbar{height:70px;background:#0f172a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 30px}.brand{display:flex;align-items:center;gap:18px}.brand img{width:150px;background:#fff;padding:5px 8px;border-radius:5px}.brand span{opacity:.75;font-size:14px}.logout{border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 16px;border-radius:6px;cursor:pointer}.layout{display:flex;min-height:calc(100vh - 70px)}.sidebar{width:230px;background:#fff;border-right:1px solid #e2d9cc;padding:25px 15px}.sidebar-title{color:#64748b;font-size:11px;font-weight:bold;letter-spacing:1px;margin:0 12px 12px}.nav-item{display:block;padding:12px;margin-bottom:4px;border-radius:6px;color:#0f172a;text-decoration:none;font-size:14px}.nav-item.active{background:#e0f2fe;color:#0369a1;font-weight:bold}.nav-item.disabled{color:#94a3b8}.main{flex:1;padding:35px}.header{margin-bottom:30px}h1{margin:0 0 7px;font-size:32px}.subtitle{margin:0;color:#64748b}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{background:#fff;border:1px solid #e2d9cc;border-radius:10px;padding:22px}.card h2{margin:0 0 8px;font-size:20px}.card p{margin:0 0 18px;color:#64748b;font-size:14px}.button{display:inline-block;background:#0284c7;color:#fff;text-decoration:none;padding:10px 14px;border-radius:7px;font-weight:bold;font-size:13px}@media(max-width:900px){.grid{grid-template-columns:1fr}.sidebar{width:210px}}@media(max-width:700px){.sidebar{display:none}.main{padding:20px}}
+  </style>
+</head>
+<body>
+<header class="topbar"><div class="brand"><img src="logo.png" alt="Algartempo"><span>Backoffice</span></div><button class="logout" id="logout">Sair</button></header>
+<div class="layout">
+  <aside class="sidebar">
+    <p class="sidebar-title">GESTÃO</p>
+    <a class="nav-item active" href="admin-dashboard.html">Dashboard</a>
+    <a class="nav-item" href="admin-feiras.html">Feiras</a>
+    <a class="nav-item" href="admin-oportunidades.html">Oportunidades</a>
+    <a class="nav-item" href="admin-onde-estamos.html">Onde Estamos</a>
+    <span class="nav-item disabled">Equipa</span>
+    <span class="nav-item disabled">Empresas</span>
+    <span class="nav-item disabled">Página Inicial</span>
+    <span class="nav-item disabled">Media</span>
+  </aside>
+  <main class="main">
+    <div class="header"><h1>Dashboard</h1><p class="subtitle">Gestão do site Algartempo.</p></div>
+    <div class="grid">
+      <div class="card"><h2>Feiras</h2><p>Gere eventos e feiras apresentados no site.</p><a class="button" href="admin-feiras.html">Abrir Feiras</a></div>
+      <div class="card"><h2>Oportunidades</h2><p>Gere vagas e oportunidades de emprego.</p><a class="button" href="admin-oportunidades.html">Abrir Oportunidades</a></div>
+      <div class="card"><h2>Onde Estamos</h2><p>Gere os polos e escritórios da Algartempo.</p><a class="button" href="admin-onde-estamos.html">Abrir Polos</a></div>
+    </div>
+  </main>
+</div>
+<script>
+(async function(){
+  const {data}=await supabaseClient.auth.getUser();
+  if(!data || !data.user){ window.location.href='admin.html'; return; }
+  document.getElementById('logout').addEventListener('click', async()=>{ await supabaseClient.auth.signOut(); window.location.href='admin.html'; });
+})();
+</script>
+</body>
+</html>
