@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Oportunidades — Backoffice Algartempo</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tus-js-client@4/dist/tus.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f6f4f0;
+      color: #0f172a;
+      font-family: Arial, sans-serif;
+    }
+
+    .topbar {
+      height: 70px;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand img {
+      width: 150px;
+      background: white;
+      padding: 5px 8px;
+      border-radius: 5px;
+    }
+
+    .brand span {
+      opacity: .75;
+      font-size: 14px;
+    }
+
+    .logout {
+      border: 1px solid rgba(255,255,255,.3);
+      background: transparent;
+      color: white;
+      padding: 9px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .logout:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 70px);
+    }
+
+    .sidebar {
+      width: 230px;
+      background: white;
+      border-right: 1px solid #e2d9cc;
+      padding: 25px 15px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-title {
+      color: #64748b;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 0 12px 12px;
+    }
+
+    .nav-item {
+      display: block;
+      padding: 12px;
+      margin-bottom: 4px;
+      border-radius: 6px;
+      color: #0f172a;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav-item:hover {
+      background: #f1f5f9;
+    }
+
+    .nav-item.active {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      padding: 35px;
+      min-width: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin: 0 0 7px;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #64748b;
+    }
+
+    .primary {
+      border: 0;
+      background: #0284c7;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary:hover {
+      background: #0369a1;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e2d9cc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .loading,
+    .empty {
+      padding: 50px;
+      text-align: center;
+      color: #64748b;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 15px 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee7dd;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #faf8f4;
+      color: #64748b;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    td {
+      font-size: 14px;
+    }
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .meta {
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .status.published {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .status.hidden {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .status.featured {
+      background: #dbeafe;
+      color: #1d4ed8;
+      margin-left: 4px;
+    }
+
+    .media-badge {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: 4px 7px;
+      border-radius: 5px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .action {
+      border: 1px solid #d6cec2;
+      background: white;
+      padding: 7px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .action:hover {
+      background: #f8fafc;
+    }
+
+    .action.delete {
+      color: #b91c1c;
+      border-color: #fecaca;
+    }
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(900px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .close {
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+      color: #64748b;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      color: #334155;
+      margin-bottom: 7px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #d6cec2;
+      background: white;
+      border-radius: 7px;
+      padding: 11px 12px;
+      font: inherit;
+      color: #0f172a;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: 2px solid #bae6fd;
+      border-color: #0284c7;
+    }
+
+    .media-upload {
+      border: 2px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      background: #f8fafc;
+    }
+
+    .media-upload:hover {
+      border-color: #38bdf8;
+    }
+
+    .media-help {
+      display: block;
+      margin-top: 8px;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .media-preview {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .media-preview img,
+    .media-preview video {
+      display: block;
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #0f172a;
+    }
+
+    .existing-media {
+      margin-top: 12px;
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #e2d9cc;
+    }
+
+    .secondary {
+      background: white;
+      border: 1px solid #d6cec2;
+      padding: 12px 18px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 7px;
+      display: none;
+      font-size: 13px;
+    }
+
+    .message.error {
+      display: block;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .message.success {
+      display: block;
+      background: #f0fdf4;
+      color: #15803d;
+    }
+
+    @media (max-width: 800px) {
+      .sidebar {
+        width: 190px;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <div class="brand">
+    <img src="logo.png" alt="Algartempo">
+    <span>Backoffice</span>
+  </div>
+
+  <button class="logout" id="logout">
+    Sair
+  </button>
+
+</header>
+
+
+<div class="layout">
+
+  <aside class="sidebar">
+
+    <p class="sidebar-title">
+      GESTÃO
+    </p>
+
+    <a class="nav-item" href="admin-dashboard.html">
+      Dashboard
+    </a>
+
+    <a class="nav-item" href="admin-feiras.html">
+      Feiras
+    </a>
+
+    <a class="nav-item active" href="admin-oportunidades.html">
+      Oportunidades
+    </a>
+
+    <a class="nav-item" href="admin-polos.html">
+      Onde Estamos
+    </a>
+
+    <a class="nav-item" href="admin-equipa.html">
+      Equipa
+    </a>
+
+    <a class="nav-item" href="admin-empresas.html">
+      Empresas
+    </a>
+
+    <a class="nav-item" href="admin-homepage.html">
+      Página Inicial
+    </a>
+
+    <a class="nav-item" href="admin-media.html">
+      Media
+    </a>
+
+  </aside>
+
+
+  <main>
+
+    <div class="header">
+
+      <div>
+        <h1>Oportunidades</h1>
+
+        <p class="subtitle">
+          Gere as oportunidades de emprego apresentadas no site.
+        </p>
+      </div>
+
+      <button class="primary" id="newOpportunity">
+        + Nova Oportunidade
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <div id="loading" class="loading">
+        A carregar oportunidades...
+      </div>
+
+      <div id="empty" class="empty" style="display:none;">
+        <h3>Ainda não existem oportunidades.</h3>
+        <p>
+          Clica em "Nova Oportunidade" para adicionar uma.
+        </p>
+      </div>
+
+      <div id="tableWrap" class="table-wrap" style="display:none;">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Oportunidade</th>
+              <th>Local</th>
+              <th>Área</th>
+              <th>Contrato</th>
+              <th>Estado</th>
+              <th>Ações</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="opportunitiesBody"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2 id="modalTitle">
+        Nova Oportunidade
+      </h2>
+
+      <button
+        class="close"
+        id="closeModal"
+        type="button"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <form id="opportunityForm">
+
+      <input
+        type="hidden"
+        id="opportunityId"
+      >
+
+
+      <div class="grid">
+
+        <div class="full">
+
+          <label for="title">
+            Título *
+          </label>
+
+          <input
+            id="title"
+            required
+            placeholder="Ex.: Empregado de Mesa"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="company">
+            Empresa
+          </label>
+
+          <input
+            id="company"
+            placeholder="Nome da empresa"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="location">
+            Localização
+          </label>
+
+          <input
+            id="location"
+            placeholder="Ex.: Albufeira"
+          >
+
+        </div>
+<div>
+
+  <label for="officeId">
+    Polo Algartempo
+  </label>
+
+  <select
+    id="officeId"
+  >
+    <option value="">
+      Sem polo específico
+    </option>
+  </select>
+
+</div>
+
+        <div>
+
+          <label for="region">
+            Região
+          </label>
+
+          <input
+            id="region"
+            placeholder="Ex.: Algarve"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="sector">
+            Área / Setor
+          </label>
+
+          <input
+            id="sector"
+            placeholder="Ex.: Hotelaria"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="contractType">
+            Tipo de contrato
+          </label>
+
+          <input
+            id="contractType"
+            placeholder="Ex.: Contrato a termo"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="schedule">
+            Horário
+          </label>
+
+          <input
+            id="schedule"
+            placeholder="Ex.: Full-time"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="deadline">
+            Data limite
+          </label>
+
+          <input
+            id="deadline"
+            type="date"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="contact">
+            Contacto
+          </label>
+
+          <input
+            id="contact"
+            placeholder="Email ou telefone"
+          >
+
+        </div>
+
+
+        <div class="full">
+
+          <label for="description">
+            Descrição
+          </label>
+
+          <textarea
+            id="description"
+            placeholder="Descrição da oportunidade..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="full">
+
+          <label for="requirements">
+            Requisitos
+          </label>
+
+          <textarea
+            id="requirements"
+            placeholder="Experiência, formação, competências..."
+          ></textarea>
+
+        </div>
+
+
+        <!-- MEDIA -->
+
+        <div class="full">
+
+          <label for="mediaFile">
+            Imagem ou vídeo
+          </label>
+
+          <div class="media-upload">
+
+            <input
+              id="mediaFile"
+              type="file"
+              accept="image/*,video/*"
+            >
+
+            <span class="media-help">
+              Podes carregar uma imagem ou um vídeo.
+              Formatos recomendados: JPG, PNG, WEBP, MP4 ou WEBM.
+            </span>
+
+            <div
+              id="mediaPreview"
+              class="media-preview"
+            ></div>
+
+            <div
+              id="existingMedia"
+              class="existing-media"
+            ></div>
+
+          </div>
+
+          <input
+            id="imageUrl"
+            type="hidden"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="sortOrder">
+            Ordem
+          </label>
+
+          <input
+            id="sortOrder"
+            type="number"
+            value="0"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="published">
+            Publicação
+          </label>
+
+          <select id="published">
+
+            <option value="true">
+              Publicada
+            </option>
+
+            <option value="false">
+              Oculta
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label for="featured">
+            Destaque
+          </label>
+
+          <select id="featured">
+
+            <option value="false">
+              Normal
+            </option>
+
+            <option value="true">
+              Destaque
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div id="message" class="message"></div>
+
+
+      <div class="footer">
+
+        <button
+          type="button"
+          class="secondary"
+          id="cancel"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="primary"
+          id="save"
+        >
+          Guardar Oportunidade
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const form =
+  document.getElementById("opportunityForm");
+
+const modal =
+  document.getElementById("modal");
+
+const message =
+  document.getElementById("message");
+
+const loading =
+  document.getElementById("loading");
+
+const empty =
+  document.getElementById("empty");
+
+const tableWrap =
+  document.getElementById("tableWrap");
+
+const opportunitiesBody =
+  document.getElementById("opportunitiesBody");
+
+const mediaFile =
+  document.getElementById("mediaFile");
+
+const mediaPreview =
+  document.getElementById("mediaPreview");
+
+const existingMedia =
+  document.getElementById("existingMedia");
+
+let opportunities = [];
+let opportunityOffices = [];
+
+/* =========================
+   SEGURANÇA HTML
+========================= */
+
+function escapeHtml(value) {
+
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+async function checkLogin() {
+
+  const {
+    data: { user },
+    error
+  } =
+    await supabaseClient.auth.getUser();
+
+  if (error || !user) {
+
+    window.location.href =
+      "admin.html";
+
+    return false;
+  }
+
+  return true;
+
+}
+
+
+/* =========================
+   TIPO DE MEDIA
+========================= */
+
+function isVideoUrl(url) {
+
+  if (!url) {
+    return false;
+  }
+
+  const clean =
+    String(url)
+      .split("?")[0]
+      .toLowerCase();
+
+  return (
+    clean.endsWith(".mp4") ||
+    clean.endsWith(".webm") ||
+    clean.endsWith(".mov") ||
+    clean.endsWith(".m4v")
+  );
+
+}
+
+
+/* =========================
+   PREVIEW
+========================= */
+
+function showMediaPreview(url) {
+
+  mediaPreview.innerHTML = "";
+  mediaPreview.style.display = "none";
+
+  if (!url) {
+    return;
+  }
+
+
+  if (isVideoUrl(url)) {
+
+    mediaPreview.innerHTML = `
+
+      <video
+        src="${escapeHtml(url)}"
+        controls
+        preload="metadata"
+      ></video>
+
+    `;
+
+  } else {
+
+    mediaPreview.innerHTML = `
+
+      <img
+        src="${escapeHtml(url)}"
+        alt="Pré-visualização"
+      >
+
+    `;
+
+  }
+
+
+  mediaPreview.style.display =
+    "block";
+
+}
+
+
+/* =========================
+   FICHEIRO SELECIONADO
+========================= */
+
+mediaFile.addEventListener(
+  "change",
+  () => {
+
+    const file =
+      mediaFile.files[0];
+
+
+    if (!file) {
+
+      showMediaPreview("");
+
+      return;
+    }
+
+
+    const previewUrl =
+      URL.createObjectURL(file);
+
+
+    mediaPreview.innerHTML = "";
+
+
+    if (
+      file.type.startsWith("video/")
+    ) {
+
+      mediaPreview.innerHTML = `
+
+        <video
+          src="${previewUrl}"
+          controls
+          preload="metadata"
+        ></video>
+
+      `;
+
+    } else {
+
+      mediaPreview.innerHTML = `
+
+        <img
+          src="${previewUrl}"
+          alt="Pré-visualização"
+        >
+
+      `;
+
+    }
+
+
+    mediaPreview.style.display =
+      "block";
+
+  }
+);
+async function loadOpportunityOffices() {
+
+  const select = document.getElementById("officeId");
+
+  if (!select) return;
+
+  const {
+    data,
+    error
+  } = await supabaseClient
+    .from("offices")
+    .select("id, name, city, published")
+    .order("sort_order", {
+      ascending: true
+    })
+    .order("name", {
+      ascending: true
+    });
+
+  if (error) {
+    console.error(
+      "Erro ao carregar polos:",
+      error
+    );
+    return;
+  }
+
+  opportunityOffices = data || [];
+
+  select.innerHTML = `
+    <option value="">
+      Sem polo específico
+    </option>
+  `;
+
+  opportunityOffices.forEach((office) => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = office.id;
+
+    option.textContent =
+      office.city
+        ? `${office.name} — ${office.city}`
+        : office.name;
+
+    select.appendChild(option);
+
+  });
+}
+
+async function loadOfficeOptions() {
+  const select = document.getElementById("officeId");
+
+  if (!select) {
+    return;
+  }
+
+  const {
+    data,
+    error
+  } = await supabaseClient
+    .from("offices")
+    .select("id, name, city")
+    .eq("published", true)
+    .order("sort_order", {
+      ascending: true
+    });
+
+  if (error) {
+    console.error("Erro ao carregar polos:", error);
+    return;
+  }
+
+  select.innerHTML = `
+    <option value="">
+      Sem polo específico
+    </option>
+  `;
+
+  (data || []).forEach((office) => {
+    const option = document.createElement("option");
+
+    option.value = office.id;
+
+    option.textContent =
+      office.name +
+      (office.city ? ` — ${office.city}` : "");
+
+    select.appendChild(option);
+  });
+}
+
+/* =========================
+   CARREGAR OPORTUNIDADES
+========================= */
+
+async function loadOpportunities() {
+
+  loading.style.display =
+    "block";
+
+  empty.style.display =
+    "none";
+
+  tableWrap.style.display =
+    "none";
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("opportunities")
+      .select("*")
+      .order("sort_order", {
+        ascending: true
+      })
+      .order("created_at", {
+        ascending: false
+      });
+
+
+  loading.style.display =
+    "none";
+
+
+  if (error) {
+
+    empty.innerHTML = `
+
+      <h3>
+        Erro ao carregar oportunidades
+      </h3>
+
+      <p>
+        ${escapeHtml(error.message)}
+      </p>
+
+    `;
+
+    empty.style.display =
+      "block";
+
+    return;
+  }
+
+
+  opportunities =
+    data || [];
+
+
+  if (!opportunities.length) {
+
+    empty.innerHTML = `
+
+      <h3>
+        Ainda não existem oportunidades.
+      </h3>
+
+      <p>
+        Clica em "Nova Oportunidade"
+        para adicionar uma.
+      </p>
+
+    `;
+
+    empty.style.display =
+      "block";
+
+    return;
+  }
+
+
+  renderOpportunities();
+
+}
+
+
+/* =========================
+   MOSTRAR OPORTUNIDADES
+========================= */
+
+function renderOpportunities() {
+
+  opportunitiesBody.innerHTML =
+    "";
+
+
+  opportunities.forEach(
+    opportunity => {
+
+      const row =
+        document.createElement("tr");
+
+
+      let mediaBadge = "";
+
+
+      if (opportunity.image_url) {
+
+        mediaBadge = `
+
+          <div class="media-badge">
+
+            ${
+              isVideoUrl(
+                opportunity.image_url
+              )
+                ? "🎥 Vídeo"
+                : "🖼️ Imagem"
+
+            }
+
+          </div>
+
+        `;
+
+      }
+
+
+      row.innerHTML = `
+
+        <td>
+
+          <div class="title">
+            ${escapeHtml(
+              opportunity.title
+            )}
+          </div>
+
+          <div class="meta">
+            ${escapeHtml(
+              opportunity.company || ""
+            )}
+          </div>
+
+          ${mediaBadge}
+
+        </td>
+
+
+        <td>
+          ${escapeHtml(
+            opportunity.location || "—"
+          )}
+        </td>
+
+
+        <td>
+          ${escapeHtml(
+            opportunity.sector || "—"
+          )}
+        </td>
+
+
+        <td>
+          ${escapeHtml(
+            opportunity.contract_type || "—"
+          )}
+        </td>
+
+
+        <td>
+
+          ${
+            opportunity.published
+
+              ? `
+                <span class="status published">
+                  Publicada
+                </span>
+              `
+
+              : `
+                <span class="status hidden">
+                  Oculta
+                </span>
+              `
+          }
+
+
+          ${
+            opportunity.featured
+
+              ? `
+                <span class="status featured">
+                  Destaque
+                </span>
+              `
+
+              : ""
+          }
+
+        </td>
+
+
+        <td>
+
+          <div class="actions">
+
+            <button
+              class="action"
+              onclick="editOpportunity(${opportunity.id})"
+            >
+              Editar
+            </button>
+
+
+            <button
+              class="action"
+              onclick="toggleOpportunity(${opportunity.id})"
+            >
+              ${
+                opportunity.published
+                  ? "Ocultar"
+                  : "Publicar"
+              }
+            </button>
+
+
+            <button
+              class="action"
+              onclick="toggleFeatured(${opportunity.id})"
+            >
+              ${
+                opportunity.featured
+                  ? "Retirar destaque"
+                  : "Destaque"
+              }
+            </button>
+
+
+            <button
+              class="action delete"
+              onclick="deleteOpportunity(${opportunity.id})"
+            >
+              Apagar
+            </button>
+
+          </div>
+
+        </td>
+
+      `;
+
+
+      opportunitiesBody.appendChild(row);
+
+    }
+  );
+
+
+  tableWrap.style.display =
+    "block";
+
+}
+
+
+/* =========================
+   NOVA OPORTUNIDADE
+========================= */
+
+document
+  .getElementById("newOpportunity")
+  .addEventListener(
+    "click",
+    () => {
+
+      form.reset();
+
+
+      document
+        .getElementById("opportunityId")
+        .value = "";
+
+
+      document
+        .getElementById("sortOrder")
+        .value = "0";
+
+
+      document
+        .getElementById("published")
+        .value = "true";
+
+
+      document
+        .getElementById("featured")
+        .value = "false";
+
+
+      document
+        .getElementById("imageUrl")
+        .value = "";
+
+
+      mediaFile.value =
+        "";
+
+
+      mediaPreview.innerHTML =
+        "";
+
+      mediaPreview.style.display =
+        "none";
+
+
+      existingMedia.innerHTML =
+        "";
+
+
+      message.textContent =
+        "";
+
+      message.className =
+        "message";
+
+
+      document
+        .getElementById("modalTitle")
+        .textContent =
+          "Nova Oportunidade";
+
+
+      modal.classList.add("open");
+
+    }
+  );
+
+
+/* =========================
+   EDITAR
+========================= */
+
+window.editOpportunity =
+  function(id) {
+
+    const opportunity =
+      opportunities.find(
+        item =>
+          item.id === id
+      );
+
+
+    if (!opportunity) {
+      return;
+    }
+
+
+    document
+      .getElementById("opportunityId")
+      .value =
+        opportunity.id;
+
+
+    document
+      .getElementById("title")
+      .value =
+        opportunity.title || "";
+
+
+    document
+      .getElementById("company")
+      .value =
+        opportunity.company || "";
+
+
+    document
+      .getElementById("location")
+      .value =
+        opportunity.location || "";
+
+        document
+  .getElementById("officeId")
+  .value =
+    opportunity.office_id
+      ? String(opportunity.office_id)
+      : "";
+
+
+    document
+      .getElementById("region")
+      .value =
+        opportunity.region || "";
+
+
+    document
+      .getElementById("sector")
+      .value =
+        opportunity.sector || "";
+
+
+    document
+      .getElementById("contractType")
+      .value =
+        opportunity.contract_type || "";
+
+
+    document
+      .getElementById("schedule")
+      .value =
+        opportunity.schedule || "";
+
+
+    document
+      .getElementById("deadline")
+      .value =
+        opportunity.deadline || "";
+
+
+    document
+      .getElementById("contact")
+      .value =
+        opportunity.contact || "";
+
+
+    document
+      .getElementById("description")
+      .value =
+        opportunity.description || "";
+
+
+    document
+      .getElementById("requirements")
+      .value =
+        opportunity.requirements || "";
+
+
+    document
+      .getElementById("imageUrl")
+      .value =
+        opportunity.image_url || "";
+
+
+    document
+      .getElementById("sortOrder")
+      .value =
+        opportunity.sort_order || 0;
+
+
+    document
+      .getElementById("published")
+      .value =
+        opportunity.published
+          ? "true"
+          : "false";
+
+
+    document
+      .getElementById("featured")
+      .value =
+        opportunity.featured
+          ? "true"
+          : "false";
+
+
+    mediaFile.value =
+      "";
+
+
+    mediaPreview.innerHTML =
+      "";
+
+    mediaPreview.style.display =
+      "none";
+
+
+    existingMedia.innerHTML =
+      "";
+
+
+    if (opportunity.image_url) {
+
+      existingMedia.innerHTML = `
+
+        Ficheiro atual:
+
+        <strong>
+          ${
+            isVideoUrl(
+              opportunity.image_url
+            )
+              ? "Vídeo"
+              : "Imagem"
+          }
+        </strong>
+
+      `;
+
+      showMediaPreview(
+        opportunity.image_url
+      );
+
+    }
+
+
+    message.textContent =
+      "";
+
+    message.className =
+      "message";
+
+
+    document
+      .getElementById("modalTitle")
+      .textContent =
+        "Editar Oportunidade";
+
+
+    modal.classList.add("open");
+
+  };
+
+
+/* =========================
+   GUARDAR
+========================= */
+
+form.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const saveButton =
+      document.getElementById("save");
+
+
+    saveButton.disabled =
+      true;
+
+    saveButton.textContent =
+      "A guardar...";
+
+
+    message.textContent =
+      "";
+
+    message.className =
+      "message";
+
+
+    try {
+
+      const id =
+        document
+          .getElementById("opportunityId")
+          .value;
+
+
+      /*
+       * Mantém o ficheiro atual se
+       * não for escolhido outro.
+       */
+
+      let mediaUrl =
+        document
+          .getElementById("imageUrl")
+          .value
+          .trim();
+
+
+     if (mediaFile.files.length > 0) {
+
+  const file =
+    mediaFile.files[0];
+
+  const maxSize =
+    500 * 1024 * 1024;
+
+  if (file.size > maxSize) {
+
+    throw new Error(
+      "O ficheiro é demasiado grande. O limite é 500 MB."
+    );
+
+  }
+
+  const extension =
+    file.name
+      .split(".")
+      .pop()
+      .toLowerCase();
+
+  const baseName =
+    file.name
+      .replace(/\.[^/.]+$/, "")
+      .replace(/\s+/g, "-")
+      .replace(/[^a-zA-Z0-9_-]/g, "")
+      .toLowerCase();
+
+  const uniqueName =
+    `${Date.now()}-${Math.random()
+      .toString(36)
+      .slice(2, 8)}-${baseName}.${extension}`;
+
+  const filePath =
+    `opportunities/${uniqueName}`;
+
+  saveButton.textContent =
+    "A preparar upload...";
+
+
+  const {
+    data: sessionData,
+    error: sessionError
+  } =
+    await supabaseClient
+      .auth
+      .getSession();
+
+
+  if (sessionError) {
+    throw sessionError;
+  }
+
+
+  const session =
+    sessionData.session;
+
+
+  if (!session) {
+
+    throw new Error(
+      "A sessão expirou. Faz login novamente."
+    );
+
+  }
+
+
+  const projectId =
+    SUPABASE_URL
+      .replace("https://", "")
+      .split(".")[0];
+
+
+  const uploadEndpoint =
+    `https://${projectId}.storage.supabase.co/storage/v1/upload/resumable`;
+
+
+  mediaPreview.style.display =
+    "block";
+
+
+  mediaPreview.innerHTML = `
+
+    <div
+      style="
+        padding:20px;
+        border-radius:8px;
+        background:#e0f2fe;
+        color:#0369a1;
+        font-size:14px;
+      "
+    >
+
+      <strong>
+        A carregar ficheiro...
+      </strong>
+
+      <div
+        id="uploadProgress"
+        style="
+          margin-top:12px;
+          height:8px;
+          background:#bae6fd;
+          border-radius:999px;
+          overflow:hidden;
+        "
+      >
+
+        <div
+          id="uploadProgressBar"
+          style="
+            width:0%;
+            height:100%;
+            background:#0284c7;
+            transition:width .2s ease;
+          "
+        ></div>
+
+      </div>
+
+      <div
+        id="uploadProgressText"
+        style="
+          margin-top:8px;
+          font-size:12px;
+        "
+      >
+        0%
+      </div>
+
+    </div>
+
+  `;
+
+
+  await new Promise(
+    (resolve, reject) => {
+
+      const upload =
+        new tus.Upload(
+          file,
+          {
+
+            endpoint:
+              uploadEndpoint,
+
+            retryDelays:
+              [
+                0,
+                3000,
+                5000,
+                10000,
+                20000
+              ],
+
+            headers: {
+
+              authorization:
+                `Bearer ${session.access_token}`
+
+            },
+
+            uploadDataDuringCreation:
+              true,
+
+            removeFingerprintOnSuccess:
+              true,
+
+            metadata: {
+
+              bucketName:
+                "media",
+
+              objectName:
+                filePath,
+
+              contentType:
+                file.type,
+
+              cacheControl:
+                "3600"
+
+            },
+
+            chunkSize:
+              6 * 1024 * 1024,
+
+
+            onError(error) {
+
+              console.error(
+                "Erro TUS:",
+                error
+              );
+
+              reject(
+                new Error(
+                  "Falha no upload: " +
+                  error.message
+                )
+              );
+
+            },
+
+
+            onProgress(
+              bytesUploaded,
+              bytesTotal
+            ) {
+
+              const percentage =
+                (
+                  bytesUploaded /
+                  bytesTotal *
+                  100
+                ).toFixed(0);
+
+
+              const progressBar =
+                document
+                  .getElementById(
+                    "uploadProgressBar"
+                  );
+
+
+              const progressText =
+                document
+                  .getElementById(
+                    "uploadProgressText"
+                  );
+
+
+              if (progressBar) {
+
+                progressBar.style.width =
+                  `${percentage}%`;
+
+              }
+
+
+              if (progressText) {
+
+                progressText.textContent =
+                  `${percentage}%`;
+
+              }
+
+
+              saveButton.textContent =
+                `A carregar ${percentage}%...`;
+
+            },
+
+
+            onSuccess() {
+
+              console.log(
+                "Upload concluído:",
+                upload.url
+              );
+
+              resolve();
+
+            }
+
+          }
+        );
+
+
+      upload.start();
+
+    }
+  );
+
+
+  const {
+    data: publicData
+  } =
+    supabaseClient
+      .storage
+      .from("media")
+      .getPublicUrl(
+        filePath
+      );
+
+
+  mediaUrl =
+    publicData.publicUrl;
+
+
+  document
+    .getElementById("imageUrl")
+    .value =
+      mediaUrl;
+
+
+  showMediaPreview(
+    mediaUrl
+  );
+
+}
+      
+      const opportunityData = {
+
+        title:
+          document
+            .getElementById("title")
+            .value
+            .trim(),
+
+        company:
+          document
+            .getElementById("company")
+            .value
+            .trim(),
+
+        location:
+          document
+            .getElementById("location")
+            .value
+            .trim(),
+
+            office_id:
+  document.getElementById("officeId").value
+    ? Number(
+        document.getElementById("officeId").value
+      )
+    : null,
+
+        region:
+          document
+            .getElementById("region")
+            .value
+            .trim(),
+
+        sector:
+          document
+            .getElementById("sector")
+            .value
+            .trim(),
+
+        contract_type:
+          document
+            .getElementById("contractType")
+            .value
+            .trim(),
+
+        schedule:
+          document
+            .getElementById("schedule")
+            .value
+            .trim(),
+
+        deadline:
+          document
+            .getElementById("deadline")
+            .value || null,
+
+        contact:
+          document
+            .getElementById("contact")
+            .value
+            .trim(),
+
+        description:
+          document
+            .getElementById("description")
+            .value
+            .trim(),
+
+        requirements:
+          document
+            .getElementById("requirements")
+            .value
+            .trim(),
+
+        image_url:
+          mediaUrl || null,
+
+        published:
+          document
+            .getElementById("published")
+            .value === "true",
+
+        featured:
+          document
+            .getElementById("featured")
+            .value === "true",
+
+        sort_order:
+          Number(
+            document
+              .getElementById("sortOrder")
+              .value
+          ) || 0,
+
+        updated_at:
+          new Date().toISOString()
+
+      };
+
+
+      /*
+       * EDITAR
+       */
+
+      if (id) {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("opportunities")
+            .update(opportunityData)
+            .eq("id", id);
+
+
+        if (error) {
+          throw error;
+        }
+
+      }
+
+
+      /*
+       * CRIAR
+       */
+
+      else {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("opportunities")
+            .insert(
+              opportunityData
+            );
+
+
+        if (error) {
+          throw error;
+        }
+
+      }
+
+
+      closeModal();
+
+      await loadOpportunities();
+
+    }
+
+    catch (error) {
+
+      console.error(error);
+
+      message.textContent =
+        "Erro: " +
+        error.message;
+
+      message.className =
+        "message error";
+
+    }
+
+    finally {
+
+      saveButton.disabled =
+        false;
+
+      saveButton.textContent =
+        "Guardar Oportunidade";
+
+    }
+
+  }
+);
+
+
+/* =========================
+   PUBLICAR / OCULTAR
+========================= */
+
+window.toggleOpportunity =
+  async function(id) {
+
+    const opportunity =
+      opportunities.find(
+        item =>
+          item.id === id
+      );
+
+
+    if (!opportunity) {
+      return;
+    }
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("opportunities")
+        .update({
+
+          published:
+            !opportunity.published,
+
+          updated_at:
+            new Date().toISOString()
+
+        })
+        .eq("id", id);
+
+
+    if (error) {
+
+      alert(
+        "Erro: " +
+        error.message
+      );
+
+      return;
+    }
+
+
+    await loadOpportunities();
+
+  };
+
+
+/* =========================
+   DESTAQUE
+========================= */
+
+window.toggleFeatured =
+  async function(id) {
+
+    const opportunity =
+      opportunities.find(
+        item =>
+          item.id === id
+      );
+
+
+    if (!opportunity) {
+      return;
+    }
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("opportunities")
+        .update({
+
+          featured:
+            !opportunity.featured,
+
+          updated_at:
+            new Date().toISOString()
+
+        })
+        .eq("id", id);
+
+
+    if (error) {
+
+      alert(
+        "Erro: " +
+        error.message
+      );
+
+      return;
+    }
+
+
+    await loadOpportunities();
+
+  };
+
+
+/* =========================
+   APAGAR
+========================= */
+
+window.deleteOpportunity =
+  async function(id) {
+
+    const opportunity =
+      opportunities.find(
+        item =>
+          item.id === id
+      );
+
+
+    if (!opportunity) {
+      return;
+    }
+
+
+    const confirmed =
+      confirm(
+        `Queres mesmo apagar "${opportunity.title}"?`
+      );
+
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("opportunities")
+        .delete()
+        .eq("id", id);
+
+
+    if (error) {
+
+      alert(
+        "Erro: " +
+        error.message
+      );
+
+      return;
+    }
+
+
+    await loadOpportunities();
+
+  };
+
+
+/* =========================
+   FECHAR MODAL
+========================= */
+
+function closeModal() {
+
+  modal.classList.remove("open");
+
+}
+
+
+document
+  .getElementById("closeModal")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+document
+  .getElementById("cancel")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+document
+  .getElementById("logout")
+  .addEventListener(
+    "click",
+    async () => {
+
+      await supabaseClient
+        .auth
+        .signOut();
+
+      window.location.href =
+        "admin.html";
+
+    }
+  );
+
+
+/* =========================
+   INICIAR
+========================= */
+
+(async function() {
+
+  const allowed =
+    await checkLogin();
+
+  if (!allowed) {
+    return;
+  }
+  
+await loadOpportunityOffices();
+  await loadOpportunities();
+
+})();
+
+</script>
+
+</body>
+</html>

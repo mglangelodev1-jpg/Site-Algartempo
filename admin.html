@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backoffice — Algartempo</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:#f6f4f0;color:#0f172a;font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;padding:24px}
+    .box{width:min(440px,100%);background:#fff;border:1px solid #e2d9cc;border-radius:12px;padding:34px;box-shadow:0 12px 35px rgba(15,23,42,.08)}
+    .logo{width:170px;background:#fff;display:block;margin:0 auto 28px}
+    h1{margin:0 0 8px;text-align:center;font-size:28px}
+    .sub{margin:0 0 26px;text-align:center;color:#64748b}
+    label{display:block;font-size:13px;font-weight:700;margin:0 0 7px}
+    input{width:100%;padding:12px;border:1px solid #d6cec2;border-radius:7px;font:inherit;margin-bottom:17px;outline:none}
+    input:focus{border-color:#0284c7}
+    button{width:100%;border:0;background:#0284c7;color:#fff;padding:13px;border-radius:7px;font-weight:700;cursor:pointer}
+    button:disabled{opacity:.6;cursor:wait}
+    .message{margin-top:15px;padding:12px;border-radius:7px;font-size:13px;display:none}
+    .message.error{display:block;background:#fef2f2;color:#991b1b}
+    .message.success{display:block;background:#f0fdf4;color:#15803d}
+  </style>
+</head>
+<body>
+  <main class="box">
+    <img class="logo" src="logo.png" alt="Algartempo">
+    <h1>Backoffice</h1>
+    <p class="sub">Gestão do site Algartempo</p>
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button id="loginButton" type="submit">ENTRAR</button>
+    </form>
+    <div id="message" class="message"></div>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Feiras — Backoffice Algartempo</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f6f4f0;
+      color: #0f172a;
+      font-family: Arial, sans-serif;
+    }
+
+    .topbar {
+      height: 70px;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand img {
+      width: 150px;
+      background: white;
+      padding: 5px 8px;
+      border-radius: 5px;
+    }
+
+    .brand span {
+      opacity: .75;
+      font-size: 14px;
+    }
+
+    .logout {
+      border: 1px solid rgba(255,255,255,.3);
+      background: transparent;
+      color: white;
+      padding: 9px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .logout:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 70px);
+    }
+
+    .sidebar {
+      width: 230px;
+      background: white;
+      border-right: 1px solid #e2d9cc;
+      padding: 25px 15px;
+    }
+
+    .sidebar-title {
+      color: #64748b;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 0 12px 12px;
+    }
+
+    .nav-item {
+      display: block;
+      padding: 12px;
+      margin-bottom: 4px;
+      border-radius: 6px;
+      color: #0f172a;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav-item.active {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: bold;
+    }
+
+    .nav-item.disabled {
+      color: #94a3b8;
+    }
+
+    main {
+      flex: 1;
+      padding: 35px;
+      min-width: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin: 0 0 7px;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #64748b;
+    }
+
+    .primary {
+      border: 0;
+      background: #0284c7;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 7px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .primary:hover {
+      background: #0369a1;
+    }
+
+    .primary:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e2d9cc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      text-align: left;
+      padding: 14px 16px;
+      background: #faf8f5;
+      color: #64748b;
+      font-size: 12px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 15px 16px;
+      border-top: 1px solid #e2d9cc;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+
+    .event-image {
+      width: 100px;
+      height: 65px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #eee;
+      display: block;
+    }
+
+    .no-image {
+      width: 100px;
+      height: 65px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 11px;
+    }
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .location {
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .published {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .hidden {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .actions {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .action {
+      background: white;
+      border: 1px solid #e2d9cc;
+      padding: 7px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .action:hover {
+      background: #f8fafc;
+    }
+
+    .delete {
+      color: #b91c1c;
+    }
+
+    .loading,
+    .empty {
+      padding: 60px;
+      text-align: center;
+      color: #64748b;
+    }
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(800px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+    }
+
+    .close {
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+      color: #64748b;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #d6cec2;
+      border-radius: 6px;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #0284c7;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .help {
+      margin-top: 7px;
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    .image-preview {
+      width: 240px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 7px;
+      margin-top: 12px;
+      display: none;
+      background: #f1f5f9;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #e2d9cc;
+    }
+
+    .secondary {
+      background: white;
+      border: 1px solid #d6cec2;
+      padding: 12px 18px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 6px;
+      display: none;
+      font-size: 13px;
+    }
+
+    .message.error {
+      display: block;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .message.success {
+      display: block;
+      background: #f0fdf4;
+      color: #15803d;
+    }
+
+    @media (max-width: 800px) {
+
+      .sidebar {
+        display: none;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+  <div class="brand">
+
+    <img
+      src="logo.png"
+      alt="Algartempo"
+    >
+
+    <span>
+      Backoffice
+    </span>
+
+  </div>
+
+  <button
+    class="logout"
+    id="logout"
+  >
+    Sair
+  </button>
+
+</header>
+
+
+<div class="layout">
+
+
+  <aside class="sidebar">
+
+    <p class="sidebar-title">
+      GESTÃO
+    </p>
+
+    <a
+      class="nav-item active"
+      href="admin-feiras.html"
+    >
+      Feiras
+    </a>
+
+    <span class="nav-item disabled">
+      Oportunidades
+    </span>
+
+    <span class="nav-item disabled">
+      Onde Estamos
+    </span>
+
+    <span class="nav-item disabled">
+      Equipa
+    </span>
+
+    <span class="nav-item disabled">
+      Página Inicial
+    </span>
+
+    <span class="nav-item disabled">
+      Media
+    </span>
+
+  </aside>
+
+
+  <main>
+
+
+    <div class="header">
+
+      <div>
+
+        <h1>
+          Feiras
+        </h1>
+
+        <p class="subtitle">
+          Gere as feiras e eventos apresentados no site.
+        </p>
+
+      </div>
+
+
+      <button
+        class="primary"
+        id="newEvent"
+      >
+        + Nova Feira
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+
+      <div
+        id="loading"
+        class="loading"
+      >
+        A carregar feiras...
+      </div>
+
+
+      <div
+        id="empty"
+        class="empty"
+        style="display:none;"
+      >
+
+        <h3>
+          Ainda não existem feiras.
+        </h3>
+
+        <p>
+          Clica em "Nova Feira" para adicionar uma.
+        </p>
+
+      </div>
+
+
+      <div
+        id="tableWrap"
+        class="table-wrap"
+        style="display:none;"
+      >
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Imagem
+              </th>
+
+              <th>
+                Feira
+              </th>
+
+              <th>
+                Data
+              </th>
+
+              <th>
+                Localização
+              </th>
+
+              <th>
+                Estado
+              </th>
+
+              <th>
+                Ações
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="eventsBody"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+
+<!-- MODAL -->
+
+<div
+  class="modal"
+  id="modal"
+>
+
+  <div class="modal-box">
+
+
+    <div class="modal-header">
+
+      <h2 id="modalTitle">
+        Nova Feira
+      </h2>
+
+      <button
+        class="close"
+        id="closeModal"
+        type="button"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <form id="eventForm">
+
+      <input
+        type="hidden"
+        id="eventId"
+      >
+
+
+      <div class="grid">
+
+
+        <div class="full">
+
+          <label for="title">
+            Título *
+          </label>
+
+          <input
+            id="title"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="edition">
+            Edição
+          </label>
+
+          <input
+            id="edition"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="type">
+            Tipo
+          </label>
+
+          <input
+            id="type"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="dateBadge">
+            Data apresentada
+          </label>
+
+          <input
+            id="dateBadge"
+            placeholder="Ex.: MAR 2026"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="eventDate">
+            Data do evento
+          </label>
+
+          <input
+            id="eventDate"
+            type="date"
+          >
+
+        </div>
+
+
+        <div class="full">
+
+          <label for="location">
+            Localização
+          </label>
+
+          <input
+            id="location"
+          >
+
+        </div>
+
+
+        <div class="full">
+
+          <label for="stand">
+            Stand / Atendimento
+          </label>
+
+          <input
+            id="stand"
+          >
+
+        </div>
+
+
+        <div class="full">
+
+          <label for="description">
+            Descrição
+          </label>
+
+          <textarea
+            id="description"
+          ></textarea>
+
+        </div>
+
+
+        <div>
+
+          <label for="sortOrder">
+            Ordem
+          </label>
+
+          <input
+            id="sortOrder"
+            type="number"
+            value="0"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="published">
+            Estado
+          </label>
+
+          <select id="published">
+
+            <option value="true">
+              Publicado
+            </option>
+
+            <option value="false">
+              Oculto
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="full">
+
+          <label for="image">
+            Imagem da Feira
+          </label>
+
+          <input
+            id="image"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+          >
+
+          <div class="help">
+            JPG, PNG ou WebP — máximo 5 MB.
+          </div>
+
+          <img
+            id="imagePreview"
+            class="image-preview"
+            alt="Pré-visualização"
+          >
+
+        </div>
+
+
+      </div>
+
+
+      <div
+        id="message"
+        class="message"
+      ></div>
+
+
+      <div class="footer">
+
+        <button
+          type="button"
+          class="secondary"
+          id="cancel"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="primary"
+          id="save"
+        >
+          Guardar Feira
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+
+let events = [];
+
+// ELEMENTOS
+
+const loading =
+  document.getElementById("loading");
+
+const empty =
+  document.getElementById("empty");
+
+const tableWrap =
+  document.getElementById("tableWrap");
+
+const eventsBody =
+  document.getElementById("eventsBody");
+
+const modal =
+  document.getElementById("modal");
+
+const form =
+  document.getElementById("eventForm");
+
+const imageInput =
+  document.getElementById("image");
+
+const imagePreview =
+  document.getElementById("imagePreview");
+
+const message =
+  document.getElementById("message");
+
+
+// URL PÚBLICA DA IMAGEM
+
+function getImageUrl(path) {
+
+  if (!path) {
+    return "";
+  }
+
+  const value = String(path).trim();
+
+  // Se já for uma URL completa, usamos diretamente.
+  if (
+    value.startsWith("http://") ||
+    value.startsWith("https://")
+  ) {
+    return value;
+  }
+
+  // Caminho guardado no Storage, por exemplo:
+  // events/1-123456789.jpg
+  const cleanPath = value.replace(/^\/+/, "");
+
+  const { data } = supabaseClient
+    .storage
+    .from("media")
+    .getPublicUrl(cleanPath);
+
+  return data && data.publicUrl
+    ? data.publicUrl
+    : SUPABASE_URL +
+      "/storage/v1/object/public/media/" +
+      cleanPath;
+}
+
+
+// VERIFICAR LOGIN
+
+async function checkLogin() {
+
+  const {
+    data: { user },
+    error
+  } = await supabaseClient.auth.getUser();
+
+  if (error || !user) {
+    window.location.href = "admin.html";
+    return false;
+  }
+
+  return true;
+}
+
+
+// CARREGAR FEIRAS
+
+async function loadEvents() {
+
+  loading.style.display =
+    "block";
+
+  empty.style.display =
+    "none";
+
+  tableWrap.style.display =
+    "none";
+
+
+  const eventsRequest = supabaseClient
+    .from("events")
+    .select("*")
+    .order("sort_order", { ascending: true })
+    .order("event_date", { ascending: true });
+
+  const timeoutRequest = new Promise((_, reject) =>
+    setTimeout(
+      () => reject(new Error("O Supabase demorou demasiado tempo a responder.")),
+      10000
+    )
+  );
+
+  let data;
+  let error;
+
+  try {
+    const result = await Promise.race([eventsRequest, timeoutRequest]);
+    data = result.data;
+    error = result.error;
+  } catch (requestError) {
+    error = requestError;
+  }
+
+
+  loading.style.display =
+    "none";
+
+
+  if (error) {
+
+    console.error("Erro ao carregar feiras:", error);
+
+    empty.innerHTML = `
+      <h3>Erro ao carregar as feiras</h3>
+      <p>${escapeHtml(error.message)}</p>
+    `;
+
+    empty.style.display =
+      "block";
+
+    return;
+  }
+
+
+  events =
+    data || [];
+
+
+  if (!events.length) {
+
+    empty.style.display =
+      "block";
+
+    return;
+  }
+
+
+  renderEvents();
+
+}
+
+
+// MOSTRAR FEIRAS
+
+function renderEvents() {
+
+  eventsBody.innerHTML =
+    "";
+
+
+  events.forEach(event => {
+
+    const row =
+      document.createElement("tr");
+
+
+    let imageHtml =
+      `<div class="no-image">Sem imagem</div>`;
+
+
+    if (event.image_url) {
+
+      const imageUrl =
+        getImageUrl(
+          event.image_url
+        );
+
+
+      imageHtml = `
+        <img
+          class="event-image"
+          src="${escapeHtml(imageUrl)}"
+          alt="${escapeHtml(event.title || "Feira")}"
+        >
+      `;
+
+    }
+
+
+    row.innerHTML = `
+
+      <td>
+        ${imageHtml}
+      </td>
+
+      <td>
+
+        <div class="title">
+          ${escapeHtml(event.title || "")}
+        </div>
+
+        <div class="location">
+          ${escapeHtml(event.edition || "")}
+        </div>
+
+      </td>
+
+      <td>
+        ${escapeHtml(
+          event.date_badge ||
+          event.event_date ||
+          "—"
+        )}
+      </td>
+
+      <td>
+        ${escapeHtml(
+          event.location ||
+          "—"
+        )}
+      </td>
+
+      <td>
+
+        ${
+          event.published
+
+            ? `<span class="status published">
+                Publicado
+              </span>`
+
+            : `<span class="status hidden">
+                Oculto
+              </span>`
+        }
+
+      </td>
+
+      <td>
+
+        <div class="actions">
+
+          <button
+            class="action"
+            onclick="editEvent(${event.id})"
+          >
+            Editar
+          </button>
+
+          <button
+            class="action"
+            onclick="toggleEvent(${event.id})"
+          >
+            ${
+              event.published
+                ? "Ocultar"
+                : "Publicar"
+            }
+          </button>
+
+          <button
+            class="action delete"
+            onclick="deleteEvent(${event.id})"
+          >
+            Apagar
+          </button>
+
+        </div>
+
+      </td>
+
+    `;
+
+
+    eventsBody.appendChild(row);
+
+  });
+
+
+  tableWrap.style.display =
+    "block";
+
+}
+
+
+// ABRIR NOVA FEIRA
+
+document
+  .getElementById("newEvent")
+  .addEventListener(
+    "click",
+    () => {
+
+      form.reset();
+
+      document
+        .getElementById("eventId")
+        .value = "";
+
+      document
+        .getElementById("sortOrder")
+        .value = "0";
+
+      document
+        .getElementById("published")
+        .value = "true";
+
+
+      imagePreview.src =
+        "";
+
+      imagePreview.style.display =
+        "none";
+
+
+      message.textContent =
+        "";
+
+      message.className =
+        "message";
+
+
+      document
+        .getElementById("modalTitle")
+        .textContent =
+          "Nova Feira";
+
+
+      modal.classList.add(
+        "open"
+      );
+
+    }
+  );
+
+
+// EDITAR FEIRA
+
+window.editEvent =
+  function(id) {
+
+    const event =
+      events.find(
+        item =>
+          item.id === id
+      );
+
+
+    if (!event) {
+      return;
+    }
+
+
+    document
+      .getElementById("eventId")
+      .value =
+        event.id;
+
+
+    document
+      .getElementById("title")
+      .value =
+        event.title || "";
+
+
+    document
+      .getElementById("edition")
+      .value =
+        event.edition || "";
+
+
+    document
+      .getElementById("type")
+      .value =
+        event.type || "";
+
+
+    document
+      .getElementById("dateBadge")
+      .value =
+        event.date_badge || "";
+
+
+    document
+      .getElementById("eventDate")
+      .value =
+        event.event_date || "";
+
+
+    document
+      .getElementById("location")
+      .value =
+        event.location || "";
+
+
+    document
+      .getElementById("stand")
+      .value =
+        event.stand || "";
+
+
+    document
+      .getElementById("description")
+      .value =
+        event.description || "";
+
+
+    document
+      .getElementById("sortOrder")
+      .value =
+        event.sort_order || 0;
+
+
+    document
+      .getElementById("published")
+      .value =
+        event.published
+          ? "true"
+          : "false";
+
+
+    imageInput.value =
+      "";
+
+
+    if (event.image_url) {
+
+      imagePreview.src =
+        getImageUrl(
+          event.image_url
+        );
+
+      imagePreview.style.display =
+        "block";
+
+    } else {
+
+      imagePreview.src =
+        "";
+
+      imagePreview.style.display =
+        "none";
+
+    }
+
+
+    message.textContent =
+      "";
+
+    message.className =
+      "message";
+
+
+    document
+      .getElementById("modalTitle")
+      .textContent =
+        "Editar Feira";
+
+
+    modal.classList.add(
+      "open"
+    );
+
+  };
+
+
+// PRÉ-VISUALIZAÇÃO
+
+imageInput.addEventListener(
+  "change",
+  () => {
+
+    const file =
+      imageInput.files[0];
+
+
+    if (!file) {
+
+      imagePreview.src =
+        "";
+
+      imagePreview.style.display =
+        "none";
+
+      return;
+    }
+
+
+    if (
+      file.size >
+      5 * 1024 * 1024
+    ) {
+
+      message.textContent =
+        "A imagem não pode ter mais de 5 MB.";
+
+      message.className =
+        "message error";
+
+      imageInput.value =
+        "";
+
+      imagePreview.src =
+        "";
+
+      imagePreview.style.display =
+        "none";
+
+      return;
+    }
+
+
+    imagePreview.src =
+      URL.createObjectURL(
+        file
+      );
+
+    imagePreview.style.display =
+      "block";
+
+  }
+);
+
+
+// GUARDAR FEIRA
+
+form.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const saveButton =
+      document.getElementById("save");
+
+
+    saveButton.disabled =
+      true;
+
+    saveButton.textContent =
+      "A guardar...";
+
+
+    message.textContent =
+      "";
+
+    message.className =
+      "message";
+
+
+    try {
+
+      const id =
+        document
+          .getElementById("eventId")
+          .value;
+
+
+      const eventData = {
+
+        title:
+          document
+            .getElementById("title")
+            .value
+            .trim(),
+
+        edition:
+          document
+            .getElementById("edition")
+            .value
+            .trim(),
+
+        type:
+          document
+            .getElementById("type")
+            .value
+            .trim(),
+
+        date_badge:
+          document
+            .getElementById("dateBadge")
+            .value
+            .trim(),
+
+        event_date:
+          document
+            .getElementById("eventDate")
+            .value ||
+          null,
+
+        location:
+          document
+            .getElementById("location")
+            .value
+            .trim(),
+
+        stand:
+          document
+            .getElementById("stand")
+            .value
+            .trim(),
+
+        description:
+          document
+            .getElementById("description")
+            .value
+            .trim(),
+
+        sort_order:
+          Number(
+            document
+              .getElementById("sortOrder")
+              .value
+          ) || 0,
+
+        published:
+          document
+            .getElementById("published")
+            .value ===
+          "true",
+
+        updated_at:
+          new Date()
+            .toISOString()
+
+      };
+
+
+      let savedEvent;
+
+
+      // EDITAR
+
+      if (id) {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from("events")
+            .update(eventData)
+            .eq("id", id)
+            .select()
+            .single();
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        savedEvent =
+          data;
+
+      }
+
+
+      // CRIAR
+
+      else {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from("events")
+            .insert(
+              eventData
+            )
+            .select()
+            .single();
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        savedEvent =
+          data;
+
+      }
+
+
+      // UPLOAD DA IMAGEM
+
+      const file =
+        imageInput.files[0];
+
+
+      if (file) {
+
+        const extension =
+          file.name
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+        const filePath =
+          `events/${savedEvent.id}-${Date.now()}.${extension}`;
+
+        const { data: publicUrlData } =
+          supabaseClient
+            .storage
+            .from("media")
+            .getPublicUrl(filePath);
+
+        const publicImageUrl =
+          publicUrlData && publicUrlData.publicUrl
+            ? publicUrlData.publicUrl
+            : getImageUrl(filePath);
+
+
+        const {
+          error: uploadError
+        } =
+          await supabaseClient
+            .storage
+            .from("media")
+            .upload(
+              filePath,
+              file,
+              {
+                contentType:
+                  file.type,
+
+                upsert:
+                  false
+              }
+            );
+
+
+        if (uploadError) {
+          throw uploadError;
+        }
+
+
+        const {
+          error: imageError
+        } =
+          await supabaseClient
+            .from("events")
+            .update({
+              image_url:
+                publicImageUrl,
+
+              updated_at:
+                new Date()
+                  .toISOString()
+            })
+            .eq(
+              "id",
+              savedEvent.id
+            );
+
+
+        if (imageError) {
+          throw imageError;
+        }
+
+      }
+
+
+      closeModal();
+
+      await loadEvents();
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      message.textContent =
+        "Erro: " +
+        error.message;
+
+      message.className =
+        "message error";
+
+
+    } finally {
+
+      saveButton.disabled =
+        false;
+
+      saveButton.textContent =
+        "Guardar Feira";
+
+    }
+
+  }
+);
+
+
+// PUBLICAR / OCULTAR
+
+window.toggleEvent =
+  async function(id) {
+
+    const event =
+      events.find(
+        item =>
+          item.id === id
+      );
+
+
+    if (!event) {
+      return;
+    }
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("events")
+        .update({
+          published:
+            !event.published,
+
+          updated_at:
+            new Date()
+              .toISOString()
+        })
+        .eq(
+          "id",
+          id
+        );
+
+
+    if (error) {
+
+      alert(
+        "Erro: " +
+        error.message
+      );
+
+      return;
+    }
+
+
+    await loadEvents();
+
+  };
+
+
+// APAGAR
+
+window.deleteEvent =
+  async function(id) {
+
+    const event =
+      events.find(
+        item =>
+          item.id === id
+      );
+
+
+    if (!event) {
+      return;
+    }
+
+
+    const confirmed =
+      confirm(
+        `Queres mesmo apagar "${event.title}"?`
+      );
+
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("events")
+        .delete()
+        .eq(
+          "id",
+          id
+        );
+
+
+    if (error) {
+
+      alert(
+        "Erro: " +
+        error.message
+      );
+
+      return;
+    }
+
+
+    await loadEvents();
+
+  };
+
+
+// FECHAR MODAL
+
+function closeModal() {
+
+  modal.classList.remove(
+    "open"
+  );
+
+}
+
+
+document
+  .getElementById("closeModal")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+document
+  .getElementById("cancel")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+// LOGOUT
+
+document
+  .getElementById("logout")
+  .addEventListener(
+    "click",
+    async () => {
+
+      await supabaseClient
+        .auth
+        .signOut();
+
+      window.location.href =
+        "admin.html";
+
+    }
+  );
+
+
+// ESCAPAR HTML
+
+function escapeHtml(value) {
+
+  return String(value)
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+// INICIAR
+
+(async function() {
+
+  const allowed =
+    await checkLogin();
+
+
+  if (!allowed) {
+    return;
+  }
+
+
+  await loadEvents();
+
+})();
+
+</script>
+
+</body>
+
+</html>

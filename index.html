@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
   <title>Algartempo — Trabalho que acontece | Algarve</title>
   <meta name="description" content="Ligamos pessoas a oportunidades e empresas ao talento certo, em todo o Algarve. Trabalho Temporário e Recrutamento Especializado. Alvará IEFP Nº 450.">
   <meta name="keywords" content="Algartempo, trabalho temporario algarve, emprego algarve, recrutamento faro portimao albufeira loule lagos tavira, alvara iefp 450">
@@ -485,103 +487,43 @@
     </div>
   </section>
 
-  <!-- O ALGARVE EM MOVIMENTO (POLOS REGIONAIS) -->
-  <section id="algarve" class="py-20 md:py-28 bg-white border-b border-[#e2d9cc]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="max-w-2xl mb-14">
-        <span class="text-xs font-bold uppercase tracking-wider text-amber-700 block mb-2">Presença Regional</span>
-        <h2 class="text-section-editorial font-heading font-extrabold text-slate-900 leading-tight">
-          O Algarve em Movimento.
-        </h2>
-        <p class="text-slate-600 text-base mt-2">
-          De Sagres a Vila Real de Santo António, compreendemos os ritmos e as necessidades reais de cada concelho.
+ <!-- O ALGARVE EM MOVIMENTO (POLOS REGIONAIS) -->
+<section id="algarve" class="py-20 md:py-28 bg-white border-b border-[#e2d9cc]">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-2xl mb-14">
+      <span class="text-xs font-bold uppercase tracking-wider text-amber-700 block mb-2">
+        Presença Regional
+      </span>
+
+      <h2 class="text-section-editorial font-heading font-extrabold text-slate-900 leading-tight">
+        Onde Estamos.
+      </h2>
+
+      <p class="text-slate-600 text-base mt-2">
+        Presença local, acompanhamento próximo e conhecimento real do mercado.
+        Do Algarve a todo o país.
+      </p>
+    </div>
+
+    <!-- POLOS — carregados pelo Backoffice -->
+    <div
+      id="offices-public-container"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      <div class="md:col-span-2 lg:col-span-3 py-12 text-center">
+        <i class="fas fa-spinner fa-spin text-2xl text-sky-600 mb-3"></i>
+
+        <p class="text-sm text-slate-500">
+          A carregar os nossos polos...
         </p>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Faro -->
-        <div class="editorial-paper rounded-2xl p-6 space-y-3 bg-[#faf8f5]">
-          <div class="flex items-center justify-between border-b border-[#e2d9cc] pb-2.5">
-            <span class="text-xs font-bold text-sky-700 uppercase">Polo Central</span>
-            <span class="text-[11px] text-slate-500">Sede Regional</span>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-slate-900">Faro & Olhão</h3>
-          <p class="text-slate-600 text-xs leading-relaxed">
-            Aeroporto Internacional, serviços corporativos, centros logísticos e distribuição.
-          </p>
-        </div>
-
-        <!-- Albufeira & Loulé -->
-        <div class="editorial-paper rounded-2xl p-6 space-y-3 bg-[#faf8f5]">
-          <div class="flex items-center justify-between border-b border-[#e2d9cc] pb-2.5">
-            <span class="text-xs font-bold text-amber-700 uppercase">Hospitality</span>
-            <span class="text-[11px] text-slate-500">Resorts & Golfe</span>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-slate-900">Albufeira & Loulé</h3>
-          <p class="text-slate-600 text-xs leading-relaxed">
-            Unidades hoteleiras 5*, Vilamoura, Quinta do Lago, restauração e equipas de manutenção técnica.
-          </p>
-        </div>
-
-        <!-- Portimão & Lagos -->
-        <div class="editorial-paper rounded-2xl p-6 space-y-3 bg-[#faf8f5]">
-          <div class="flex items-center justify-between border-b border-[#e2d9cc] pb-2.5">
-            <span class="text-xs font-bold text-emerald-700 uppercase">Barlavento</span>
-            <span class="text-[11px] text-slate-500">Marinas & Eventos</span>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-slate-900">Portimão & Lagos</h3>
-          <p class="text-slate-600 text-xs leading-relaxed">
-            Comércio, turismo de lazer e congressos no Centro do Arade com forte procura de hospitalidade.
-          </p>
-        </div>
-
-        <!-- Tavira & VRSA -->
-        <div class="editorial-paper rounded-2xl p-6 space-y-3 bg-[#faf8f5]">
-          <div class="flex items-center justify-between border-b border-[#e2d9cc] pb-2.5">
-            <span class="text-xs font-bold text-sky-700 uppercase">Sotavento</span>
-            <span class="text-[11px] text-slate-500">Agro & Charme</span>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-slate-900">Tavira & VRSA</h3>
-          <p class="text-slate-600 text-xs leading-relaxed">
-            Agroindústria, hotelaria de charme, gastronomia costeira e projetos de reabilitação.
-          </p>
-        </div>
-
-        <!-- São Brás & Silves -->
-        <div class="editorial-paper rounded-2xl p-6 space-y-3 bg-[#faf8f5]">
-          <div class="flex items-center justify-between border-b border-[#e2d9cc] pb-2.5">
-            <span class="text-xs font-bold text-slate-700 uppercase">Barrocal</span>
-            <span class="text-[11px] text-slate-500">Indústria</span>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-slate-900">São Brás & Silves</h3>
-          <p class="text-slate-600 text-xs leading-relaxed">
-            Transformação de cortiça, entrepostos logísticos e operações de manutenção industrial.
-          </p>
-        </div>
-
-        <!-- Todo o Algarve -->
-        <div class="editorial-paper rounded-2xl p-6 space-y-3 bg-gradient-to-br from-sky-50 to-white border-sky-300">
-          <div class="flex items-center justify-between border-b border-sky-100 pb-2.5">
-            <span class="text-xs font-bold text-sky-800 uppercase">Rede Regional</span>
-            <span class="text-[11px] text-sky-700 font-semibold">100% Presentes</span>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-slate-900">Todo o Algarve</h3>
-          <p class="text-slate-600 text-xs leading-relaxed">
-            Estamos presentes onde o trabalho acontece. Contacta a nossa equipa regional.
-          </p>
-          <div class="pt-2">
-            <button onclick="openApplyModal('Candidatura Regional Algarve')" class="w-full py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors">
-              Falar com a Equipa
-            </button>
-          </div>
-        </div>
-
-      </div>
-
     </div>
-  </section>
+
+  </div>
+
+</section>
 
   <!-- NÚMEROS COM HISTÓRIA -->
   <section class="py-16 md:py-20 bg-[#f4efe6] border-b border-[#e2d9cc]">
