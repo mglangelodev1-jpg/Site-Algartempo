@@ -3717,3 +3717,225 @@ body {
 .reference-actions {
     gap: 11px !important;
 }
+
+/* =========================================================
+   SOBRE NÓS — FUNDO FOTOGRÁFICO MODERNO
+   ========================================================= */
+
+.about-new {
+  position: relative;
+  min-height: 820px;
+  padding: 92px 0 45px;
+  overflow: hidden;
+  background: #ffffff url("imagens/sobre-nos-fundo.png") center center / cover no-repeat;
+}
+
+/* Véu branco à esquerda: mantém a fotografia como fundo, mas evita que o logótipo
+   da fotografia fique por trás do texto. */
+.about-new::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,.98) 0%,
+    rgba(255,255,255,.96) 36%,
+    rgba(255,255,255,.76) 50%,
+    rgba(255,255,255,.18) 67%,
+    rgba(255,255,255,0) 82%);
+  pointer-events: none;
+}
+
+.about-new__container {
+  position: relative;
+  z-index: 2;
+  width: min(1380px, calc(100% - 80px));
+  min-height: 610px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.about-new__content {
+  width: min(610px, 52%);
+  padding: 36px 42px 40px;
+  border-radius: 34px;
+  background: rgba(255,255,255,.84);
+  box-shadow: 0 24px 70px rgba(15,55,95,.10);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: aboutFadeUp .75s ease both;
+}
+
+.about-new__eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding-bottom: 9px;
+  color: #087dcc;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  border-bottom: 3px solid #08a8df;
+}
+
+.about-new__content h2 {
+  margin: 0 0 24px;
+  color: #102848;
+  font-size: clamp(40px, 4vw, 62px);
+  line-height: .98;
+  font-weight: 850;
+  letter-spacing: -2.5px;
+}
+
+.about-new__content h2 span {
+  display: block;
+  color: #0799dc;
+}
+
+.about-new__text p {
+  max-width: 590px;
+  margin: 0 0 14px;
+  color: #263b59;
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.about-new__principles {
+  position: relative;
+  z-index: 4;
+  width: min(1380px, calc(100% - 80px));
+  margin: -15px auto 0;
+  padding: 27px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: rgba(246,251,255,.96);
+  border: 1px solid rgba(207,231,246,.95);
+  border-radius: 28px;
+  box-shadow: 0 22px 60px rgba(20,65,105,.14);
+  animation: aboutFadeUp .9s .15s ease both;
+}
+
+.about-principle {
+  display: flex;
+  gap: 18px;
+  padding: 12px 28px;
+  align-items: flex-start;
+}
+
+.about-principle + .about-principle {
+  border-left: 1px solid #cfe5f3;
+}
+
+.about-principle__icon {
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #dff3fc;
+  color: #087dcc;
+  font-size: 22px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.about-principle:hover .about-principle__icon {
+  transform: translateY(-4px) rotate(-4deg);
+  box-shadow: 0 10px 25px rgba(8,125,204,.18);
+}
+
+.about-principle h3 {
+  margin: 2px 0 6px;
+  color: #102848;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.about-principle p {
+  margin: 0;
+  color: #526985;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@keyframes aboutFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1000px) {
+  .about-new {
+    min-height: auto;
+    padding: 75px 0 35px;
+    background-position: 65% center;
+  }
+
+  .about-new::before {
+    background: linear-gradient(90deg,
+      rgba(255,255,255,.97) 0%,
+      rgba(255,255,255,.92) 58%,
+      rgba(255,255,255,.35) 100%);
+  }
+
+  .about-new__container {
+    width: min(100% - 40px, 760px);
+    min-height: auto;
+  }
+
+  .about-new__content {
+    width: 100%;
+    padding: 32px;
+  }
+
+  .about-new__principles {
+    width: min(100% - 40px, 760px);
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+
+  .about-principle {
+    padding: 22px 10px;
+  }
+
+  .about-principle + .about-principle {
+    border-left: 0;
+    border-top: 1px solid #cfe5f3;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-new {
+    padding: 55px 0 25px;
+    background-position: 68% center;
+  }
+
+  .about-new::before {
+    background: rgba(255,255,255,.88);
+  }
+
+  .about-new__container,
+  .about-new__principles {
+    width: calc(100% - 28px);
+  }
+
+  .about-new__content {
+    padding: 26px 22px;
+    border-radius: 24px;
+  }
+
+  .about-new__content h2 {
+    font-size: 39px;
+    letter-spacing: -1.5px;
+  }
+
+  .about-new__text p {
+    font-size: 14px;
+  }
+
+  .about-new__principles {
+    border-radius: 22px;
+    padding: 12px 18px;
+  }
+}

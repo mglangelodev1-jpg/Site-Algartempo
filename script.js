@@ -3443,3 +3443,28 @@ function initScrollAnimations() {
     };
 
 })();
+
+/* Sobre Nós — reveal on scroll */
+(function () {
+  const sections = document.querySelectorAll('.about-new, .about-history');
+  if (!sections.length) return;
+
+  const reveal = (section) => section.classList.add('about-visible');
+
+  if (!('IntersectionObserver' in window)) {
+    sections.forEach(reveal);
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        reveal(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+
+  sections.forEach(section => observer.observe(section));
+})();
+
