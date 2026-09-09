@@ -344,3 +344,3376 @@ body {
     grid-column: 1 / -1;
   }
 }
+
+
+/* =========================================================
+   HOMEPAGE — NOVA DIREÇÃO VISUAL
+   Referência: editorial, limpa, nacional, humana
+   ========================================================= */
+
+.site-header {
+  background: rgba(250, 248, 245, 0.96);
+  border-bottom: 1px solid #e7e1d8;
+  backdrop-filter: blur(12px);
+}
+
+.site-header__inner {
+  width: min(1380px, calc(100% - 48px));
+  min-height: 88px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.site-logo { display: flex; align-items: center; flex-shrink: 0; }
+.site-logo img { width: 250px; max-width: 24vw; height: auto; display: block; }
+
+.site-nav { align-items: center; gap: 30px; margin-left: auto; }
+.site-nav a {
+  color: #24324a;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.site-nav a:hover { color: #0788c9; }
+
+.site-actions { align-items: center; gap: 10px; }
+.site-action {
+  min-height: 42px;
+  padding: 0 20px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .045em;
+  text-decoration: none;
+  transition: all .22s ease;
+}
+.site-action--primary { background: #078bca; color: white; }
+.site-action--primary:hover { background: #0475ac; transform: translateY(-1px); }
+.site-action--outline { border: 1px solid #cdd5df; color: #24324a; background: #fff; }
+.site-action--outline:hover { border-color: #078bca; color: #078bca; }
+.site-action--dark { background: #17243a; color: white; }
+
+.site-menu-button {
+  width: 46px; height: 46px; border-radius: 12px;
+  border: 1px solid #d7dfe7; background: white; color: #17243a;
+}
+
+.mobile-drawer { background: #102039; color: white; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+.mobile-drawer__top { display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,.1); }
+.mobile-drawer__close { width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,.08); color:white; border:0; font-size:18px; }
+.mobile-drawer__nav { display:flex; flex-direction:column; gap:4px; padding:28px 0; }
+.mobile-drawer-link { display:flex; align-items:center; justify-content:space-between; color:#eef5fb; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.08); font-family:'Outfit',sans-serif; font-size:22px; font-weight:700; text-decoration:none; }
+.mobile-drawer-link i { color:#28a7e1; font-size:12px; }
+.mobile-drawer__actions { display:flex; flex-direction:column; gap:10px; }
+
+.home-shell { width:min(1380px, calc(100% - 48px)); margin:0 auto; position:relative; z-index:2; }
+.home-hero { position:relative; overflow:hidden; background:#faf8f5; padding:68px 0 64px; }
+.home-hero__grid { display:grid; grid-template-columns:minmax(0, .96fr) minmax(420px, .78fr); gap:72px; align-items:center; }
+.home-hero__copy { padding:24px 0 18px; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:9px; color:#1b6d96; background:#f5f1e9; border:1px solid #e4dccf; border-radius:5px; padding:8px 12px; font-size:11px; font-weight:800; letter-spacing:.08em; }
+.hero-eyebrow__dot { width:7px; height:7px; border-radius:50%; background:#078bca; }
+.home-hero__title { margin:27px 0 18px; color:#111c31; font-family:'Outfit',sans-serif; font-size:clamp(4rem, 7.2vw, 6.8rem); line-height:.9; letter-spacing:-.065em; font-weight:800; }
+.home-hero__title em { color:#078bca; font-family:'Newsreader',Georgia,serif; font-weight:500; letter-spacing:-.04em; }
+.home-hero__lead { max-width:650px; margin:0; color:#526071; font-size:clamp(17px,1.65vw,21px); line-height:1.55; }
+.home-hero__lead strong { color:#243b57; font-weight:650; }
+.home-hero__buttons { display:flex; flex-wrap:wrap; gap:13px; margin-top:30px; }
+.hero-button { min-height:51px; padding:0 23px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; gap:12px; font-size:11px; font-weight:850; letter-spacing:.055em; text-decoration:none; transition:all .22s ease; }
+.hero-button--primary { background:#078bca; color:#fff; box-shadow:0 9px 25px rgba(7,139,202,.18); }
+.hero-button--primary:hover { background:#0475ac; transform:translateY(-2px); }
+.hero-button--secondary { border:1px solid #24324a; color:#24324a; background:transparent; }
+.hero-button--secondary:hover { background:#17243a; color:#fff; }
+.hero-trust { display:flex; flex-wrap:wrap; gap:24px; margin-top:28px; padding-top:18px; border-top:1px solid #ddd6ca; color:#657388; font-size:11px; }
+.hero-trust span { display:flex; align-items:center; gap:7px; }
+.hero-trust i { color:#078bca; }
+
+.home-hero__visual { position:relative; padding:10px 20px 10px 0; }
+.hero-photo-frame { position:relative; height:min(610px, 61vw); min-height:500px; overflow:hidden; border-radius:26px; background:#17243a; box-shadow:0 28px 60px rgba(20,35,55,.18); }
+.hero-photo-frame img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.hero-photo-frame__overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,24,39,.04) 42%,rgba(8,18,31,.78) 100%); }
+.hero-photo-frame__caption { position:absolute; left:28px; right:28px; bottom:26px; display:flex; justify-content:space-between; align-items:flex-end; gap:20px; color:#fff; }
+.hero-photo-frame__caption span { display:block; color:#39b7ee; font-size:10px; font-weight:850; letter-spacing:.12em; margin-bottom:5px; }
+.hero-photo-frame__caption strong { display:block; font-family:'Outfit',sans-serif; font-size:15px; }
+.hero-photo-frame__caption em { font-family:'Newsreader',Georgia,serif; font-size:15px; color:#dfe9f1; }
+.hero-stamp { position:absolute; left:-30px; bottom:42px; width:145px; height:145px; border-radius:50%; background:#078bca; color:white; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border:8px solid #faf8f5; box-shadow:0 15px 35px rgba(7,139,202,.22); transform:rotate(-8deg); }
+.hero-stamp span { font-size:8px; letter-spacing:.14em; font-weight:850; }
+.hero-stamp strong { font-family:'Newsreader',Georgia,serif; font-size:29px; line-height:1; font-weight:500; margin:5px 0; }
+.hero-stamp small { font-size:8px; opacity:.88; }
+.home-hero__glow { position:absolute; border-radius:50%; filter:blur(4px); pointer-events:none; }
+.home-hero__glow--one { width:380px; height:380px; background:rgba(7,139,202,.055); right:-180px; top:-120px; }
+.home-hero__glow--two { width:260px; height:260px; background:rgba(224,165,86,.06); left:-130px; bottom:-150px; }
+
+.opportunity-strip { background:#fff; border-top:1px solid #e5dfd6; border-bottom:1px solid #e5dfd6; }
+.opportunity-strip__inner { width:min(1380px,calc(100% - 48px)); min-height:84px; margin:0 auto; display:grid; grid-template-columns:repeat(6,1fr) auto; align-items:stretch; }
+.opportunity-item { min-width:0; padding:15px 18px; display:flex; align-items:center; justify-content:center; gap:10px; border-right:1px solid #e5dfd6; color:#263b55; text-decoration:none; transition:background .2s ease,color .2s ease; }
+.opportunity-item:hover { background:#faf8f5; color:#078bca; }
+.opportunity-item i { flex:0 0 auto; color:#078bca; font-size:21px; }
+.opportunity-item span { font-size:9px; line-height:1.25; font-weight:750; }
+.opportunity-strip__all { display:flex; align-items:center; justify-content:center; gap:15px; padding:0 20px; color:#24324a; text-decoration:none; white-space:nowrap; }
+.opportunity-strip__all span { font-size:9px; line-height:1.25; font-weight:850; }
+.opportunity-strip__all i { width:31px; height:31px; border-radius:50%; background:#078bca; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; }
+
+.national-intro { padding:86px 0 92px; background:#fff; border-bottom:1px solid #e5dfd6; }
+.national-intro__grid { display:grid; grid-template-columns:1fr .72fr; gap:90px; align-items:end; }
+.section-kicker { display:block; margin-bottom:15px; color:#078bca; font-size:10px; font-weight:850; letter-spacing:.13em; }
+.national-intro h2 { margin:0; color:#142036; font-family:'Outfit',sans-serif; font-size:clamp(2.8rem,5vw,5rem); line-height:.95; letter-spacing:-.055em; font-weight:800; }
+.national-intro h2 em { color:#078bca; font-family:'Newsreader',Georgia,serif; font-weight:500; }
+.national-intro p { margin:0 0 25px; color:#5b6878; font-size:16px; line-height:1.75; max-width:590px; }
+.text-link { display:inline-flex; align-items:center; gap:9px; color:#078bca; font-size:10px; font-weight:850; letter-spacing:.07em; text-decoration:none; }
+.text-link:hover { color:#045f8d; }
+
+@media (max-width: 1200px) {
+  .site-header__inner,.home-shell,.opportunity-strip__inner { width:min(100% - 36px, 1180px); }
+  .site-nav { gap:20px; }
+  .home-hero__grid { gap:44px; }
+  .home-hero__title { font-size:clamp(3.6rem,7vw,5.5rem); }
+  .opportunity-strip__inner { grid-template-columns:repeat(3,1fr); }
+  .opportunity-strip__all { min-height:70px; grid-column:1/-1; border-top:1px solid #e5dfd6; }
+}
+
+@media (max-width: 900px) {
+  .site-logo img { width:220px; max-width:42vw; }
+  .home-hero { padding:42px 0 48px; }
+  .home-hero__grid { grid-template-columns:1fr; gap:38px; }
+  .home-hero__copy { padding-top:0; }
+  .home-hero__visual { padding:0 0 0 20px; }
+  .hero-photo-frame { height:560px; min-height:0; }
+  .hero-stamp { left:-2px; }
+  .national-intro__grid { grid-template-columns:1fr; gap:28px; }
+}
+
+@media (max-width: 640px) {
+  .site-header__inner,.home-shell,.opportunity-strip__inner { width:calc(100% - 28px); }
+  .site-header__inner { min-height:76px; }
+  .site-logo img { width:190px; max-width:65vw; }
+  .home-hero__title { font-size:clamp(3.35rem,17vw,5rem); }
+  .home-hero__lead { font-size:16px; }
+  .home-hero__buttons { flex-direction:column; }
+  .hero-button { width:100%; }
+  .hero-trust { gap:11px 18px; }
+  .hero-photo-frame { height:470px; border-radius:20px; }
+  .hero-photo-frame__caption { left:18px; right:18px; bottom:18px; }
+  .hero-stamp { width:112px; height:112px; border-width:6px; bottom:24px; }
+  .hero-stamp strong { font-size:24px; }
+  .opportunity-strip__inner { grid-template-columns:repeat(2,1fr); }
+  .opportunity-item { min-height:78px; padding:11px 8px; }
+  .opportunity-item:nth-child(2n) { border-right:0; }
+  .opportunity-strip__all { grid-column:1/-1; }
+  .national-intro { padding:60px 0 68px; }
+  .national-intro h2 { font-size:clamp(2.6rem,13vw,4rem); }
+}
+
+/* =========================================================
+   ALGARTEMPO — HOMEPAGE REFERENCE VISUAL
+   ========================================================= */
+.reference-header{position:sticky;top:0;z-index:100;height:74px;background:rgba(255,255,255,.97);border-bottom:1px solid #e6e8eb;backdrop-filter:blur(12px)}
+.reference-header__inner{width:min(1190px,calc(100% - 40px));height:74px;margin:auto;display:flex;align-items:center;gap:30px}
+.reference-logo{display:flex;align-items:center;flex-shrink:0}.reference-logo img{width:250px;height:auto;display:block}
+.reference-nav{margin-left:auto;display:flex;gap:27px;align-items:center}.reference-nav a{font-size:12px;font-weight:600;color:#15233d;text-decoration:none;white-space:nowrap}.reference-nav a:hover{color:#078bca}
+.reference-actions{display:flex;gap:9px;align-items:center}.reference-cta{min-height:40px;padding:0 18px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;font-size:10px;font-weight:800;letter-spacing:.035em;white-space:nowrap}.reference-cta--blue{background:#078bca;color:#fff}.reference-cta--blue:hover{background:#006fa9}.reference-cta--white{background:#fff;color:#15233d;border:1px solid #d0d8e2}.reference-cta--white:hover{border-color:#078bca;color:#078bca}.reference-cta--dark{background:#15233d;color:#fff}.reference-mobile-toggle{display:none}
+
+.reference-hero{position:relative;overflow:hidden;min-height:485px;background:#fff}
+.reference-hero__content{position:relative;min-height:485px;display:grid;grid-template-columns:36% 29% 35%;overflow:hidden}
+.reference-hero__copy{position:relative;z-index:8;display:flex;flex-direction:column;justify-content:center;padding:20px 24px 25px max(8.2vw,calc((100vw - 1290px)/2));background:linear-gradient(90deg,#fff 0%,#fff 78%,rgba(255,255,255,.88) 100%)}
+.reference-hero__eyebrow{display:block;color:#078bca;font-size:12px;font-weight:850;letter-spacing:.075em;margin-bottom:20px}
+.reference-hero__title{margin:0;color:#101c35;font-family:'Outfit',sans-serif;font-size:clamp(4rem,5.2vw,5.7rem);line-height:.88;font-weight:800;letter-spacing:-.065em}
+.reference-hero__title em{display:block;color:#078bca;font-family:'Newsreader',Georgia,serif;font-size:1.12em;font-weight:500;letter-spacing:-.045em;margin-top:8px}
+.reference-hero__text{margin:18px 0 0;color:#506681;font-size:17px;line-height:1.42;max-width:520px}
+.reference-hero__buttons{display:flex;gap:14px;margin-top:25px}.reference-hero-btn{min-height:48px;padding:0 23px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:11px;font-size:10px;font-weight:850;letter-spacing:.035em;text-decoration:none}.reference-hero-btn--blue{background:#078bca;color:#fff;box-shadow:0 8px 22px rgba(7,139,202,.18)}.reference-hero-btn--outline{background:rgba(255,255,255,.8);border:1px solid #15233d;color:#15233d}
+.reference-hero__person{position:relative;z-index:3;overflow:hidden}.reference-hero__person img{width:100%;height:100%;display:block;object-fit:cover;object-position:50% center;filter:saturate(.96)}.reference-hero__person:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.7),transparent 20%,transparent 75%,rgba(0,55,90,.2));pointer-events:none}
+
+.reference-hero__country{position:relative;z-index:4;display:grid;grid-template-columns:43% 57%;overflow:hidden;background:linear-gradient(105deg,#0b5b91,#2186b8 52%,#0d5b91)}
+.reference-map{position:relative;z-index:7;display:flex;align-items:center;justify-content:center;padding:15px 0 10px 5px}.reference-map svg{width:min(145px,72%);height:88%;max-height:420px;overflow:visible}.reference-map__lines{fill:none;stroke:rgba(255,255,255,.52);stroke-width:2}.reference-map__nodes circle{fill:#fff;stroke:#6fd3ff;stroke-width:2;filter:drop-shadow(0 0 6px rgba(255,255,255,.7))}
+.reference-hero__country-copy{position:relative;z-index:8;display:flex;flex-direction:column;justify-content:center;padding:20px 18px 20px 0;color:#fff}.reference-script{font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:29px;line-height:.92;color:#fff;margin-bottom:12px}.reference-country-rule{width:30px;height:2px;background:#08a9ef;margin:4px 0 18px}.reference-hero__country-copy h2{margin:0;font-family:'Outfit',sans-serif;font-size:16px;line-height:1.08;letter-spacing:.025em;font-weight:800}.reference-hero__country-copy p{margin:17px 0 0;font-size:9px;line-height:1.55;letter-spacing:.07em;font-weight:700}
+.reference-hero__places{position:absolute;z-index:5;inset:0 0 0 auto;width:35%;display:grid;grid-template-rows:1fr 1fr 1fr;overflow:hidden}.reference-place{position:relative;overflow:hidden}.reference-place:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(4,26,48,.28))}.reference-place img{width:100%;height:100%;display:block;object-fit:cover}.reference-place span{position:absolute;z-index:3;right:14px;bottom:9px;color:#fff;font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:14px}
+
+.reference-sector-strip{background:#fff;border-bottom:1px solid #e2e6ea}.reference-sector-strip__inner{width:min(1280px,100%);min-height:76px;margin:auto;display:grid;grid-template-columns:repeat(6,1fr) 1.12fr}.reference-sector{display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 10px;color:#15345a;text-decoration:none;border-right:1px solid #e2e6ea}.reference-sector:hover{background:#f7fafc;color:#078bca}.reference-sector>i{color:#078bca;font-size:19px}.reference-sector span{font-size:8.5px;line-height:1.25;font-weight:800}.reference-sector--all{border-right:0;gap:13px}.reference-sector--all>i{width:29px;height:29px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#078bca;color:#fff;font-size:9px}
+
+.reference-intro{position:relative;overflow:hidden;background:#fff;padding:43px 0 74px}.reference-intro__inner{width:min(1280px,calc(100% - 50px));margin:auto;display:grid;grid-template-columns:34% 66%;gap:40px;align-items:start}.reference-intro__heading{padding-top:14px}.reference-intro__kicker{display:block;color:#506b8c;font-size:10px;font-weight:850;letter-spacing:.075em;margin-bottom:12px}.reference-intro__heading h2{margin:0;color:#14223b;font-family:'Outfit',sans-serif;font-size:clamp(2.5rem,4vw,4rem);line-height:.98;letter-spacing:-.055em;font-weight:800}.reference-intro__heading h2 em{color:#078bca;font-family:'Newsreader',Georgia,serif;font-style:italic;font-weight:500}.reference-intro__heading p{max-width:430px;margin:21px 0 22px;color:#60728b;font-size:14px;line-height:1.6}.reference-outline-button{min-height:43px;padding:0 19px;display:inline-flex;align-items:center;gap:10px;border:1px solid #15233d;border-radius:999px;color:#15233d;font-size:10px;font-weight:850;letter-spacing:.045em;text-decoration:none}.reference-outline-button:hover{background:#15233d;color:#fff}
+.reference-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.reference-card{position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fff;border-radius:15px;text-decoration:none;box-shadow:0 8px 25px rgba(26,46,70,.07);transition:.25s}.reference-card:hover{transform:translateY(-5px);box-shadow:0 17px 38px rgba(26,46,70,.12)}.reference-card__image{height:140px;overflow:hidden;background:#dbe8ef}.reference-card__image img{width:100%;height:100%;display:block;object-fit:cover;transition:.55s}.reference-card:hover .reference-card__image img{transform:scale(1.045)}.reference-card__body{position:relative;min-height:175px;padding:14px 17px 19px}.reference-card__label{display:flex;align-items:center;gap:7px;color:#294769;font-size:9px;font-weight:850;letter-spacing:.065em}.reference-card__label i{color:#078bca}.reference-card h3{margin:12px 0 10px;max-width:235px;color:#15233d;font-family:'Outfit',sans-serif;font-size:17px;line-height:1.1;letter-spacing:-.025em;font-weight:800}.reference-card p{max-width:225px;margin:0;color:#718095;font-size:10.5px;line-height:1.45}.reference-card__arrow{position:absolute;right:15px;bottom:16px;width:31px;height:31px;display:flex;align-items:center;justify-content:center;border:1px solid #1b3352;border-radius:50%;color:#1b3352;font-size:9px}
+.reference-signature{position:absolute;right:7%;bottom:18px;display:flex;flex-direction:column;color:#078bca;font-family:'Newsreader',Georgia,serif;font-style:italic;text-align:right;transform:rotate(-4deg)}.reference-signature span,.reference-signature strong{font-size:21px;line-height:1.05;font-weight:500}.reference-signature i{width:115px;height:2px;background:#078bca;margin:7px 0 0 auto;transform:rotate(-4deg)}
+
+.reference-mobile-drawer{background:#102039;color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:space-between}.reference-mobile-drawer__top{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1)}.reference-mobile-close{width:44px;height:44px;border:0;border-radius:12px;background:rgba(255,255,255,.08);color:#fff}.reference-mobile-nav{display:flex;flex-direction:column;gap:4px;padding:28px 0}.reference-mobile-actions{display:flex;flex-direction:column;gap:10px}
+
+@media(max-width:1150px){.reference-header__inner{width:calc(100% - 28px);gap:20px}.reference-logo img{width:215px}.reference-nav{gap:18px}.reference-nav a{font-size:11px}.reference-cta{padding:0 13px;font-size:9px}.reference-hero__copy{padding-left:5vw}.reference-hero__title{font-size:clamp(3.5rem,5.5vw,5rem)}.reference-intro__inner{width:calc(100% - 40px)}}
+@media(max-width:900px){.reference-nav,.reference-actions{display:none}.reference-mobile-toggle{display:flex;margin-left:auto;width:43px;height:43px;align-items:center;justify-content:center;border:1px solid #d6dde5;border-radius:11px;background:#fff;color:#15233d}.reference-hero__content{grid-template-columns:1fr}.reference-hero__copy{padding:54px 28px 38px;min-height:400px}.reference-hero__person{height:460px}.reference-hero__country{min-height:390px}.reference-hero__places{width:45%}.reference-sector-strip__inner{grid-template-columns:repeat(3,1fr)}.reference-sector:nth-child(3n){border-right:0}.reference-sector--all{grid-column:1/-1;min-height:62px;border-top:1px solid #e2e6ea}.reference-intro__inner{grid-template-columns:1fr;gap:32px}.reference-cards{grid-template-columns:repeat(3,1fr)}.reference-signature{display:none}}
+@media(max-width:640px){.reference-header,.reference-header__inner{height:72px}.reference-header__inner{width:calc(100% - 24px)}.reference-logo img{width:185px}.reference-hero__copy{min-height:365px;padding:43px 22px 36px}.reference-hero__title{font-size:clamp(3.55rem,18vw,5rem)}.reference-hero__text{font-size:15px}.desktop-only{display:none}.reference-hero__buttons{flex-direction:column;align-items:stretch}.reference-hero-btn{width:100%}.reference-hero__person{height:390px}.reference-hero__country{min-height:330px;grid-template-columns:43% 57%}.reference-map svg{width:105px}.reference-script{font-size:22px}.reference-hero__country-copy h2{font-size:13px}.reference-hero__country-copy p{font-size:8px}.reference-hero__places{width:43%}.reference-sector-strip__inner{grid-template-columns:repeat(2,1fr)}.reference-sector{min-height:72px}.reference-sector:nth-child(3n){border-right:1px solid #e2e6ea}.reference-sector:nth-child(2n){border-right:0}.reference-sector--all{grid-column:1/-1}.reference-intro{padding:52px 0 58px}.reference-intro__inner{width:calc(100% - 28px)}.reference-intro__heading h2{font-size:clamp(2.8rem,14vw,4.1rem)}.reference-cards{grid-template-columns:1fr}.reference-card__image{height:190px}.reference-card__body{min-height:155px}}
+/* =========================================================
+   CORREÇÃO FINAL — HERO IGUAL À REFERÊNCIA
+   ========================================================= */
+
+/* HERO PRINCIPAL */
+
+.reference-hero {
+  position: relative;
+  width: 100%;
+  min-height: 510px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.reference-hero__content {
+  position: relative;
+  width: 100%;
+  min-height: 510px;
+
+  display: grid;
+
+  grid-template-columns:
+    36%
+    29%
+    35%;
+
+  overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   COLUNA ESQUERDA — TEXTO
+   --------------------------------------------------------- */
+
+.reference-hero__copy {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding:
+    35px
+    38px
+    35px
+    max(7.2vw, calc((100vw - 1280px) / 2));
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #ffffff 76%,
+      rgba(255,255,255,0.94) 92%,
+      rgba(255,255,255,0) 100%
+    );
+}
+
+.reference-hero__eyebrow {
+  display: block;
+
+  margin-bottom: 22px;
+
+  color: #078bca;
+
+  font-size: 12px;
+  line-height: 1;
+
+  font-weight: 850;
+
+  letter-spacing: 0.08em;
+}
+
+.reference-hero__title {
+  margin: 0;
+
+  color: #111d36;
+
+  font-family: 'Outfit', sans-serif;
+
+  /*
+   * IMPORTANTE:
+   * não deixar "Trabalho que" partir.
+   */
+  white-space: nowrap;
+
+  font-size: clamp(
+    3.9rem,
+    5vw,
+    5.5rem
+  );
+
+  line-height: 0.88;
+
+  font-weight: 800;
+
+  letter-spacing: -0.065em;
+}
+
+.reference-hero__title em {
+  display: block;
+
+  margin-top: 9px;
+
+  color: #078bca;
+
+  font-family: 'Newsreader', Georgia, serif;
+
+  font-size: 1.08em;
+
+  font-style: italic;
+
+  font-weight: 500;
+
+  letter-spacing: -0.045em;
+}
+
+.reference-hero__text {
+  max-width: 500px;
+
+  margin: 23px 0 0;
+
+  color: #526a84;
+
+  font-size: 16px;
+
+  line-height: 1.5;
+}
+
+.reference-hero__buttons {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: 25px;
+}
+
+.reference-hero-btn {
+  min-height: 48px;
+
+  padding: 0 21px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+
+  font-weight: 850;
+
+  letter-spacing: 0.035em;
+
+  text-decoration: none;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    color .2s ease;
+}
+
+.reference-hero-btn--blue {
+  background: #078bca;
+  color: white;
+
+  box-shadow:
+    0 9px 24px rgba(7,139,202,.18);
+}
+
+.reference-hero-btn--blue:hover {
+  background: #0576ad;
+  transform: translateY(-2px);
+}
+
+.reference-hero-btn--outline {
+  border: 1px solid #15233d;
+
+  background: rgba(255,255,255,.92);
+
+  color: #15233d;
+}
+
+.reference-hero-btn--outline:hover {
+  background: #15233d;
+  color: white;
+}
+
+
+/* ---------------------------------------------------------
+   FOTO CENTRAL
+   --------------------------------------------------------- */
+
+.reference-hero__person {
+  position: relative;
+
+  z-index: 3;
+
+  height: 510px;
+
+  overflow: hidden;
+
+  background: #dfe9e8;
+}
+
+.reference-hero__person img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  filter: saturate(.94);
+}
+
+.reference-hero__person::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.48) 0%,
+      rgba(255,255,255,0) 18%,
+      rgba(255,255,255,0) 80%,
+      rgba(0,57,92,.16) 100%
+    );
+}
+
+
+/* ---------------------------------------------------------
+   BLOCO PORTUGAL
+   --------------------------------------------------------- */
+
+.reference-hero__country {
+  position: relative;
+
+  z-index: 4;
+
+  display: block;
+
+  height: 510px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      125deg,
+      #07598e,
+      #087db4 58%,
+      #08618e
+    );
+}
+
+
+/* MAPA */
+
+.reference-map {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 40%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px 0 25px 8px;
+}
+
+.reference-map svg {
+  width: 125px;
+  height: 86%;
+
+  max-height: 440px;
+
+  overflow: visible;
+}
+
+
+/* TEXTO PORTUGAL */
+
+.reference-hero__country-copy {
+  position: absolute;
+
+  z-index: 9;
+
+  left: 39%;
+  top: 0;
+  bottom: 0;
+
+  width: 27%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding:
+    20px
+    12px
+    20px
+    5px;
+
+  color: white;
+}
+
+.reference-script {
+  margin-bottom: 15px;
+
+  color: white;
+
+  font-family: 'Newsreader', Georgia, serif;
+
+  font-size: 28px;
+
+  font-style: italic;
+
+  line-height: .95;
+
+  white-space: nowrap;
+}
+
+.reference-country-rule {
+  width: 30px;
+  height: 2px;
+
+  margin:
+    3px
+    0
+    17px;
+
+  background: #11b3f1;
+}
+
+.reference-hero__country-copy h2 {
+  margin: 0;
+
+  color: white;
+
+  font-family: 'Outfit', sans-serif;
+
+  font-size: 15px;
+
+  line-height: 1.12;
+
+  letter-spacing: .02em;
+
+  font-weight: 850;
+}
+
+.reference-hero__country-copy p {
+  margin: 18px 0 0;
+
+  color: rgba(255,255,255,.94);
+
+  font-size: 8px;
+
+  line-height: 1.55;
+
+  letter-spacing: .08em;
+
+  font-weight: 800;
+}
+
+
+/* ---------------------------------------------------------
+   FOTOS PORTO / LISBOA / ALGARVE
+   --------------------------------------------------------- */
+
+.reference-hero__places {
+  position: absolute;
+
+  z-index: 7;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 35%;
+
+  display: grid;
+
+  grid-template-rows:
+    repeat(3, 1fr);
+
+  overflow: hidden;
+}
+
+.reference-place {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 0;
+}
+
+.reference-place::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0) 40%,
+      rgba(5,24,40,.42) 100%
+    );
+
+  pointer-events: none;
+}
+
+.reference-place img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform .6s ease;
+}
+
+.reference-place:hover img {
+  transform: scale(1.035);
+}
+
+.reference-place span {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 14px;
+  bottom: 9px;
+
+  color: white;
+
+  font-family: 'Newsreader', Georgia, serif;
+
+  font-size: 14px;
+
+  font-style: italic;
+}
+
+
+/* ---------------------------------------------------------
+   GARANTIR QUE O BLOCO PORTUGAL NÃO FICA POR BAIXO
+   --------------------------------------------------------- */
+
+.reference-hero__country-copy {
+  pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   FAIXA DE SETORES
+   --------------------------------------------------------- */
+
+.reference-sector-strip {
+  position: relative;
+
+  z-index: 20;
+
+  background: white;
+
+  border-top: 1px solid #e2e6ea;
+
+  border-bottom: 1px solid #e2e6ea;
+}
+
+.reference-sector-strip__inner {
+  width: min(1280px, 100%);
+
+  min-height: 76px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, 1fr)
+    1.12fr;
+}
+
+.reference-sector {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 8px 10px;
+
+  border-right: 1px solid #e2e6ea;
+
+  color: #17365b;
+
+  text-decoration: none;
+
+  transition:
+    background .2s ease,
+    color .2s ease;
+}
+
+.reference-sector:hover {
+  background: #f6fafc;
+  color: #078bca;
+}
+
+.reference-sector > i {
+  color: #078bca;
+
+  font-size: 18px;
+}
+
+.reference-sector span {
+  font-size: 8px;
+
+  line-height: 1.25;
+
+  font-weight: 850;
+}
+
+.reference-sector--all {
+  border-right: 0;
+
+  gap: 12px;
+}
+
+.reference-sector--all > i {
+  width: 29px;
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #078bca;
+
+  color: white;
+
+  font-size: 9px;
+}
+
+
+/* ---------------------------------------------------------
+   SEGUNDA SECÇÃO
+   --------------------------------------------------------- */
+
+.reference-intro {
+  position: relative;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  padding:
+    48px
+    0
+    88px;
+}
+
+.reference-intro__inner {
+  width: min(1280px, calc(100% - 50px));
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    34%
+    66%;
+
+  gap: 38px;
+
+  align-items: start;
+}
+
+.reference-intro__heading {
+  padding-top: 15px;
+}
+
+.reference-intro__kicker {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: #506b8c;
+
+  font-size: 10px;
+
+  font-weight: 850;
+
+  letter-spacing: .075em;
+}
+
+.reference-intro__heading h2 {
+  margin: 0;
+
+  color: #14223b;
+
+  font-family: 'Outfit', sans-serif;
+
+  font-size: clamp(
+    2.7rem,
+    4vw,
+    4.15rem
+  );
+
+  line-height: .95;
+
+  letter-spacing: -.055em;
+
+  font-weight: 800;
+}
+
+.reference-intro__heading h2 em {
+  color: #078bca;
+
+  font-family: 'Newsreader', Georgia, serif;
+
+  font-style: italic;
+
+  font-weight: 500;
+}
+
+.reference-intro__heading p {
+  max-width: 430px;
+
+  margin:
+    22px
+    0
+    22px;
+
+  color: #60728b;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+.reference-outline-button {
+  min-height: 43px;
+
+  padding: 0 19px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid #15233d;
+
+  border-radius: 999px;
+
+  color: #15233d;
+
+  font-size: 10px;
+
+  font-weight: 850;
+
+  letter-spacing: .045em;
+
+  text-decoration: none;
+
+  transition: .2s ease;
+}
+
+.reference-outline-button:hover {
+  background: #15233d;
+  color: white;
+}
+
+
+/* CARTÕES */
+
+.reference-cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 21px;
+}
+
+.reference-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: white;
+
+  border-radius: 15px;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 7px 24px rgba(26,46,70,.07);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.reference-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 18px 38px rgba(26,46,70,.12);
+}
+
+.reference-card__image {
+  height: 145px;
+
+  overflow: hidden;
+
+  background: #dbe8ef;
+}
+
+.reference-card__image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform .55s ease;
+}
+
+.reference-card:hover
+.reference-card__image img {
+  transform: scale(1.045);
+}
+
+.reference-card__body {
+  position: relative;
+
+  min-height: 173px;
+
+  padding:
+    14px
+    17px
+    18px;
+}
+
+.reference-card__label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #294769;
+
+  font-size: 9px;
+
+  font-weight: 850;
+
+  letter-spacing: .065em;
+}
+
+.reference-card__label i {
+  color: #078bca;
+}
+
+.reference-card h3 {
+  margin:
+    12px
+    0
+    10px;
+
+  max-width: 235px;
+
+  color: #15233d;
+
+  font-family: 'Outfit', sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.12;
+
+  letter-spacing: -.025em;
+
+  font-weight: 800;
+}
+
+.reference-card p {
+  max-width: 225px;
+
+  margin: 0;
+
+  color: #718095;
+
+  font-size: 10px;
+
+  line-height: 1.45;
+}
+
+.reference-card__arrow {
+  position: absolute;
+
+  right: 15px;
+  bottom: 16px;
+
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #1b3352;
+
+  border-radius: 50%;
+
+  color: #1b3352;
+
+  font-size: 9px;
+}
+
+
+/* ---------------------------------------------------------
+   ASSINATURA
+   --------------------------------------------------------- */
+
+.reference-signature {
+  position: absolute;
+
+  right: 7%;
+  bottom: 18px;
+
+  display: flex;
+  flex-direction: column;
+
+  color: #078bca;
+
+  font-family: 'Newsreader', Georgia, serif;
+
+  font-style: italic;
+
+  text-align: right;
+
+  transform: rotate(-4deg);
+}
+
+.reference-signature span,
+.reference-signature strong {
+  font-size: 21px;
+
+  line-height: 1.05;
+
+  font-weight: 500;
+}
+
+.reference-signature i {
+  width: 115px;
+  height: 2px;
+
+  margin:
+    7px
+    0
+    0
+    auto;
+
+  background: #078bca;
+
+  transform: rotate(-4deg);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+  .reference-hero__copy {
+    padding-left: 5vw;
+    padding-right: 25px;
+  }
+
+  .reference-hero__title {
+    font-size: clamp(
+      3.7rem,
+      5vw,
+      5rem
+    );
+  }
+
+  .reference-hero__text {
+    font-size: 15px;
+  }
+
+}
+
+
+@media (max-width: 1050px) {
+
+  .reference-hero__content {
+    grid-template-columns:
+      37%
+      29%
+      34%;
+  }
+
+  .reference-hero__title {
+    font-size: clamp(
+      3.35rem,
+      4.9vw,
+      4.5rem
+    );
+  }
+
+  .reference-hero__text {
+    font-size: 14px;
+  }
+
+  .reference-hero-btn {
+    padding: 0 15px;
+  }
+
+  .reference-script {
+    font-size: 23px;
+  }
+
+  .reference-hero__country-copy h2 {
+    font-size: 13px;
+  }
+
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  .reference-hero {
+    min-height: auto;
+  }
+
+  .reference-hero__content {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .reference-hero__copy {
+    min-height: 420px;
+
+    padding:
+      55px
+      28px
+      45px;
+  }
+
+  .reference-hero__title {
+    white-space: normal;
+
+    font-size:
+      clamp(
+        3.8rem,
+        11vw,
+        5.3rem
+      );
+  }
+
+  .reference-hero__person {
+    height: 500px;
+  }
+
+  .reference-hero__country {
+    height: 430px;
+  }
+
+  .reference-map {
+    width: 42%;
+  }
+
+  .reference-hero__country-copy {
+    left: 38%;
+    width: 30%;
+  }
+
+  .reference-hero__places {
+    width: 35%;
+  }
+
+  .reference-sector-strip__inner {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+  .reference-sector:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .reference-sector--all {
+    grid-column: 1 / -1;
+
+    min-height: 62px;
+
+    border-top: 1px solid #e2e6ea;
+  }
+
+  .reference-intro__inner {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  .reference-cards {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .reference-hero__copy {
+    min-height: 385px;
+
+    padding:
+      43px
+      22px
+      38px;
+  }
+
+  .reference-hero__title {
+    font-size:
+      clamp(
+        3.25rem,
+        17vw,
+        4.8rem
+      );
+  }
+
+  .reference-hero__text {
+    font-size: 15px;
+  }
+
+  .reference-hero__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reference-hero-btn {
+    width: 100%;
+  }
+
+  .reference-hero__person {
+    height: 400px;
+  }
+
+  .reference-hero__country {
+    height: 370px;
+  }
+
+  .reference-map {
+    width: 39%;
+    padding-left: 2px;
+  }
+
+  .reference-map svg {
+    width: 90px;
+  }
+
+  .reference-hero__country-copy {
+    left: 37%;
+    width: 28%;
+  }
+
+  .reference-script {
+    font-size: 19px;
+  }
+
+  .reference-hero__country-copy h2 {
+    font-size: 11px;
+  }
+
+  .reference-hero__country-copy p {
+    font-size: 7px;
+  }
+
+  .reference-hero__places {
+    width: 35%;
+  }
+
+  .reference-sector-strip__inner {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .reference-sector {
+    min-height: 72px;
+  }
+
+  .reference-sector:nth-child(3n) {
+    border-right: 1px solid #e2e6ea;
+  }
+
+  .reference-sector:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .reference-sector--all {
+    grid-column: 1 / -1;
+  }
+
+  .reference-intro {
+    padding:
+      55px
+      0
+      65px;
+  }
+
+  .reference-intro__inner {
+    width: calc(100% - 28px);
+  }
+
+  .reference-intro__heading h2 {
+    font-size:
+      clamp(
+        2.8rem,
+        14vw,
+        4.1rem
+      );
+  }
+
+  .reference-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .reference-card__image {
+    height: 190px;
+  }
+
+}
+
+/* =========================================================
+   ALGARTEMPO — HERO FINAL COM FUNDO DA PÁGINA INICIAL
+   O ficheiro "Fundo página inicial.png" contém toda a composição:
+   pessoa + mapa + Portugal + Porto + Lisboa + Algarve.
+   ========================================================= */
+
+.reference-hero {
+  position: relative;
+  width: 100%;
+  min-height: 510px;
+  height: 510px;
+  overflow: hidden;
+
+  /* FUNDO ÚNICO DA HERO */
+  background-color: #fff;
+  background-image: url("Fundo página inicial.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.reference-hero__content {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+  height: 510px;
+  min-height: 510px;
+  margin: 0;
+
+  /* deixa de dividir a hero em 3 colunas */
+  display: block;
+  overflow: hidden;
+}
+
+/* O texto fica por cima da parte branca da imagem */
+.reference-hero__copy {
+  position: relative;
+  z-index: 20;
+
+  width: 42%;
+  height: 100%;
+  min-height: 510px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 35px 30px 35px max(8.2vw, calc((100vw - 1280px) / 2));
+
+  /* mantém a leitura limpa sem tapar a fotografia */
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,.98) 62%,
+    rgba(255,255,255,.72) 82%,
+    rgba(255,255,255,0) 100%
+  );
+}
+
+/* Estes elementos já estão desenhados dentro do PNG */
+.reference-hero__person,
+.reference-hero__country,
+.reference-hero__places,
+.reference-map,
+.reference-hero__country-copy {
+  display: none !important;
+}
+
+/* tipografia exatamente no espírito da referência */
+.reference-hero__eyebrow {
+  margin: 0 0 21px;
+  color: #078bca;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: .075em;
+}
+
+.reference-hero__title {
+  margin: 0;
+  color: #101c35;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(4rem, 5.2vw, 5.7rem);
+  line-height: .86;
+  font-weight: 800;
+  letter-spacing: -.065em;
+  white-space: nowrap;
+}
+
+.reference-hero__title em {
+  display: block;
+  margin-top: 8px;
+  color: #078bca;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.10em;
+  line-height: .9;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+.reference-hero__text {
+  max-width: 480px;
+  margin: 23px 0 0;
+  color: #506681;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.reference-hero__buttons {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 25px;
+}
+
+.reference-hero-btn {
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .035em;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease, color .2s ease;
+}
+
+.reference-hero-btn--blue {
+  background: #078bca;
+  color: #fff;
+  box-shadow: 0 9px 24px rgba(7,139,202,.18);
+}
+
+.reference-hero-btn--blue:hover {
+  background: #0576ad;
+  transform: translateY(-2px);
+}
+
+.reference-hero-btn--outline {
+  border: 1px solid #15233d;
+  background: rgba(255,255,255,.90);
+  color: #15233d;
+}
+
+.reference-hero-btn--outline:hover {
+  background: #15233d;
+  color: #fff;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .reference-hero,
+  .reference-hero__content,
+  .reference-hero__copy {
+    min-height: 500px;
+    height: 500px;
+  }
+
+  .reference-hero__copy {
+    width: 47%;
+    padding-left: 5vw;
+  }
+
+  .reference-hero__title {
+    font-size: clamp(3.7rem, 5.6vw, 5rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .reference-hero {
+    height: 650px;
+    min-height: 650px;
+
+    background-size: auto 650px;
+    background-position: 62% center;
+  }
+
+  .reference-hero__content {
+    height: 650px;
+    min-height: 650px;
+  }
+
+  .reference-hero__copy {
+    width: 62%;
+    height: 650px;
+    min-height: 650px;
+    padding: 50px 28px;
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,.94) 65%,
+      rgba(255,255,255,0) 100%
+    );
+  }
+
+  .reference-hero__title {
+    white-space: normal;
+    font-size: clamp(3.7rem, 10vw, 5.2rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .reference-hero {
+    height: 650px;
+    min-height: 650px;
+    background-size: auto 650px;
+    background-position: 64% center;
+  }
+
+  .reference-hero__content {
+    height: 650px;
+    min-height: 650px;
+  }
+
+  .reference-hero__copy {
+    width: 76%;
+    height: 650px;
+    min-height: 650px;
+    padding: 42px 22px;
+  }
+
+  .reference-hero__title {
+    font-size: clamp(3.25rem, 15vw, 4.6rem);
+  }
+
+  .reference-hero__text {
+    font-size: 14px;
+  }
+
+  .reference-hero__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reference-hero-btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   AJUSTE FINAL — HEADER DA REFERÊNCIA + FUNDO SEM AMPLIAÇÃO
+   ========================================================= */
+
+/* Header: 68px, branco, com corte diagonal azul à direita */
+.reference-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  height: 68px !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e8eb !important;
+  backdrop-filter: none !important;
+  overflow: hidden;
+}
+
+.reference-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 88px;
+  height: 68px;
+  background: #8ac9e9;
+  clip-path: polygon(38% 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.reference-header__inner {
+  position: relative;
+  z-index: 2;
+  width: min(1190px, calc(100% - 40px)) !important;
+  height: 68px !important;
+  margin: 0 auto !important;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.reference-logo img {
+  width: 175px !important;
+  height: auto;
+  display: block;
+}
+
+.reference-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 27px;
+  align-items: center;
+}
+
+.reference-nav a {
+  font-size: 11px;
+  font-weight: 600;
+  color: #15233d;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.reference-actions {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding-right: 8px;
+}
+
+.reference-cta {
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-decoration: none;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .035em;
+  white-space: nowrap;
+}
+
+/* Hero: o PNG é a composição completa, por isso não deve ser ampliado/cortado */
+.reference-hero {
+  width: 100% !important;
+  height: 510px !important;
+  min-height: 510px !important;
+  overflow: hidden !important;
+  background-color: #fff !important;
+  background-image: url("Fundo página inicial.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: 100% auto !important;
+}
+
+.reference-hero__content {
+  height: 510px !important;
+  min-height: 510px !important;
+}
+
+/* O PNG já traz a pessoa, mapa, cidades e composição visual.
+   Mantemos apenas o texto/botões HTML para continuarem funcionais. */
+.reference-hero__person,
+.reference-hero__country,
+.reference-hero__places,
+.reference-map,
+.reference-hero__country-copy {
+  display: none !important;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .reference-header,
+  .reference-header__inner {
+    height: 68px !important;
+  }
+
+  .reference-header__inner {
+    width: calc(100% - 24px) !important;
+  }
+
+  .reference-logo img {
+    width: 170px !important;
+  }
+
+  .reference-nav,
+  .reference-actions {
+    display: none !important;
+  }
+
+  .reference-mobile-toggle {
+    display: flex !important;
+    margin-left: auto;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d6dde5;
+    border-radius: 11px;
+    background: #fff;
+    color: #15233d;
+  }
+
+  .reference-hero {
+    height: 650px !important;
+    min-height: 650px !important;
+    background-size: auto 650px !important;
+    background-position: 62% center !important;
+  }
+
+  .reference-hero__content {
+    height: 650px !important;
+    min-height: 650px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reference-header,
+  .reference-header__inner {
+    height: 68px !important;
+  }
+
+  .reference-logo img {
+    width: 160px !important;
+  }
+
+  .reference-hero {
+    height: 650px !important;
+    min-height: 650px !important;
+    background-size: auto 650px !important;
+    background-position: 64% center !important;
+  }
+}
+
+
+/* Faixa de setores removida da homepage */
+.reference-sector-strip {
+  display: none !important;
+}
+
+/* =========================================================
+   AJUSTE FINAL — PROPORÇÕES EXATAS DA REFERÊNCIA
+   ========================================================= */
+.reference-header {
+  position: relative !important;
+  top: auto !important;
+  height: 4.87vw !important;
+  min-height: 48px !important;
+  max-height: 80px !important;
+  background: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+.reference-header::after {
+  width: 6.25vw !important;
+  height: 100% !important;
+  max-width: 65px !important;
+  background: #8ac9e9 !important;
+  clip-path: polygon(38% 0,100% 0,100% 100%,0 100%) !important;
+}
+.reference-header__inner {
+  width: min(80.8vw, 1280px) !important;
+  height: 100% !important;
+  margin: 0 auto !important;
+  gap: 2.2vw !important;
+}
+.reference-logo img {
+  width: clamp(135px, 13.8vw, 175px) !important;
+}
+.reference-nav {
+  gap: clamp(14px, 2vw, 27px) !important;
+}
+.reference-nav a {
+  font-size: clamp(9px, .67vw, 11px) !important;
+}
+.reference-actions {
+  gap: .65vw !important;
+  padding-right: .5vw !important;
+}
+.reference-cta {
+  min-height: 2.65vw !important;
+  height: 2.65vw !important;
+  max-height: 42px !important;
+  padding: 0 1.1vw !important;
+  font-size: clamp(8px, .55vw, 9px) !important;
+}
+
+/*
+   A imagem é a composição completa da referência:
+   header + hero. Mostramos aqui apenas a parte da hero.
+   A proporção é mantida, sem esticar nem fazer cover.
+*/
+.reference-hero {
+  width: 100% !important;
+  height: 31.54vw !important;
+  min-height: 311px !important;
+  max-height: 521px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background-image: url("Fundo página inicial.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% auto !important;
+  background-position: center -4.87vw !important;
+}
+.reference-hero__content {
+  width: min(80.8vw, 1280px) !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+}
+.reference-hero__copy {
+  width: 40% !important;
+  padding: 0 !important;
+  justify-content: center !important;
+}
+.reference-hero__eyebrow {
+  margin-bottom: 1.2vw !important;
+  font-size: clamp(9px, .62vw, 12px) !important;
+}
+.reference-hero__title {
+  font-size: clamp(55px, 5vw, 80px) !important;
+  line-height: .86 !important;
+  white-space: nowrap !important;
+}
+.reference-hero__title em {
+  margin-top: .45vw !important;
+}
+.reference-hero__text {
+  max-width: 440px !important;
+  margin-top: 1.35vw !important;
+  font-size: clamp(12px, .83vw, 16px) !important;
+  line-height: 1.5 !important;
+}
+.reference-hero__buttons {
+  margin-top: 1.45vw !important;
+  gap: .7vw !important;
+}
+.reference-hero-btn {
+  min-height: 3vw !important;
+  height: 3vw !important;
+  max-height: 48px !important;
+  padding: 0 1.3vw !important;
+  font-size: clamp(8px, .55vw, 10px) !important;
+}
+
+/* Os elementos antigos ficam escondidos porque já estão desenhados no PNG. */
+.reference-hero__person,
+.reference-hero__country,
+.reference-hero__places,
+.reference-map,
+.reference-hero__country-copy {
+  display: none !important;
+}
+
+/* A faixa de setores continua removida. */
+.reference-sector-strip {
+  display: none !important;
+}
+
+/* Espaço da secção seguinte igual ao mockup. */
+.reference-intro {
+  padding-top: clamp(45px, 4.8vw, 75px) !important;
+}
+
+@media (max-width: 900px) {
+  .reference-header {
+    height: 68px !important;
+    min-height: 68px !important;
+  }
+  .reference-header__inner {
+    width: calc(100% - 24px) !important;
+  }
+  .reference-hero {
+    height: 650px !important;
+    min-height: 650px !important;
+    background-size: auto 650px !important;
+    background-position: 62% center !important;
+  }
+  .reference-hero__content {
+    width: calc(100% - 24px) !important;
+  }
+  .reference-hero__copy {
+    width: 60% !important;
+    padding-top: 45px !important;
+  }
+}
+@media (max-width: 640px) {
+  .reference-hero {
+    height: 650px !important;
+    min-height: 650px !important;
+    background-size: auto 650px !important;
+    background-position: 64% center !important;
+  }
+  .reference-hero__copy {
+    width: 72% !important;
+  }
+}
+
+/* =========================================================
+   MODO REFERÊNCIA — A IMAGEM É A COMPOSIÇÃO FINAL COMPLETA
+   ========================================================= */
+
+.reference-header {
+  position: relative !important;
+  z-index: 50 !important;
+  height: 5vw !important;
+  min-height: 50px !important;
+  max-height: 84px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.reference-header::after {
+  display: none !important;
+}
+
+.reference-header__inner {
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 17.7% 0 12.1% !important;
+  gap: 0 !important;
+}
+
+/* A composição do PNG já tem logo/menu/botões.
+   Mantemos os elementos HTML transparentes apenas para preservar cliques. */
+.reference-logo {
+  position: absolute !important;
+  left: 12.1% !important;
+  top: 0 !important;
+  width: 17% !important;
+  height: 100% !important;
+  z-index: 10 !important;
+}
+
+.reference-logo img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  opacity: 0 !important;
+}
+
+.reference-nav {
+  position: absolute !important;
+  left: 31.9% !important;
+  top: 0 !important;
+  width: 31% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0 !important;
+  z-index: 10 !important;
+}
+
+.reference-nav a {
+  color: transparent !important;
+  text-shadow: none !important;
+  font-size: 0 !important;
+  width: 18% !important;
+  height: 100% !important;
+}
+
+.reference-actions {
+  position: absolute !important;
+  right: 12.8% !important;
+  top: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1vw !important;
+  z-index: 10 !important;
+}
+
+.reference-cta {
+  color: transparent !important;
+  font-size: 0 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.reference-cta--blue {
+  width: 8.2vw !important;
+  min-width: 82px !important;
+}
+
+.reference-cta--white {
+  width: 6.2vw !important;
+  min-width: 62px !important;
+}
+
+.reference-mobile-toggle {
+  display: none !important;
+}
+
+/* O PNG começa no topo absoluto da página e fica atrás do header. */
+.reference-hero {
+  position: relative !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  height: 36.41vw !important;
+  min-height: 359px !important;
+  max-height: none !important;
+  margin-top: -5vw !important;
+  overflow: hidden !important;
+  background-image: url("Fundo página inicial.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: 100% auto !important;
+}
+
+.reference-hero__content {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* O texto já está desenhado no PNG. Estes elementos ficam invisíveis,
+   mas preservam os links/botões da página. */
+.reference-hero__copy {
+  position: absolute !important;
+  left: 8.3% !important;
+  top: 20% !important;
+  width: 31% !important;
+  height: 55% !important;
+  z-index: 8 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.reference-hero__copy a {
+  pointer-events: auto !important;
+}
+
+.reference-hero__person,
+.reference-hero__country,
+.reference-hero__places,
+.reference-map,
+.reference-hero__country-copy {
+  display: none !important;
+}
+
+.reference-sector-strip {
+  display: none !important;
+}
+
+/* aproxima a secção seguinte da composição de referência */
+.reference-intro {
+  padding-top: 54px !important;
+}
+
+@media (max-width: 900px) {
+  .reference-header {
+    height: 68px !important;
+  }
+
+  .reference-header__inner {
+    padding: 0 12px !important;
+  }
+
+  .reference-nav,
+  .reference-actions {
+    display: none !important;
+  }
+
+  .reference-mobile-toggle {
+    display: flex !important;
+    margin-left: auto !important;
+  }
+
+  .reference-logo {
+    left: 18px !important;
+    width: 150px !important;
+  }
+
+  .reference-hero {
+    height: calc(100vw * .3641) !important;
+    min-height: 359px !important;
+    margin-top: -68px !important;
+    background-size: auto 100% !important;
+    background-position: center top !important;
+  }
+}
+
+/* =========================================================
+   CORREÇÃO DEFINITIVA — HEADER SOBRE O FUNDO DA HERO
+   ========================================================= */
+
+/* A hero começa no topo da página; o header fica por cima dela. */
+.reference-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 68px !important;
+  min-height: 68px !important;
+  max-height: 68px !important;
+  z-index: 100 !important;
+  background: #ffffff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  overflow: hidden !important;
+}
+
+/* O branco termina em diagonal, como na referência.
+   O azul do fundo da hero aparece no canto superior direito. */
+.reference-header::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: #ffffff !important;
+  clip-path: polygon(0 0, 93.2% 0, 89.4% 100%, 0 100%) !important;
+  z-index: 0 !important;
+}
+
+.reference-header::after {
+  display: none !important;
+}
+
+.reference-header__inner {
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(1280px, calc(100% - 48px)) !important;
+  max-width: 1280px !important;
+  height: 68px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Logo visível */
+.reference-logo {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  z-index: 3 !important;
+}
+
+.reference-logo img {
+  width: 175px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+}
+
+/* Menu visível */
+.reference-nav {
+  position: static !important;
+  width: auto !important;
+  height: 68px !important;
+  margin-left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 28px !important;
+  z-index: 3 !important;
+}
+
+.reference-nav a {
+  width: auto !important;
+  height: auto !important;
+  color: #14233d !important;
+  text-shadow: none !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.reference-nav a:hover {
+  color: #078bca !important;
+}
+
+/* Botões visíveis */
+.reference-actions {
+  position: static !important;
+  height: 68px !important;
+  margin-left: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  z-index: 3 !important;
+}
+
+.reference-cta {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 38px !important;
+  padding: 0 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  border-radius: 999px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+  color: #14233d !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.reference-cta--blue {
+  width: 166px !important;
+  background: #078bca !important;
+  border: 1px solid #078bca !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.reference-cta--white {
+  width: 82px !important;
+  background: #ffffff !important;
+  border: 1px solid #cbd5df !important;
+  color: #14233d !important;
+}
+
+.reference-cta--blue:hover {
+  background: #0579b1 !important;
+  border-color: #0579b1 !important;
+}
+
+.reference-mobile-toggle {
+  display: none !important;
+}
+
+/* HERO: começa atrás do header. */
+.reference-hero {
+  position: relative !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  height: 36.41vw !important;
+  min-height: 359px !important;
+  margin-top: 0 !important;
+  overflow: hidden !important;
+  background-image: url("Fundo página inicial.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: 100% auto !important;
+}
+
+.reference-hero__content {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* O texto está desenhado no PNG; não duplicar. */
+.reference-hero__copy {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Setores continuam removidos. */
+.reference-sector-strip {
+  display: none !important;
+}
+
+/* A secção seguinte começa logo depois da hero, com respiração controlada. */
+.reference-intro {
+  padding-top: 52px !important;
+}
+
+@media (max-width: 1050px) {
+  .reference-header__inner {
+    width: calc(100% - 34px) !important;
+  }
+
+  .reference-logo img {
+    width: 155px !important;
+  }
+
+  .reference-nav {
+    gap: 18px !important;
+  }
+
+  .reference-nav a {
+    font-size: 10px !important;
+  }
+
+  .reference-actions {
+    margin-left: 18px !important;
+  }
+
+  .reference-cta--blue {
+    width: 145px !important;
+  }
+
+  .reference-hero {
+    height: 36.41vw !important;
+    min-height: 330px !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .reference-header {
+    height: 68px !important;
+    min-height: 68px !important;
+  }
+
+  .reference-header::before {
+    clip-path: polygon(0 0, 94% 0, 89% 100%, 0 100%) !important;
+  }
+
+  .reference-header__inner {
+    height: 68px !important;
+    width: calc(100% - 28px) !important;
+  }
+
+  .reference-nav,
+  .reference-actions {
+    display: none !important;
+  }
+
+  .reference-mobile-toggle {
+    display: flex !important;
+    margin-left: auto !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .reference-logo img {
+    width: 155px !important;
+  }
+}
+
+/* =========================================================
+   AJUSTE FINAL — HEADER SOBRE A HERO + TEXTO VISÍVEL
+   ========================================================= */
+
+.reference-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 68px !important;
+  z-index: 1000 !important;
+  background: transparent !important;
+  border: 0 !important;
+  overflow: visible !important;
+}
+
+.reference-header::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(255,255,255,.97) !important;
+  clip-path: polygon(0 0, 93.8% 0, 89.7% 100%, 0 100%) !important;
+  z-index: -1 !important;
+}
+
+.reference-header__inner {
+  width: min(1280px, calc(100% - 48px)) !important;
+  height: 68px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.reference-logo {
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+  width: auto !important;
+  flex-shrink: 0 !important;
+  z-index: 2 !important;
+}
+
+.reference-logo img {
+  width: 170px !important;
+  height: auto !important;
+}
+
+.reference-nav {
+  position: static !important;
+  margin-left: auto !important;
+  height: 68px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 27px !important;
+  z-index: 2 !important;
+}
+
+.reference-nav a {
+  width: auto !important;
+  height: auto !important;
+  color: #14233d !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  white-space: nowrap !important;
+}
+
+.reference-actions {
+  position: static !important;
+  margin-left: 25px !important;
+  height: 68px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  z-index: 2 !important;
+}
+
+.reference-cta {
+  height: 38px !important;
+  padding: 0 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+
+.reference-cta--blue {
+  width: 165px !important;
+  background: #078bca !important;
+  border: 1px solid #078bca !important;
+  color: #fff !important;
+}
+
+.reference-cta--white {
+  width: 82px !important;
+  background: #fff !important;
+  border: 1px solid #cbd5df !important;
+  color: #14233d !important;
+}
+
+/* A hero começa atrás da barra. */
+.reference-hero {
+  position: relative !important;
+  z-index: 1 !important;
+  margin-top: -68px !important;
+  padding-top: 68px !important;
+  box-sizing: border-box !important;
+  height: calc(36.41vw + 68px) !important;
+  min-height: 427px !important;
+  max-height: none !important;
+  background-image: url("Fundo página inicial.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: 100% auto !important;
+}
+
+/* O texto NÃO está no PNG: tem de aparecer no HTML. */
+.reference-hero__copy {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  position: absolute !important;
+  z-index: 20 !important;
+  left: max(calc((100vw - 1280px) / 2), 24px) !important;
+  top: calc(68px + 7.2vw) !important;
+  width: 38% !important;
+}
+
+.reference-hero__eyebrow {
+  display: block !important;
+  margin-bottom: 18px !important;
+  color: #078bca !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+  letter-spacing: .08em !important;
+}
+
+.reference-hero__title {
+  margin: 0 !important;
+  color: #101c35 !important;
+  font-size: clamp(4rem, 5.1vw, 5.5rem) !important;
+  line-height: .86 !important;
+  font-weight: 800 !important;
+  letter-spacing: -.065em !important;
+  white-space: nowrap !important;
+}
+
+.reference-hero__title em {
+  display: block !important;
+  margin-top: 7px !important;
+  color: #078bca !important;
+  font-family: 'Newsreader', Georgia, serif !important;
+  font-size: 1.08em !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+}
+
+.reference-hero__text {
+  max-width: 430px !important;
+  margin: 21px 0 0 !important;
+  color: #506681 !important;
+  font-size: 15px !important;
+  line-height: 1.48 !important;
+}
+
+.reference-hero__buttons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 23px !important;
+}
+
+.reference-hero-btn {
+  min-height: 47px !important;
+  padding: 0 20px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+}
+
+.reference-hero-btn--blue {
+  background: #078bca !important;
+  color: #fff !important;
+}
+
+.reference-hero-btn--outline {
+  background: rgba(255,255,255,.92) !important;
+  border: 1px solid #15233d !important;
+  color: #15233d !important;
+}
+
+.reference-sector-strip { display: none !important; }
+
+@media (max-width: 850px) {
+  .reference-header { height: 68px !important; }
+  .reference-header__inner { height: 68px !important; width: calc(100% - 28px) !important; }
+  .reference-nav, .reference-actions { display: none !important; }
+  .reference-logo img { width: 155px !important; }
+  .reference-hero {
+    margin-top: -68px !important;
+    padding-top: 68px !important;
+    height: auto !important;
+    min-height: 650px !important;
+    background-size: auto 650px !important;
+    background-position: center top !important;
+  }
+  .reference-hero__copy {
+    left: 22px !important;
+    top: 125px !important;
+    width: 58% !important;
+  }
+}
+
+/* =========================================================
+   AJUSTE FINAL — POSIÇÃO DO TEXTO E PROPORÇÃO DA HERO
+   ========================================================= */
+
+.reference-hero {
+  margin-top: -68px !important;
+  padding-top: 68px !important;
+  box-sizing: border-box !important;
+
+  /* proporção do fundo 986x359 */
+  height: min(calc(100vw * 0.3641), 760px) !important;
+  min-height: 430px !important;
+
+  background-image: url("Fundo página inicial.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: 100% auto !important;
+}
+
+/* Texto colocado na mesma zona da referência — não mais a meio da imagem. */
+.reference-hero__copy {
+  position: absolute !important;
+  z-index: 50 !important;
+  left: max(calc((100vw - 1280px) / 2), 8.6vw) !important;
+  top: 118px !important;
+  width: 430px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.reference-hero__eyebrow {
+  margin: 0 0 18px !important;
+  color: #078bca !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-weight: 850 !important;
+  letter-spacing: .08em !important;
+}
+
+.reference-hero__title {
+  margin: 0 !important;
+  color: #101c35 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: clamp(4rem, 5.05vw, 5.25rem) !important;
+  line-height: .86 !important;
+  font-weight: 800 !important;
+  letter-spacing: -.065em !important;
+  white-space: nowrap !important;
+}
+
+.reference-hero__title em {
+  display: block !important;
+  margin-top: 8px !important;
+  color: #078bca !important;
+  font-family: 'Newsreader', Georgia, serif !important;
+  font-size: 1.08em !important;
+  line-height: .9 !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  letter-spacing: -.045em !important;
+}
+
+.reference-hero__text {
+  max-width: 420px !important;
+  margin: 22px 0 0 !important;
+  color: #506681 !important;
+  font-size: 15px !important;
+  line-height: 1.48 !important;
+}
+
+.reference-hero__buttons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 23px !important;
+}
+
+.reference-hero-btn {
+  min-height: 47px !important;
+  padding: 0 20px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+}
+
+/* Header: branco por cima do fundo, como na referência. */
+.reference-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 68px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  z-index: 1000 !important;
+}
+
+.reference-header::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(255,255,255,.985) !important;
+  clip-path: polygon(0 0, 94% 0, 89.8% 100%, 0 100%) !important;
+  z-index: 0 !important;
+}
+
+.reference-header__inner {
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(1280px, calc(100% - 48px)) !important;
+  height: 68px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.reference-logo {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+}
+
+.reference-logo img {
+  width: 170px !important;
+  height: auto !important;
+}
+
+.reference-nav {
+  position: static !important;
+  margin-left: auto !important;
+  height: 68px !important;
+  width: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 27px !important;
+}
+
+.reference-nav a {
+  width: auto !important;
+  color: #14233d !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  white-space: nowrap !important;
+}
+
+.reference-actions {
+  position: static !important;
+  margin-left: 25px !important;
+  height: 68px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.reference-cta--blue {
+  width: 165px !important;
+  height: 38px !important;
+  background: #078bca !important;
+  border: 1px solid #078bca !important;
+  color: #fff !important;
+}
+
+.reference-cta--white {
+  width: 82px !important;
+  height: 38px !important;
+  background: #fff !important;
+  border: 1px solid #cbd5df !important;
+  color: #14233d !important;
+}
+
+.reference-sector-strip {
+  display: none !important;
+}
+
+.reference-intro {
+  padding-top: 48px !important;
+}
+
+@media (max-width: 1050px) {
+  .reference-hero__copy {
+    left: 7vw !important;
+    top: 108px !important;
+    width: 400px !important;
+  }
+
+  .reference-hero__title {
+    font-size: clamp(3.5rem, 5.5vw, 4.7rem) !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .reference-header,
+  .reference-header__inner {
+    height: 64px !important;
+  }
+
+  .reference-hero {
+    margin-top: -64px !important;
+    padding-top: 64px !important;
+    min-height: 620px !important;
+    background-size: auto 620px !important;
+  }
+
+  .reference-hero__copy {
+    left: 24px !important;
+    top: 112px !important;
+    width: 58% !important;
+  }
+}
+/* =========================================================
+   HEADER — FORMATO DA REFERÊNCIA
+   ========================================================= */
+
+.reference-header {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 68px !important;
+
+    z-index: 100 !important;
+
+    background: transparent !important;
+
+    border: 0 !important;
+    box-shadow: none !important;
+
+    overflow: visible !important;
+}
+
+
+/* FUNDO BRANCO DA BARRA */
+
+.reference-header::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: calc(100% - 7.5vw);
+    height: 68px;
+
+    background: #ffffff;
+
+    /*
+       A ponta inferior direita fica arredondada.
+       A inclinação cria o mesmo recorte da referência.
+    */
+    border-bottom-right-radius: 30px;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        97.2% 100%,
+        0 100%
+    );
+
+    z-index: -1;
+}
+
+
+/* TRIÂNGULO AZUL QUE APARECE POR TRÁS */
+
+.reference-header__corner {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+
+    width: 8vw !important;
+    height: 68px !important;
+
+    background: #82c7e7 !important;
+
+    clip-path: polygon(
+        35% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    opacity: 1 !important;
+
+    z-index: -2 !important;
+
+    pointer-events: none;
+}
+
+
+/* CONTEÚDO DA BARRA */
+
+.reference-header__inner {
+    position: relative !important;
+    z-index: 10 !important;
+
+    width: min(1280px, calc(100% - 48px)) !important;
+
+    height: 68px !important;
+
+    margin: 0 auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+}
+
+
+/* LOGO */
+
+.reference-header__logo {
+    display: flex !important;
+    align-items: center !important;
+
+    height: 68px !important;
+}
+
+.reference-header__logo img {
+    width: 170px !important;
+    height: auto !important;
+}
+
+
+/* MENU */
+
+.reference-header__nav {
+    margin-left: auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 27px !important;
+}
+
+.reference-header__nav a {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+
+    color: #17233c !important;
+
+    text-decoration: none !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* BOTÕES */
+
+.reference-header__actions {
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 10px !important;
+
+    margin-left: 28px !important;
+}
+
+.reference-header__button {
+    height: 39px !important;
+
+    border-radius: 999px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    white-space: nowrap !important;
+}
+
+.reference-header__button--primary {
+    background: #078bca !important;
+    color: #fff !important;
+    border: 1px solid #078bca !important;
+}
+
+.reference-header__button--outline {
+    background: #fff !important;
+    color: #17233c !important;
+    border: 1px solid #cbd5df !important;
+}
+
+
+/* =========================================================
+   HERO — FICA ATRÁS DA BARRA
+   ========================================================= */
+
+.reference-hero {
+    position: relative !important;
+
+    width: 100% !important;
+
+    height: calc(100vw * 359 / 986) !important;
+
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    background-image: url("Fundo página inicial.png") !important;
+    background-repeat: no-repeat !important;
+
+    background-size: 100% auto !important;
+    background-position: center top !important;
+}
+
+
+/* TEXTO POR CIMA DO FUNDO */
+
+.reference-hero__copy {
+    position: absolute !important;
+
+    z-index: 20 !important;
+
+    left: max(calc((100vw - 1280px) / 2), 8.6vw) !important;
+
+    top: 118px !important;
+
+    width: 430px !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    background: transparent !important;
+
+    padding: 0 !important;
+}
+
+
+/* SEM BARRA DE SETORES */
+
+.reference-sector-strip {
+    display: none !important;
+}
+/* =========================================================
+   HEADER FINAL — BARRA SOBRE A IMAGEM
+   ========================================================= */
+
+.reference-header {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 72px !important;
+
+    z-index: 99999 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    overflow: visible !important;
+}
+
+/* Forma branca da barra */
+.reference-header::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 72px;
+
+    background: #fff;
+
+    z-index: -1;
+
+    /*
+      A barra fica branca em cima
+      e termina em diagonal.
+    */
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        96% 100%,
+        0 100%
+    );
+}
+
+/*
+   Pequena extensão branca para criar
+   a curva/arredondamento da ponta.
+*/
+.reference-header::after {
+    content: "";
+
+    position: absolute;
+
+    right: 3.7%;
+    bottom: -1px;
+
+    width: 48px;
+    height: 28px;
+
+    background: #fff;
+
+    border-bottom-right-radius: 28px;
+
+    z-index: -1;
+
+    transform: skewX(-38deg);
+
+    transform-origin: bottom right;
+}
+
+
+/* Conteúdo do header */
+.reference-header__inner {
+    position: relative !important;
+
+    width: min(1190px, calc(100% - 40px)) !important;
+    height: 72px !important;
+
+    margin: 0 auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 30px !important;
+
+    z-index: 20 !important;
+}
+
+
+/* Logo */
+.reference-logo {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+}
+
+.reference-logo img {
+    width: 205px !important;
+    height: auto !important;
+    display: block !important;
+}
+
+
+/* Menu */
+.reference-nav {
+    margin-left: auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 27px !important;
+}
+
+.reference-nav a {
+    color: #15233d !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+
+    text-decoration: none !important;
+    white-space: nowrap !important;
+}
+
+
+/* Botões */
+.reference-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+}
+
+.reference-cta {
+    min-height: 40px !important;
+
+    padding: 0 18px !important;
+
+    border-radius: 999px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-decoration: none !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    white-space: nowrap !important;
+}
+
+.reference-cta--blue {
+    background: #078bca !important;
+    color: #fff !important;
+
+    border: 1px solid #078bca !important;
+}
+
+.reference-cta--white {
+    background: #fff !important;
+    color: #15233d !important;
+
+    border: 1px solid #d0d8e2 !important;
+}
+
+
+/* =========================================================
+   HERO — FICA POR BAIXO DA BARRA
+   ========================================================= */
+
+.reference-hero {
+    position: relative !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    background-image: url("Fundo página inicial.png") !important;
+    background-repeat: no-repeat !important;
+
+    /*
+       NÃO ampliar horizontalmente.
+       Mantém a proporção original do PNG.
+    */
+    background-size: 100% auto !important;
+    background-position: center top !important;
+}
+
+
+/*
+   O conteúdo começa por baixo da barra,
+   mas a imagem continua atrás dela.
+*/
+.reference-hero__content {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+
+/* Texto continua visível */
+.reference-hero__copy {
+    position: relative !important;
+    z-index: 5 !important;
+
+    background: transparent !important;
+}
+
+
+/* Retirar completamente a barra de categorias */
+.reference-sector-strip {
+    display: none !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .reference-header {
+        height: 68px !important;
+    }
+
+    .reference-header::before {
+        height: 68px !important;
+
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            94% 100%,
+            0 100%
+        );
+    }
+
+    .reference-header::after {
+        right: 3%;
+        bottom: -1px;
+
+        width: 38px;
+        height: 23px;
+
+        border-bottom-right-radius: 23px;
+
+        transform: skewX(-34deg);
+    }
+
+    .reference-header__inner {
+        width: calc(100% - 28px) !important;
+        height: 68px !important;
+    }
+
+    .reference-logo img {
+        width: 180px !important;
+    }
+
+    .reference-nav,
+    .reference-actions {
+        display: none !important;
+    }
+}
+/* TAMANHO MAIOR DO HEADER */
+.reference-header__inner {
+    height: 72px !important;
+    gap: 38px !important;
+}
+
+/* LOGO MAIOR */
+.reference-logo img {
+    width: 245px !important;
+}
+
+/* PALAVRAS DO MENU MAIORES */
+.reference-nav {
+    gap: 32px !important;
+}
+
+.reference-nav a {
+    font-size: 14px !important;
+    font-weight: 650 !important;
+}
+
+/* BOTÕES LIGEIRAMENTE MAIORES */
+.reference-cta {
+    min-height: 44px !important;
+    padding: 0 21px !important;
+    font-size: 11px !important;
+}
+
+/* ESPAÇO ENTRE OS BOTÕES */
+.reference-actions {
+    gap: 11px !important;
+}
