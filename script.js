@@ -6,9 +6,8 @@
 // ============================================================
 // OPORTUNIDADES
 // As oportunidades públicas vêm exclusivamente do Supabase.
-// O backoffice é a fonte de verdade.
+// O backoffice é a fonte de verdade — não manter vagas hardcoded aqui.
 // ============================================================
-
 
 // ============================================================
 // FEIRAS E EVENTOS — CARREGADOS DO SUPABASE
@@ -97,7 +96,7 @@ const b2bState = {
 
 
 // ============================================================
-// DOCUMENT READY
+// INICIALIZAÇÃO
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -134,9 +133,8 @@ function renderEvents() {
   container.innerHTML = regionalEvents
     .map(evt => {
 
-      const imageUrl = getEventImageUrl(
-        evt.image_url
-      );
+      const imageUrl =
+        getEventImageUrl(evt.image_url);
 
       const image = imageUrl
         ? `
@@ -146,12 +144,7 @@ function renderEvents() {
               evt.title || 'Evento Algartempo'
             )}"
             loading="lazy"
-            style="
-              width:100%;
-              height:100%;
-              object-fit:cover;
-              display:block;
-            "
+            style="width:100%;height:100%;object-fit:cover;display:block;"
           >
         `
         : `
@@ -171,7 +164,6 @@ function renderEvents() {
 
             <div class="event-editorial__date">
               <span>DATA</span>
-
               <strong>
                 ${escapeHtml(
                   evt.date_badge ||
@@ -192,12 +184,16 @@ function renderEvents() {
               </span>
 
               <h3>
-                ${escapeHtml(evt.title || '')}
+                ${escapeHtml(
+                  evt.title || ''
+                )}
               </h3>
 
               <p class="event-editorial__location">
                 <i class="fas fa-map-marker-alt"></i>
-                ${escapeHtml(evt.location || '')}
+                ${escapeHtml(
+                  evt.location || ''
+                )}
               </p>
 
               <p class="event-editorial__description">
@@ -276,28 +272,23 @@ function initStepNarrative() {
         document.getElementById('filter-sector');
 
       if (sectorSelect) {
-        sectorSelect.value =
-          targetSector;
+        sectorSelect.value = targetSector;
       }
 
       const jobsSection =
         document.getElementById('vagas');
 
       if (jobsSection) {
-
         jobsSection.scrollIntoView({
           behavior: 'smooth'
         });
-
       }
 
       if (
         typeof window.filterPublicOpportunities ===
         'function'
       ) {
-
         window.filterPublicOpportunities();
-
       }
 
     });
@@ -308,7 +299,7 @@ function initStepNarrative() {
 
 
 // ============================================================
-// B2B SELECTOR
+// B2B
 // ============================================================
 
 function initB2BSelector() {
@@ -412,9 +403,7 @@ function updateB2BSummary() {
 
 
 function triggerB2BModalWithState() {
-
   openB2BModal(b2bState);
-
 }
 
 
@@ -478,39 +467,31 @@ function initMobileMenu() {
 
 
   if (toggleBtn) {
-
     toggleBtn.addEventListener(
       'click',
       openDrawer
     );
-
   }
 
-
   if (closeBtn) {
-
     closeBtn.addEventListener(
       'click',
       closeDrawer
     );
-
   }
 
-
-  links.forEach(link => {
-
+  links.forEach(link =>
     link.addEventListener(
       'click',
       closeDrawer
-    );
-
-  });
+    )
+  );
 
 }
 
 
 // ============================================================
-// MODALS
+// MODAIS
 // ============================================================
 
 function initModals() {
@@ -572,18 +553,13 @@ function openApplyModal(
 
 
   if (titleDisplay) {
-
     titleDisplay.textContent =
       jobTitle;
-
   }
 
-
   if (hiddenInput) {
-
     hiddenInput.value =
       jobTitle;
-
   }
 
 
@@ -622,7 +598,9 @@ function closeApplyModal() {
 }
 
 
-function openB2BModal(prefill = null) {
+function openB2BModal(
+  prefill = null
+) {
 
   const modal =
     document.getElementById(
@@ -649,26 +627,18 @@ function openB2BModal(prefill = null) {
 
 
     if (headInput) {
-
       headInput.value =
         prefill.headcount;
-
     }
-
 
     if (timeInput) {
-
       timeInput.value =
         prefill.timeframe;
-
     }
 
-
     if (secInput) {
-
       secInput.value =
         prefill.sector;
-
     }
 
   }
@@ -731,18 +701,13 @@ function openEventMeetingModal(
 
 
   if (titleEl) {
-
     titleEl.textContent =
       eventTitle;
-
   }
 
-
   if (locEl) {
-
     locEl.textContent =
       eventLocation;
-
   }
 
 
@@ -871,7 +836,8 @@ function handleCandidateSubmit(e) {
 
   e.preventDefault();
 
-  const form = e.target;
+  const form =
+    e.target;
 
   const name =
     form.querySelector(
@@ -896,7 +862,8 @@ function handleB2BSubmit(e) {
 
   e.preventDefault();
 
-  const form = e.target;
+  const form =
+    e.target;
 
   const company =
     form.querySelector(
@@ -921,7 +888,9 @@ function handleEventMeetingSubmit(e) {
 
   e.preventDefault();
 
-  const form = e.target;
+  const form =
+    e.target;
+
 
   closeEventMeetingModal();
 
@@ -929,7 +898,7 @@ function handleEventMeetingSubmit(e) {
 
 
   showToast(
-    `Reunião no stand agendada com sucesso! Enviámos os detalhes para o seu contacto.`
+    'Reunião no stand agendada com sucesso! Enviámos os detalhes para o seu contacto.'
   );
 
 }
@@ -939,13 +908,15 @@ function handleDirectContact(e) {
 
   e.preventDefault();
 
-  const form = e.target;
+  const form =
+    e.target;
+
 
   form.reset();
 
 
   showToast(
-    `Mensagem enviada com sucesso! Responderemos o mais brevemente possível.`
+    'Mensagem enviada com sucesso! Responderemos o mais brevemente possível.'
   );
 
 }
@@ -974,7 +945,6 @@ function initScrollAnimations() {
     );
 
     return;
-
   }
 
 
@@ -984,9 +954,7 @@ function initScrollAnimations() {
 
         entries.forEach(entry => {
 
-          if (
-            entry.isIntersecting
-          ) {
+          if (entry.isIntersecting) {
 
             entry.target.classList.add(
               'is-visible'
@@ -1014,23 +982,17 @@ function initScrollAnimations() {
 }
 
 
-/* =========================================================
-   ALGARTEMPO — OPORTUNIDADES PÚBLICAS
-   Liga o Backoffice à página pública
-   ========================================================= */
+// =========================================================
+// OPORTUNIDADES PÚBLICAS
+// Supabase = fonte de verdade
+// =========================================================
 
 (function () {
 
   let publicOpportunities = [];
-
   let filteredOpportunities = [];
-
   let publicOffices = [];
 
-
-  // ==========================================================
-  // ESCAPE
-  // ==========================================================
 
   function escapeOpportunityHtml(value) {
 
@@ -1041,19 +1003,31 @@ function initScrollAnimations() {
       return "";
     }
 
+
     return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /'/g,
+        "&#039;"
+      );
 
   }
 
-
-  // ==========================================================
-  // MEDIA
-  // ==========================================================
 
   function getOpportunityMediaUrl(path) {
 
@@ -1061,13 +1035,18 @@ function initScrollAnimations() {
       return "";
     }
 
+
     const value =
       String(path).trim();
 
 
     if (
-      value.startsWith("http://") ||
-      value.startsWith("https://")
+      value.startsWith(
+        "http://"
+      ) ||
+      value.startsWith(
+        "https://"
+      )
     ) {
 
       return value;
@@ -1077,8 +1056,14 @@ function initScrollAnimations() {
 
     const cleanPath =
       value
-        .replace(/^\/+/, "")
-        .replace(/^media\//, "");
+        .replace(
+          /^\/+/,
+          ""
+        )
+        .replace(
+          /^media\//,
+          ""
+        );
 
 
     return `${SUPABASE_URL}/storage/v1/object/public/media/${cleanPath}`;
@@ -1091,6 +1076,7 @@ function initScrollAnimations() {
     if (!path) {
       return false;
     }
+
 
     const value =
       String(path).toLowerCase();
@@ -1106,10 +1092,6 @@ function initScrollAnimations() {
 
   }
 
-
-  // ==========================================================
-  // DATA
-  // ==========================================================
 
   function formatOpportunityDate(date) {
 
@@ -1144,11 +1126,11 @@ function initScrollAnimations() {
   }
 
 
-  function normalizeOpportunityText(
-    value
-  ) {
+  function normalizeOpportunityText(value) {
 
-    return String(value || "")
+    return String(
+      value || ""
+    )
       .normalize("NFD")
       .replace(
         /[\u0300-\u036f]/g,
@@ -1159,10 +1141,6 @@ function initScrollAnimations() {
 
   }
 
-
-  // ==========================================================
-  // POLO
-  // ==========================================================
 
   function getOpportunityOffice(job) {
 
@@ -1186,14 +1164,11 @@ function initScrollAnimations() {
     }
 
 
-    return (
-      publicOffices.find(
-        office =>
-          String(office.id) ===
-          String(job.office_id)
-      ) ||
-      null
-    );
+    return publicOffices.find(
+      office =>
+        String(office.id) ===
+        String(job.office_id)
+    ) || null;
 
   }
 
@@ -1220,8 +1195,12 @@ function initScrollAnimations() {
     if (
       name &&
       city &&
-      normalizeOpportunityText(name) !==
-        normalizeOpportunityText(city)
+      normalizeOpportunityText(
+        name
+      ) !==
+      normalizeOpportunityText(
+        city
+      )
     ) {
 
       return `${name} — ${city}`;
@@ -1276,11 +1255,9 @@ function initScrollAnimations() {
         ${publicOffices
           .map(
             office => `
-              <option
-                value="office:${escapeOpportunityHtml(
-                  office.id
-                )}"
-              >
+              <option value="office:${escapeOpportunityHtml(
+                office.id
+              )}">
                 ${escapeOpportunityHtml(
                   getOfficeLabel(office)
                 )}
@@ -1292,8 +1269,7 @@ function initScrollAnimations() {
 
 
       if (
-        currentValue ===
-          "todos" ||
+        currentValue === "todos" ||
         publicOffices.some(
           office =>
             `office:${office.id}` ===
@@ -1338,20 +1314,23 @@ function initScrollAnimations() {
         .querySelectorAll(
           ".location-chip"
         )
-        .forEach(chip =>
-          chip.remove()
+        .forEach(
+          chip =>
+            chip.remove()
         );
 
 
-      chipParent.childNodes.forEach(
-        node => {
+      chipParent.childNodes
+        .forEach(node => {
 
           if (
             node.nodeType ===
               Node.TEXT_NODE &&
             node.textContent
               .toLowerCase()
-              .includes("concelhos")
+              .includes(
+                "concelhos"
+              )
           ) {
 
             node.textContent =
@@ -1359,8 +1338,7 @@ function initScrollAnimations() {
 
           }
 
-        }
-      );
+        });
 
 
       const fragment =
@@ -1449,49 +1427,52 @@ function initScrollAnimations() {
       .querySelectorAll(
         ".location-chip"
       )
-      .forEach(chip => {
+      .forEach(
+        chip => {
 
-        const active =
-          (
-            chip.dataset.location ||
-            "todos"
-          ) === value;
-
-
-        chip.classList.toggle(
-          "active",
-          active
-        );
+          const active =
+            (
+              chip.dataset.location ||
+              "todos"
+            ) ===
+            value;
 
 
-        if (active) {
-
-          chip.classList.add(
-            "bg-sky-100",
-            "text-sky-800"
-          );
-
-          chip.classList.remove(
-            "bg-slate-100",
-            "text-slate-700"
-          );
-
-        } else {
-
-          chip.classList.remove(
+          chip.classList.toggle(
             "active",
-            "bg-sky-100",
-            "text-sky-800"
+            active
           );
 
-          chip.classList.add(
-            "bg-slate-100",
-            "text-slate-700"
-          );
+
+          if (active) {
+
+            chip.classList.add(
+              "bg-sky-100",
+              "text-sky-800"
+            );
+
+            chip.classList.remove(
+              "bg-slate-100",
+              "text-slate-700"
+            );
+
+          } else {
+
+            chip.classList.remove(
+              "active",
+              "bg-sky-100",
+              "text-sky-800"
+            );
+
+            chip.classList.add(
+              "bg-slate-100",
+              "text-slate-700"
+            );
+
+          }
 
         }
-
-      });
+      );
 
   }
 
@@ -1562,447 +1543,396 @@ function initScrollAnimations() {
 
     container.innerHTML =
       filteredOpportunities
-        .map(job => {
+        .map(
+          job => {
 
-          const mediaUrl =
-            getOpportunityMediaUrl(
-              job.image_url
-            );
-
-
-          const video =
-            isOpportunityVideo(
-              job.image_url
-            );
+            const mediaUrl =
+              getOpportunityMediaUrl(
+                job.image_url
+              );
 
 
-          let mediaHtml = "";
+            const video =
+              isOpportunityVideo(
+                job.image_url
+              );
 
 
-          // ==================================================
-          // VIDEO
-          // ==================================================
+            let mediaHtml =
+              "";
 
-          if (
-            mediaUrl &&
-            video
-          ) {
 
-            mediaHtml = `
-              <div class="relative h-52 bg-slate-100 overflow-hidden">
+            if (
+              mediaUrl &&
+              video
+            ) {
 
-                <video
-                  src="${escapeOpportunityHtml(
-                    mediaUrl
-                  )}"
-                  class="w-full h-full object-cover"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="auto"
-                ></video>
+              mediaHtml = `
+                <div class="relative h-52 bg-slate-100 overflow-hidden">
 
-                ${
-                  job.featured
-                    ? `
-                      <div class="absolute top-3 left-3">
+                  <video
+                    src="${escapeOpportunityHtml(
+                      mediaUrl
+                    )}"
+                    class="w-full h-full object-cover"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                  ></video>
 
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wide">
+                </div>
+              `;
 
-                          <i class="fas fa-star"></i>
+            } else if (mediaUrl) {
 
-                          Destaque
+              mediaHtml = `
+                <div class="relative h-52 bg-slate-100 overflow-hidden">
 
-                        </span>
-
-                      </div>
-                    `
-                    : ""
-                }
-
-              </div>
-            `;
-
-          }
-
-          // ==================================================
-          // IMAGE
-          // ==================================================
-
-          else if (mediaUrl) {
-
-            mediaHtml = `
-              <div class="relative h-52 bg-slate-100 overflow-hidden">
-
-                <img
-                  src="${escapeOpportunityHtml(
-                    mediaUrl
-                  )}"
-                  alt="${escapeOpportunityHtml(
-                    job.title ||
+                  <img
+                    src="${escapeOpportunityHtml(
+                      mediaUrl
+                    )}"
+                    alt="${escapeOpportunityHtml(
+                      job.title ||
                       "Oportunidade Algartempo"
-                  )}"
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                >
+                    )}"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  >
 
-                ${
-                  job.featured
-                    ? `
-                      <div class="absolute top-3 left-3">
+                  ${
+                    job.featured
+                      ? `
+                        <div class="absolute top-3 left-3">
 
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wide">
+                          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wide">
 
-                          <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            Destaque
 
-                          Destaque
+                          </span>
 
-                        </span>
+                        </div>
+                      `
+                      : ""
+                  }
 
-                      </div>
-                    `
-                    : ""
-                }
+                </div>
+              `;
 
-              </div>
-            `;
+            } else {
 
-          }
+              mediaHtml = `
+                <div class="relative h-52 bg-[#f4efe6] flex items-center justify-center overflow-hidden">
 
-          // ==================================================
-          // SEM MEDIA
-          // ==================================================
+                  <div class="text-center">
 
-          else {
+                    <div class="w-14 h-14 mx-auto rounded-full bg-white border border-[#e2d9cc] flex items-center justify-center mb-3">
 
-            mediaHtml = `
-              <div class="relative h-52 bg-[#f4efe6] flex items-center justify-center overflow-hidden">
+                      <i class="fas fa-briefcase text-sky-600 text-lg"></i>
 
-                <div class="text-center">
+                    </div>
 
-                  <div class="w-14 h-14 mx-auto rounded-full bg-white border border-[#e2d9cc] flex items-center justify-center mb-3">
-
-                    <i class="fas fa-briefcase text-sky-600 text-lg"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                      Oportunidade
+                    </span>
 
                   </div>
 
-                  <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    Oportunidade
-                  </span>
+
+                  ${
+                    job.featured
+                      ? `
+                        <div class="absolute top-3 left-3">
+
+                          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wide">
+
+                            <i class="fas fa-star"></i>
+                            Destaque
+
+                          </span>
+
+                        </div>
+                      `
+                      : ""
+                  }
+
+                </div>
+              `;
+
+            }
+
+
+            const sector =
+              job.sector ||
+              "Oportunidade";
+
+
+            const location =
+              job.location ||
+              job.region ||
+              "Algarve";
+
+
+            const contract =
+              job.contract_type ||
+              "";
+
+
+            const schedule =
+              job.schedule ||
+              "";
+
+
+            const office =
+              getOpportunityOffice(
+                job
+              );
+
+
+            const officeLabel =
+              getOfficeLabel(
+                office
+              );
+
+
+            return `
+              <article
+                class="editorial-paper rounded-2xl overflow-hidden bg-white border border-[#e2d9cc] hover:border-sky-300 hover:shadow-lg transition-all duration-300 flex flex-col"
+              >
+
+                ${mediaHtml}
+
+
+                <div class="p-5 flex flex-col flex-1">
+
+                  <div class="flex flex-wrap items-center gap-2 mb-3">
+
+                    <span class="px-2.5 py-1 rounded-full bg-sky-50 text-sky-700 text-[10px] font-bold uppercase tracking-wide">
+
+                      ${escapeOpportunityHtml(
+                        sector
+                      )}
+
+                    </span>
+
+
+                    ${
+                      contract
+                        ? `
+                          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-semibold">
+
+                            ${escapeOpportunityHtml(
+                              contract
+                            )}
+
+                          </span>
+                        `
+                        : ""
+                    }
+
+                  </div>
+
+
+                  <h3 class="text-lg font-heading font-bold text-slate-900 leading-tight mb-2">
+
+                    ${escapeOpportunityHtml(
+                      job.title
+                    )}
+
+                  </h3>
+
+
+                  ${
+                    job.company
+                      ? `
+                        <p class="text-sm font-semibold text-slate-700 mb-1">
+
+                          ${escapeOpportunityHtml(
+                            job.company
+                          )}
+
+                        </p>
+                      `
+                      : ""
+                  }
+
+
+                  <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+
+                    <i class="fas fa-map-marker-alt text-sky-600"></i>
+
+                    <span>
+                      ${escapeOpportunityHtml(
+                        location
+                      )}
+                    </span>
+
+                  </div>
+
+
+                  ${
+                    officeLabel
+                      ? `
+                        <div class="flex items-center gap-2 text-[11px] text-sky-700 mb-4">
+
+                          <i class="fas fa-building text-sky-600"></i>
+
+                          <span class="font-semibold">
+                            ${escapeOpportunityHtml(
+                              officeLabel
+                            )}
+                          </span>
+
+                        </div>
+                      `
+                      : ""
+                  }
+
+
+                  ${
+                    job.description
+                      ? `
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+
+                          ${escapeOpportunityHtml(
+                            job.description
+                          )}
+
+                        </p>
+                      `
+                      : ""
+                  }
+
+
+                  <div class="mt-auto pt-4 border-t border-[#e2d9cc]">
+
+
+                    ${
+                      schedule
+                        ? `
+                          <div class="flex items-center gap-2 text-[11px] text-slate-500 mb-2">
+
+                            <i class="fas fa-clock text-sky-600"></i>
+
+                            <span>
+                              ${escapeOpportunityHtml(
+                                schedule
+                              )}
+                            </span>
+
+                          </div>
+                        `
+                        : ""
+                    }
+
+
+                    ${
+                      job.deadline
+                        ? `
+                          <div class="flex items-center gap-2 text-[11px] text-slate-500 mb-4">
+
+                            <i class="fas fa-calendar-alt text-sky-600"></i>
+
+                            <span>
+
+                              Candidaturas até
+                              ${escapeOpportunityHtml(
+                                formatOpportunityDate(
+                                  job.deadline
+                                )
+                              )}
+
+                            </span>
+
+                          </div>
+                        `
+                        : ""
+                    }
+
+
+                    <button
+                      type="button"
+                      class="public-job-apply-btn w-full py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+                      data-job-title="${escapeOpportunityHtml(
+                        job.title || ""
+                      )}"
+                      data-job-company="${escapeOpportunityHtml(
+                        job.company || ""
+                      )}"
+                    >
+
+                      <span>
+                        Candidatar-me
+                      </span>
+
+                      <i class="fas fa-arrow-right"></i>
+
+                    </button>
+
+                  </div>
 
                 </div>
 
-                ${
-                  job.featured
-                    ? `
-                      <div class="absolute top-3 left-3">
-
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wide">
-
-                          <i class="fas fa-star"></i>
-
-                          Destaque
-
-                        </span>
-
-                      </div>
-                    `
-                    : ""
-                }
-
-              </div>
+              </article>
             `;
 
           }
-
-
-          // ==================================================
-          // CAMPOS
-          // ==================================================
-
-          const sector =
-            job.sector ||
-            "Oportunidade";
-
-
-          const location =
-            job.location ||
-            job.region ||
-            "Portugal";
-
-
-          const contract =
-            job.contract_type ||
-            "";
-
-
-          const schedule =
-            job.schedule ||
-            "";
-
-
-          const office =
-            getOpportunityOffice(
-              job
-            );
-
-
-          const officeLabel =
-            getOfficeLabel(
-              office
-            );
-
-
-          // ==================================================
-          // CARD
-          // ==================================================
-
-          return `
-            <article
-              class="editorial-paper rounded-2xl overflow-hidden bg-white border border-[#e2d9cc] hover:border-sky-300 hover:shadow-lg transition-all duration-300 flex flex-col"
-            >
-
-              ${mediaHtml}
-
-
-              <div class="p-5 flex flex-col flex-1">
-
-
-                <div class="flex flex-wrap items-center gap-2 mb-3">
-
-                  <span class="px-2.5 py-1 rounded-full bg-sky-50 text-sky-700 text-[10px] font-bold uppercase tracking-wide">
-
-                    ${escapeOpportunityHtml(
-                      sector
-                    )}
-
-                  </span>
-
-
-                  ${
-                    contract
-                      ? `
-                        <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-semibold">
-
-                          ${escapeOpportunityHtml(
-                            contract
-                          )}
-
-                        </span>
-                      `
-                      : ""
-                  }
-
-                </div>
-
-
-                <h3 class="text-lg font-heading font-bold text-slate-900 leading-tight mb-2">
-
-                  ${escapeOpportunityHtml(
-                    job.title ||
-                      ""
-                  )}
-
-                </h3>
-
-
-                ${
-                  job.company
-                    ? `
-                      <p class="text-sm font-semibold text-slate-700 mb-1">
-
-                        ${escapeOpportunityHtml(
-                          job.company
-                        )}
-
-                      </p>
-                    `
-                    : ""
-                }
-
-
-                <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
-
-                  <i class="fas fa-map-marker-alt text-sky-600"></i>
-
-                  <span>
-                    ${escapeOpportunityHtml(
-                      location
-                    )}
-                  </span>
-
-                </div>
-
-
-                ${
-                  officeLabel
-                    ? `
-                      <div class="flex items-center gap-2 text-[11px] text-sky-700 mb-4">
-
-                        <i class="fas fa-building text-sky-600"></i>
-
-                        <span class="font-semibold">
-
-                          ${escapeOpportunityHtml(
-                            officeLabel
-                          )}
-
-                        </span>
-
-                      </div>
-                    `
-                    : ""
-                }
-
-
-                ${
-                  job.description
-                    ? `
-                      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-
-                        ${escapeOpportunityHtml(
-                          job.description
-                        )}
-
-                      </p>
-                    `
-                    : ""
-                }
-
-
-                <div class="mt-auto pt-4 border-t border-[#e2d9cc]">
-
-
-                  ${
-                    schedule
-                      ? `
-                        <div class="flex items-center gap-2 text-[11px] text-slate-500 mb-2">
-
-                          <i class="fas fa-clock text-sky-600"></i>
-
-                          <span>
-
-                            ${escapeOpportunityHtml(
-                              schedule
-                            )}
-
-                          </span>
-
-                        </div>
-                      `
-                      : ""
-                  }
-
-
-                  ${
-                    job.deadline
-                      ? `
-                        <div class="flex items-center gap-2 text-[11px] text-slate-500 mb-4">
-
-                          <i class="fas fa-calendar-alt text-sky-600"></i>
-
-                          <span>
-
-                            Candidaturas até
-                            ${escapeOpportunityHtml(
-                              formatOpportunityDate(
-                                job.deadline
-                              )
-                            )}
-
-                          </span>
-
-                        </div>
-                      `
-                      : ""
-                  }
-
-
-                  <button
-                    type="button"
-                    class="public-job-apply-btn w-full py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
-
-                    data-job-title="${escapeOpportunityHtml(
-                      job.title || ""
-                    )}"
-
-                    data-job-company="${escapeOpportunityHtml(
-                      job.company || ""
-                    )}"
-                  >
-
-                    <span>
-                      Candidatar-me
-                    </span>
-
-                    <i class="fas fa-arrow-right"></i>
-
-                  </button>
-
-
-                </div>
-
-              </div>
-
-            </article>
-          `;
-
-        })
+        )
         .join("");
 
-
-    // ========================================================
-    // CANDIDATURA
-    // ========================================================
 
     container
       .querySelectorAll(
         ".public-job-apply-btn"
       )
-      .forEach(button => {
+      .forEach(
+        button => {
 
-        button.addEventListener(
-          "click",
-          () => {
+          button.addEventListener(
+            "click",
+            () => {
 
-            const title =
-              button.dataset.jobTitle ||
-              "";
-
-
-            const company =
-              button.dataset.jobCompany ||
-              "";
+              const title =
+                button.dataset.jobTitle ||
+                "";
 
 
-            const applicationTitle =
-              company
-                ? `${title} — ${company}`
-                : title;
+              const company =
+                button.dataset.jobCompany ||
+                "";
 
 
-            if (
-              typeof openApplyModal ===
-              "function"
-            ) {
+              const applicationTitle =
+                company
+                  ? `${title} — ${company}`
+                  : title;
 
-              openApplyModal(
-                applicationTitle
-              );
 
-            } else {
+              if (
+                typeof openApplyModal ===
+                "function"
+              ) {
 
-              console.warn(
-                "openApplyModal não está disponível."
-              );
+                openApplyModal(
+                  applicationTitle
+                );
+
+              } else {
+
+                console.warn(
+                  "openApplyModal não está disponível."
+                );
+
+              }
 
             }
+          );
 
-          }
-        );
-
-      });
+        }
+      );
 
   }
 
@@ -2033,9 +1963,9 @@ function initScrollAnimations() {
 
     const search =
       searchInput
-        ? searchInput.value
-            .trim()
-            .toLowerCase()
+        ? normalizeOpportunityText(
+            searchInput.value
+          )
         : "";
 
 
@@ -2051,10 +1981,6 @@ function initScrollAnimations() {
         : "todos";
 
 
-    /*
-     * Polo selecionado através de
-     * "Ver oportunidades" num escritório.
-     */
     const selectedOfficeId =
       window.algartempoSelectedOfficeId ||
       null;
@@ -2064,9 +1990,11 @@ function initScrollAnimations() {
       publicOpportunities.filter(
         job => {
 
-          // ================================================
-          // PESQUISA
-          // ================================================
+          const office =
+            getOpportunityOffice(
+              job
+            );
+
 
           const searchableText = [
 
@@ -2076,85 +2004,129 @@ function initScrollAnimations() {
             job.region,
             job.sector,
             job.description,
-            job.requirements
+            job.requirements,
+
+            office &&
+              office.name,
+
+            office &&
+              office.city,
+
+            office &&
+              office.region
 
           ]
             .filter(Boolean)
-            .join(" ")
-            .toLowerCase();
+            .join(" ");
 
 
           const matchesSearch =
             !search ||
-            searchableText.includes(
+            normalizeOpportunityText(
+              searchableText
+            ).includes(
               search
             );
 
 
-          // ================================================
-          // SETOR
-          // ================================================
-
           const jobSector =
-            String(
-              job.sector || ""
-            ).toLowerCase();
+            normalizeOpportunityText(
+              job.sector
+            );
 
 
           const matchesSector =
             sector === "todos" ||
             jobSector.includes(
-              sector.toLowerCase()
+              normalizeOpportunityText(
+                sector
+              )
             );
 
 
-          // ================================================
-          // POLO
-          // ================================================
-
-          let matchesOffice = true;
-
-
-          if (location.startsWith("office:")) {
-
-            const selectedLocationOfficeId =
-              location.replace(
-                "office:",
-                ""
-              );
-
-
-            matchesOffice =
-              String(
-                job.office_id
-              ) ===
-              String(
-                selectedLocationOfficeId
-              );
-
-          }
+          let matchesLocation =
+            true;
 
 
           if (
-            selectedOfficeId
+            location !==
+            "todos"
           ) {
 
-            matchesOffice =
-              matchesOffice &&
-              String(
-                job.office_id
-              ) ===
-              String(
-                selectedOfficeId
-              );
+            const locationOfficeId =
+              location.startsWith(
+                "office:"
+              )
+                ? location.substring(
+                    7
+                  )
+                : null;
+
+
+            if (
+              locationOfficeId
+            ) {
+
+              matchesLocation =
+                String(
+                  job.office_id ||
+                  ""
+                ) ===
+                String(
+                  locationOfficeId
+                );
+
+            } else {
+
+              const jobLocationText =
+                normalizeOpportunityText(
+                  [
+                    job.location,
+                    job.region,
+
+                    office &&
+                      office.name,
+
+                    office &&
+                      office.city,
+
+                    office &&
+                      office.region
+
+                  ]
+                    .filter(Boolean)
+                    .join(" ")
+                );
+
+
+              matchesLocation =
+                jobLocationText.includes(
+                  normalizeOpportunityText(
+                    location
+                  )
+                );
+
+            }
 
           }
+
+
+          const matchesSelectedOffice =
+            !selectedOfficeId ||
+            String(
+              job.office_id ||
+              ""
+            ) ===
+            String(
+              selectedOfficeId
+            );
 
 
           return (
             matchesSearch &&
             matchesSector &&
-            matchesOffice
+            matchesLocation &&
+            matchesSelectedOffice
           );
 
         }
@@ -2172,16 +2144,19 @@ function initScrollAnimations() {
 
 
   // ==========================================================
-  // DISPONIBILIZAR FUNÇÃO GLOBAL
-  // IMPORTANTE PARA OS BOTÕES DOS POLOS
+  // EXPOR GLOBAL
   // ==========================================================
 
   window.filterPublicOpportunities =
     filterPublicOpportunities;
 
 
+  window.refreshOpportunityOfficeFilters =
+    setOpportunityLocationControls;
+
+
   // ==========================================================
-  // CARREGAR OPORTUNIDADES
+  // CARREGAR OPORTUNIDADES + POLOS
   // ==========================================================
 
   async function loadPublicOpportunities() {
@@ -2216,17 +2191,15 @@ function initScrollAnimations() {
 
     try {
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
+      const [
+        opportunitiesResponse,
+        officesResponse
+      ] = await Promise.all([
+
+        supabaseClient
           .from("opportunities")
           .select("*")
-          .eq(
-            "published",
-            true
-          )
+          .eq("published", true)
           .order(
             "featured",
             {
@@ -2244,14 +2217,50 @@ function initScrollAnimations() {
             {
               ascending: false
             }
-          );
+          ),
 
 
-      if (error) {
+        supabaseClient
+          .from("offices")
+          .select("*")
+          .eq("published", true)
+          .order(
+            "sort_order",
+            {
+              ascending: true
+            }
+          )
+          .order(
+            "name",
+            {
+              ascending: true
+            }
+          )
+
+      ]);
+
+
+      const {
+        data: opportunitiesData,
+        error: opportunitiesError
+      } =
+        opportunitiesResponse;
+
+
+      const {
+        data: officesData,
+        error: officesError
+      } =
+        officesResponse;
+
+
+      if (
+        opportunitiesError
+      ) {
 
         console.error(
           "Erro ao carregar oportunidades:",
-          error
+          opportunitiesError
         );
 
 
@@ -2263,15 +2272,11 @@ function initScrollAnimations() {
               <i class="fas fa-exclamation-triangle text-2xl text-red-500 mb-4"></i>
 
               <h3 class="text-lg font-heading font-bold text-slate-900 mb-2">
-
                 Não foi possível carregar as oportunidades.
-
               </h3>
 
               <p class="text-sm text-slate-500">
-
                 Tenta novamente dentro de alguns instantes.
-
               </p>
 
             </div>
@@ -2284,15 +2289,42 @@ function initScrollAnimations() {
       }
 
 
+      if (
+        officesError
+      ) {
+
+        console.warn(
+          "Não foi possível carregar os polos para as oportunidades:",
+          officesError
+        );
+
+      }
+
+
       publicOpportunities =
-        data || [];
+        opportunitiesData || [];
+
+
+      publicOffices =
+        officesData || [];
+
+
+      window.algartempoPublicOffices =
+        publicOffices;
+
+
+      setOpportunityLocationControls(
+        publicOffices
+      );
 
 
       filteredOpportunities =
-        [...publicOpportunities];
+        [
+          ...publicOpportunities
+        ];
 
 
-      renderPublicOpportunities();
+      filterPublicOpportunities();
 
     } catch (error) {
 
@@ -2310,9 +2342,7 @@ function initScrollAnimations() {
             <i class="fas fa-exclamation-triangle text-2xl text-red-500 mb-4"></i>
 
             <p class="text-sm text-slate-500">
-
               Ocorreu um erro ao carregar as oportunidades.
-
             </p>
 
           </div>
@@ -2326,7 +2356,7 @@ function initScrollAnimations() {
 
 
   // ==========================================================
-  // FILTROS
+  // EVENTOS DOS FILTROS
   // ==========================================================
 
   function setupOpportunityFilters() {
@@ -2349,267 +2379,127 @@ function initScrollAnimations() {
       );
 
 
-    if (searchInput) {
+    if (
+      searchInput &&
+      !searchInput.dataset.algartempoBound
+    ) {
 
-      if (
-        !searchInput.dataset
-          .opportunityFilterReady
-      ) {
-
-        searchInput.dataset
-          .opportunityFilterReady =
-          "true";
+      searchInput.addEventListener(
+        "input",
+        filterPublicOpportunities
+      );
 
 
-        searchInput.addEventListener(
-          "input",
-          filterPublicOpportunities
-        );
-
-      }
+      searchInput.dataset.algartempoBound =
+        "true";
 
     }
 
 
-    if (sectorSelect) {
+    if (
+      sectorSelect &&
+      !sectorSelect.dataset.algartempoBound
+    ) {
 
-      if (
-        !sectorSelect.dataset
-          .opportunityFilterReady
-      ) {
-
-        sectorSelect.dataset
-          .opportunityFilterReady =
-          "true";
+      sectorSelect.addEventListener(
+        "change",
+        filterPublicOpportunities
+      );
 
 
-        sectorSelect.addEventListener(
-          "change",
-          filterPublicOpportunities
-        );
-
-      }
+      sectorSelect.dataset.algartempoBound =
+        "true";
 
     }
 
 
-    if (locationSelect) {
+    if (
+      locationSelect &&
+      !locationSelect.dataset.algartempoBound
+    ) {
 
-      if (
-        !locationSelect.dataset
-          .opportunityFilterReady
-      ) {
+      locationSelect.addEventListener(
+        "change",
+        () => {
 
-        locationSelect.dataset
-          .opportunityFilterReady =
-          "true";
-
-
-        locationSelect.addEventListener(
-          "change",
-          () => {
-
-            /*
-             * Quando o utilizador muda
-             * manualmente o polo, limpa
-             * a seleção feita através de
-             * um cartão de escritório.
-             */
-
-            if (
-              locationSelect.value ===
-              "todos"
-            ) {
-
-              window.algartempoSelectedOfficeId =
-                null;
-
-            } else if (
-              locationSelect.value.startsWith(
-                "office:"
-              )
-            ) {
-
-              window.algartempoSelectedOfficeId =
-                locationSelect.value.replace(
-                  "office:",
-                  ""
-                );
-
-            }
+          window.algartempoSelectedOfficeId =
+            null;
 
 
-            filterPublicOpportunities();
-
-          }
-        );
-
-      }
-
-    }
-
-
-    // ========================================================
-    // CHIPS
-    // ========================================================
-
-    document
-      .querySelectorAll(
-        ".location-chip"
-      )
-      .forEach(chip => {
-
-        if (
-          chip.dataset
-            .opportunityFilterReady
-        ) {
-
-          return;
+          filterPublicOpportunities();
 
         }
+      );
 
 
-        chip.dataset
-          .opportunityFilterReady =
-          "true";
+      locationSelect.dataset.algartempoBound =
+        "true";
+
+    }
 
 
-        chip.addEventListener(
-          "click",
-          () => {
+    if (
+      !document.body.dataset
+        .algartempoLocationChipsBound
+    ) {
 
-            const location =
-              chip.dataset.location ||
-              "todos";
+      document.addEventListener(
+        "click",
+        event => {
 
-
-            if (locationSelect) {
-
-              locationSelect.value =
-                location;
-
-            }
-
-
-            if (
-              location ===
-              "todos"
-            ) {
-
-              window.algartempoSelectedOfficeId =
-                null;
-
-            } else if (
-              location.startsWith(
-                "office:"
-              )
-            ) {
-
-              window.algartempoSelectedOfficeId =
-                location.replace(
-                  "office:",
-                  ""
-                );
-
-            }
-
-
-            syncOpportunityLocationChipState(
-              location
+          const chip =
+            event.target.closest(
+              ".location-chip"
             );
 
 
-            filterPublicOpportunities();
+          if (!chip) {
+            return;
+          }
+
+
+          const location =
+            chip.dataset.location ||
+            "todos";
+
+
+          window.algartempoSelectedOfficeId =
+            null;
+
+
+          if (locationSelect) {
+
+            locationSelect.value =
+              location;
 
           }
-        );
-
-      });
-
-  }
 
 
-  // ==========================================================
-  // CARREGAR POLOS PARA OS FILTROS
-  // ==========================================================
-
-  async function loadPublicOpportunityOffices() {
-
-    try {
-
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from("offices")
-          .select("*")
-          .eq(
-            "published",
-            true
-          )
-          .order(
-            "sort_order",
-            {
-              ascending: true
-            }
-          )
-          .order(
-            "name",
-            {
-              ascending: true
-            }
+          syncOpportunityLocationChipState(
+            location
           );
 
 
-      if (error) {
+          filterPublicOpportunities();
 
-        console.error(
-          "Erro ao carregar polos para oportunidades:",
-          error
-        );
-
-        setupOpportunityFilters();
-
-        return;
-
-      }
-
-
-      setOpportunityLocationControls(
-        data || []
+        }
       );
 
 
-      // Re-render para permitir
-      // imediatamente o filtro por polo.
-      filterPublicOpportunities();
-
-    } catch (error) {
-
-      console.error(
-        "Erro inesperado ao carregar polos:",
-        error
-      );
-
-      setupOpportunityFilters();
+      document.body.dataset
+        .algartempoLocationChipsBound =
+        "true";
 
     }
 
   }
 
-
-  // ==========================================================
-  // INIT
-  // ==========================================================
 
   document.addEventListener(
     "DOMContentLoaded",
     () => {
 
       setupOpportunityFilters();
-
-      loadPublicOpportunityOffices();
 
       loadPublicOpportunities();
 
@@ -2619,18 +2509,17 @@ function initScrollAnimations() {
 })();
 
 
-/* =========================================================
-   ALGARTEMPO — POLOS PÚBLICOS
-   Liga "Onde Estamos" ao Backoffice
-   ========================================================= */
+// ============================================================
+// POLOS PÚBLICOS
+// Liga "Onde Estamos" ao Backoffice
+// ============================================================
 
 (function () {
 
-  // ==========================================================
-  // ESCAPE
-  // ==========================================================
 
-  function escapeOfficeHtml(value) {
+  function escapeOfficeHtml(
+    value
+  ) {
 
     if (
       value === null ||
@@ -2667,11 +2556,9 @@ function initScrollAnimations() {
   }
 
 
-  // ==========================================================
-  // IMAGEM
-  // ==========================================================
-
-  function getOfficeImageUrl(path) {
+  function getOfficeImageUrl(
+    path
+  ) {
 
     if (!path) {
       return "";
@@ -2713,95 +2600,164 @@ function initScrollAnimations() {
   }
 
 
-  // ==========================================================
-  // SETORES
-  // ==========================================================
-
-  function parseOfficeSectors(
-    sectors
+  function normalizeOfficeNavigationText(
+    value
   ) {
 
-    if (!sectors) {
-      return [];
-    }
-
-
-    if (
-      Array.isArray(sectors)
-    ) {
-
-      return sectors
-        .map(item =>
-          String(item).trim()
-        )
-        .filter(Boolean);
-
-    }
-
-
-    return String(sectors)
-      .split(
-        /[,;\n|]+/
+    return String(
+      value || ""
+    )
+      .normalize("NFD")
+      .replace(
+        /[\u0300-\u036f]/g,
+        ""
       )
-      .map(item =>
-        item.trim()
+      .replace(
+        /\s+/g,
+        " "
       )
-      .filter(Boolean);
+      .trim()
+      .toLowerCase();
 
   }
 
 
   // ==========================================================
-  // GALERIA
+  // ATUALIZAR A BARRA DE POLOS
   // ==========================================================
 
-  function parseOfficeGallery(
-    gallery
+  function syncPublicOfficeNavigation(
+    offices
   ) {
 
-    if (!gallery) {
-      return [];
-    }
-
-
     if (
-      Array.isArray(gallery)
+      !Array.isArray(offices) ||
+      !offices.length
     ) {
 
-      return gallery;
+      return;
 
     }
 
 
-    if (
-      typeof gallery ===
-      "string"
-    ) {
+    const legacyNames =
+      new Set([
 
-      try {
+        "faro",
+        "loule",
+        "loulé",
+        "albufeira",
+        "portimao",
+        "portimão",
+        "lagos",
+        "tavira",
+        "vrsa",
+        "silves",
+        "s. bras",
+        "s. brás",
+        "sao bras",
+        "são brás"
 
-        const parsed =
-          JSON.parse(
-            gallery
-          );
+      ]);
 
 
-        return Array.isArray(
-          parsed
+    const navItems =
+      [
+        ...document.querySelectorAll(
+          "a, button"
         )
-          ? parsed
-          : [];
+      ]
+        .filter(
+          element => {
 
-      } catch {
+            const label =
+              normalizeOfficeNavigationText(
+                element.textContent
+              );
 
-        return [];
 
-      }
+            return legacyNames.has(
+              label
+            );
+
+          }
+        );
+
+
+    if (
+      navItems.length < 3
+    ) {
+
+      return;
 
     }
 
 
-    return [];
+    const orderedOffices =
+      [...offices].sort(
+        (a, b) =>
+
+          Number(
+            a.sort_order || 0
+          ) -
+          Number(
+            b.sort_order || 0
+          ) ||
+
+          String(
+            a.name || ""
+          ).localeCompare(
+            String(
+              b.name || ""
+            ),
+            "pt-PT"
+          )
+      );
+
+
+    navItems
+      .slice(
+        0,
+        orderedOffices.length
+      )
+      .forEach(
+        (item, index) => {
+
+          const office =
+            orderedOffices[index];
+
+
+          if (!office) {
+            return;
+          }
+
+
+          item.textContent =
+            String(
+              office.city ||
+              office.name ||
+              "Polo"
+            ).toUpperCase();
+
+
+          item.dataset.officeId =
+            office.id;
+
+
+          if (
+            item.tagName ===
+            "A"
+          ) {
+
+            item.setAttribute(
+              "href",
+              "#onde-estamos"
+            );
+
+          }
+
+        }
+      );
 
   }
 
@@ -2823,38 +2779,16 @@ function initScrollAnimations() {
     }
 
 
-    container.innerHTML = `
-      <div class="py-12 text-center">
-
-        <div class="editorial-paper rounded-2xl p-8 bg-white border border-[#e2d9cc]">
-
-          <i class="fas fa-spinner fa-spin text-2xl text-sky-600 mb-4"></i>
-
-          <p class="text-sm text-slate-500">
-
-            A carregar polos Algartempo...
-
-          </p>
-
-        </div>
-
-      </div>
-    `;
-
-
     try {
 
       const {
-        data: offices,
+        data,
         error
       } =
         await supabaseClient
           .from("offices")
           .select("*")
-          .eq(
-            "published",
-            true
-          )
+          .eq("published", true)
           .order(
             "sort_order",
             {
@@ -2878,35 +2812,76 @@ function initScrollAnimations() {
 
 
         container.innerHTML = `
-          <div class="py-12 text-center">
+          <div class="md:col-span-2 lg:col-span-3 py-12 text-center">
 
-            <p class="text-sm text-slate-500">
+            <div class="editorial-paper rounded-2xl p-8 bg-[#faf8f5] border border-[#e2d9cc]">
 
-              Não foi possível carregar os polos neste momento.
+              <i class="fas fa-exclamation-triangle text-2xl text-amber-600 mb-3"></i>
 
-            </p>
+              <h3 class="text-lg font-heading font-bold text-slate-900 mb-2">
+                Não foi possível carregar os polos.
+              </h3>
+
+              <p class="text-sm text-slate-500">
+                Tenta novamente dentro de alguns instantes.
+              </p>
+
+            </div>
 
           </div>
         `;
 
         return;
+
+      }
+
+
+      const offices =
+        data || [];
+
+
+      window.algartempoPublicOffices =
+        offices;
+
+
+      syncPublicOfficeNavigation(
+        offices
+      );
+
+
+      if (
+        typeof window
+          .refreshOpportunityOfficeFilters ===
+        "function"
+      ) {
+
+        window.refreshOpportunityOfficeFilters(
+          offices
+        );
 
       }
 
 
       if (
-        !offices ||
         !offices.length
       ) {
 
         container.innerHTML = `
-          <div class="py-12 text-center">
+          <div class="md:col-span-2 lg:col-span-3 py-12 text-center">
 
-            <p class="text-sm text-slate-500">
+            <div class="editorial-paper rounded-2xl p-8 bg-[#faf8f5] border border-[#e2d9cc]">
 
-              De momento não existem polos publicados.
+              <i class="fas fa-map-marker-alt text-2xl text-sky-600 mb-3"></i>
 
-            </p>
+              <h3 class="text-lg font-heading font-bold text-slate-900 mb-2">
+                Estamos a preparar a nossa rede.
+              </h3>
+
+              <p class="text-sm text-slate-500">
+                Contacta a nossa equipa para saber onde estamos.
+              </p>
+
+            </div>
 
           </div>
         `;
@@ -2916,478 +2891,407 @@ function initScrollAnimations() {
       }
 
 
-      // ========================================================
-      // RENDER
-      // ========================================================
-
       container.innerHTML =
         offices
-          .map(office => {
+          .map(
+            office => {
 
-            const imageUrl =
-              getOfficeImageUrl(
-                office.image_url
-              );
+              const imageUrl =
+                getOfficeImageUrl(
+                  office.image_url
+                );
 
 
-            const sectorList =
-              parseOfficeSectors(
+              const sectors =
                 office.sectors
-              );
+                  ? String(
+                      office.sectors
+                    )
+                  : "";
 
 
-            const gallery =
-              parseOfficeGallery(
-                office.gallery
-              );
-
-
-            let heroImage =
-              imageUrl;
-
-
-            if (
-              !heroImage &&
-              gallery.length
-            ) {
-
-              const firstGallery =
-                gallery[0];
-
-
-              if (
-                typeof firstGallery ===
-                "string"
-              ) {
-
-                heroImage =
-                  getOfficeImageUrl(
-                    firstGallery
+              const sectorList =
+                sectors
+                  .split(",")
+                  .map(
+                    sector =>
+                      sector.trim()
+                  )
+                  .filter(
+                    Boolean
+                  )
+                  .slice(
+                    0,
+                    4
                   );
 
-              } else if (
-                firstGallery &&
-                firstGallery.url
-              ) {
 
-                heroImage =
-                  getOfficeImageUrl(
-                    firstGallery.url
-                  );
+              return `
+                <article
+                  class="editorial-paper rounded-2xl overflow-hidden bg-[#faf8f5] border border-[#e2d9cc] hover:border-sky-300 hover:shadow-lg transition-all duration-300 flex flex-col"
+                >
 
-              }
+                  <div class="relative h-56 bg-slate-100 overflow-hidden">
 
-            }
+                    ${
+                      imageUrl
+                        ? `
+                          <img
+                            src="${escapeOfficeHtml(
+                              imageUrl
+                            )}"
+                            alt="${escapeOfficeHtml(
+                              office.name
+                            )}"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                          >
+                        `
+                        : `
+                          <div class="w-full h-full flex items-center justify-center bg-[#f4efe6]">
+
+                            <div class="text-center">
+
+                              <div class="w-14 h-14 mx-auto rounded-full bg-white border border-[#e2d9cc] flex items-center justify-center mb-3">
+
+                                <i class="fas fa-map-marker-alt text-sky-600 text-lg"></i>
+
+                              </div>
+
+                              <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                                Polo Algartempo
+                              </span>
+
+                            </div>
+
+                          </div>
+                        `
+                    }
+
+                  </div>
 
 
-            const imageHtml =
-              heroImage
-                ? `
-                  <img
-                    src="${escapeOfficeHtml(
-                      heroImage
-                    )}"
-                    alt="${escapeOfficeHtml(
-                      office.name ||
-                      office.city ||
-                      "Polo Algartempo"
-                    )}"
-                    loading="lazy"
-                    class="w-full h-full object-cover"
-                  >
-                `
-                : `
-                  <div class="w-full h-full bg-[#f4efe6] flex items-center justify-center">
+                  <div class="p-6 flex flex-col flex-1">
 
-                    <div class="text-center">
+                    <div class="flex items-center justify-between gap-3 border-b border-[#e2d9cc] pb-3 mb-4">
 
-                      <div class="w-16 h-16 mx-auto rounded-full bg-white border border-[#e2d9cc] flex items-center justify-center mb-3">
+                      <span class="text-xs font-bold text-sky-700 uppercase tracking-wider">
 
-                        <i class="fas fa-building text-sky-600 text-xl"></i>
+                        ${escapeOfficeHtml(
+                          office.region ||
+                          "Portugal"
+                        )}
 
-                      </div>
+                      </span>
 
-                      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
 
-                        Polo Algartempo
-
+                      <span class="text-[10px] text-slate-500 font-semibold">
+                        Presença Local
                       </span>
 
                     </div>
 
-                  </div>
-                `;
 
-
-            return `
-              <article
-                class="editorial-paper rounded-2xl overflow-hidden bg-white border border-[#e2d9cc] hover:border-sky-300 hover:shadow-lg transition-all duration-300 flex flex-col"
-              >
-
-                <!-- IMAGEM -->
-
-                <div class="relative h-64 overflow-hidden">
-
-                  ${imageHtml}
-
-                </div>
-
-
-                <!-- CONTEÚDO -->
-
-                <div class="p-6 flex flex-col flex-1">
-
-
-                  <div class="flex items-center justify-between gap-3 border-b border-[#e2d9cc] pb-3 mb-4">
-
-                    <span class="text-xs font-bold text-sky-700 uppercase tracking-wider">
+                    <h3 class="text-xl font-heading font-bold text-slate-900 leading-tight mb-1">
 
                       ${escapeOfficeHtml(
-                        office.region ||
-                        "Portugal"
+                        office.name
                       )}
 
-                    </span>
+                    </h3>
 
 
-                    <span class="text-[10px] text-slate-500 font-semibold">
-
-                      Presença Local
-
-                    </span>
-
-                  </div>
-
-
-                  <h3 class="text-xl font-heading font-bold text-slate-900 leading-tight mb-1">
-
-                    ${escapeOfficeHtml(
-                      office.name
-                    )}
-
-                  </h3>
-
-
-                  ${
-                    office.city
-                      ? `
-                        <p class="text-sm font-semibold text-slate-700 mb-3">
-
-                          ${escapeOfficeHtml(
-                            office.city
-                          )}
-
-                        </p>
-                      `
-                      : ""
-                  }
-
-
-                  ${
-                    office.description
-                      ? `
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-
-                          ${escapeOfficeHtml(
-                            office.description
-                          )}
-
-                        </p>
-                      `
-                      : ""
-                  }
-
-
-                  <!-- SETORES -->
-
-                  ${
-                    sectorList.length
-                      ? `
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-
-                          ${sectorList
-                            .map(
-                              sector => `
-                                <span class="px-2.5 py-1 rounded-full bg-white border border-[#e2d9cc] text-[10px] font-semibold text-slate-600">
-
-                                  ${escapeOfficeHtml(
-                                    sector
-                                  )}
-
-                                </span>
-                              `
-                            )
-                            .join("")}
-
-                        </div>
-                      `
-                      : ""
-                  }
-
-
-                  <!-- MORADA -->
-
-                  ${
-                    office.address
-                      ? `
-                        <div class="flex items-start gap-2.5 text-xs text-slate-600 mb-2">
-
-                          <i class="fas fa-map-marker-alt text-sky-600 mt-0.5"></i>
-
-                          <span>
+                    ${
+                      office.city
+                        ? `
+                          <p class="text-sm font-semibold text-slate-700 mb-3">
 
                             ${escapeOfficeHtml(
-                              office.address
+                              office.city
                             )}
 
-                            ${
-                              office.postal_code
-                                ? `
-                                  <br>
+                          </p>
+                        `
+                        : ""
+                    }
 
-                                  ${escapeOfficeHtml(
-                                    office.postal_code
-                                  )}
+
+                    ${
+                      office.description
+                        ? `
+                          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+
+                            ${escapeOfficeHtml(
+                              office.description
+                            )}
+
+                          </p>
+                        `
+                        : ""
+                    }
+
+
+                    ${
+                      sectorList.length
+                        ? `
+                          <div class="flex flex-wrap gap-1.5 mb-4">
+
+                            ${sectorList
+                              .map(
+                                sector => `
+                                  <span class="px-2.5 py-1 rounded-full bg-white border border-[#e2d9cc] text-[10px] font-semibold text-slate-600">
+
+                                    ${escapeOfficeHtml(
+                                      sector
+                                    )}
+
+                                  </span>
                                 `
-                                : ""
-                            }
+                              )
+                              .join("")}
 
-                          </span>
-
-                        </div>
-                      `
-                      : ""
-                  }
+                          </div>
+                        `
+                        : ""
+                    }
 
 
-                  <!-- TELEFONE -->
+                    ${
+                      office.address
+                        ? `
+                          <div class="flex items-start gap-2.5 text-xs text-slate-600 mb-2">
 
-                  ${
-                    office.phone
-                      ? `
-                        <a
-                          href="tel:${escapeOfficeHtml(
-                            String(
-                              office.phone
-                            ).replace(
-                              /[^0-9+]/g,
-                              ""
-                            )
-                          )}"
-                          class="flex items-center gap-2.5 text-xs text-slate-600 hover:text-sky-700 mb-2 transition-colors"
-                        >
+                            <i class="fas fa-map-marker-alt text-sky-600 mt-0.5"></i>
 
-                          <i class="fas fa-phone text-sky-600"></i>
+                            <span>
 
-                          <span>
+                              ${escapeOfficeHtml(
+                                office.address
+                              )}
 
-                            ${escapeOfficeHtml(
-                              office.phone
-                            )}
+                              ${
+                                office.postal_code
+                                  ? `
+                                    <br>
+                                    ${escapeOfficeHtml(
+                                      office.postal_code
+                                    )}
+                                  `
+                                  : ""
+                              }
 
-                          </span>
+                            </span>
 
-                        </a>
-                      `
-                      : ""
-                  }
+                          </div>
+                        `
+                        : ""
+                    }
 
 
-                  <!-- EMAIL -->
+                    ${
+                      office.phone
+                        ? `
+                          <a
+                            href="tel:${escapeOfficeHtml(
+                              office.phone.replace(
+                                /[^0-9+]/g,
+                                ""
+                              )
+                            )}"
+                            class="flex items-center gap-2.5 text-xs text-slate-600 hover:text-sky-700 mb-2 transition-colors"
+                          >
 
-                  ${
-                    office.email
-                      ? `
-                        <a
-                          href="mailto:${escapeOfficeHtml(
-                            office.email
-                          )}"
-                          class="flex items-center gap-2.5 text-xs text-slate-600 hover:text-sky-700 mb-4 transition-colors"
-                        >
+                            <i class="fas fa-phone text-sky-600"></i>
 
-                          <i class="fas fa-envelope text-sky-600"></i>
+                            <span>
+                              ${escapeOfficeHtml(
+                                office.phone
+                              )}
+                            </span>
 
-                          <span>
+                          </a>
+                        `
+                        : ""
+                    }
 
-                            ${escapeOfficeHtml(
+
+                    ${
+                      office.email
+                        ? `
+                          <a
+                            href="mailto:${escapeOfficeHtml(
                               office.email
-                            )}
+                            )}"
+                            class="flex items-center gap-2.5 text-xs text-slate-600 hover:text-sky-700 mb-4 transition-colors"
+                          >
 
-                          </span>
+                            <i class="fas fa-envelope text-sky-600"></i>
 
-                        </a>
-                      `
-                      : ""
-                  }
+                            <span>
+                              ${escapeOfficeHtml(
+                                office.email
+                              )}
+                            </span>
 
-
-                  <!-- HORÁRIO -->
-
-                  ${
-                    office.hours
-                      ? `
-                        <div class="flex items-start gap-2 text-[11px] text-slate-500 mb-4">
-
-                          <i class="fas fa-clock text-sky-600 mt-0.5"></i>
-
-                          <span>
-
-                            ${escapeOfficeHtml(
-                              office.hours
-                            )}
-
-                          </span>
-
-                        </div>
-                      `
-                      : ""
-                  }
+                          </a>
+                        `
+                        : ""
+                    }
 
 
-                  <!-- BOTÕES -->
+                    <div class="mt-auto pt-4 border-t border-[#e2d9cc]">
 
-                  <div class="mt-auto pt-4 border-t border-[#e2d9cc]">
+                      ${
+                        office.hours
+                          ? `
+                            <div class="flex items-center gap-2 text-[11px] text-slate-500 mb-4">
 
+                              <i class="fas fa-clock text-sky-600"></i>
 
-                    <button
-                      type="button"
-                      class="public-office-contact-btn w-full py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+                              <span>
+                                ${escapeOfficeHtml(
+                                  office.hours
+                                )}
+                              </span>
 
-                      data-office-name="${escapeOfficeHtml(
-                        office.name
-                      )}"
-                    >
-
-                      <span>
-                        Falar com a Equipa
-                      </span>
-
-                      <i class="fas fa-arrow-right"></i>
-
-                    </button>
+                            </div>
+                          `
+                          : ""
+                      }
 
 
-                    <button
-                      type="button"
-                      class="public-office-jobs-btn w-full py-2.5 mt-2 rounded-full border border-sky-600 text-sky-700 hover:bg-sky-50 font-heading font-bold text-xs uppercase tracking-wider transition-colors"
+                      <button
+                        type="button"
+                        class="public-office-contact-btn w-full py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+                        data-office-name="${escapeOfficeHtml(
+                          office.name
+                        )}"
+                      >
 
-                      data-office-id="${escapeOfficeHtml(
-                        office.id
-                      )}"
+                        <span>
+                          Falar com a Equipa
+                        </span>
 
-                      data-office-city="${escapeOfficeHtml(
-                        office.city || ""
-                      )}"
-                    >
+                        <i class="fas fa-arrow-right"></i>
 
-                      <span>
-                        Ver oportunidades
-                      </span>
+                      </button>
 
-                      <i class="fas fa-arrow-right ml-2"></i>
 
-                    </button>
+                      <button
+                        type="button"
+                        class="public-office-jobs-btn w-full py-2.5 mt-2 rounded-full border border-sky-600 text-sky-700 hover:bg-sky-50 font-heading font-bold text-xs uppercase tracking-wider transition-colors"
+                        data-office-id="${office.id}"
+                        data-office-city="${escapeOfficeHtml(
+                          office.city || ""
+                        )}"
+                      >
 
+                        <span>
+                          Ver oportunidades
+                        </span>
+
+                        <i class="fas fa-arrow-right ml-2"></i>
+
+                      </button>
+
+                    </div>
 
                   </div>
 
-                </div>
+                </article>
+              `;
 
-              </article>
-            `;
-
-          })
+            }
+          )
           .join("");
 
-
-      // ========================================================
-      // CONTACTO DO POLO
-      // ========================================================
 
       container
         .querySelectorAll(
           ".public-office-contact-btn"
         )
-        .forEach(button => {
+        .forEach(
+          button => {
 
-          button.addEventListener(
-            "click",
-            () => {
+            button.addEventListener(
+              "click",
+              () => {
 
-              const officeName =
-                button.dataset.officeName ||
-                "Polo Algartempo";
+                const officeName =
+                  button.dataset.officeName ||
+                  "Polo Algartempo";
 
 
-              if (
-                typeof openApplyModal ===
-                "function"
-              ) {
+                if (
+                  typeof openApplyModal ===
+                  "function"
+                ) {
 
-                openApplyModal(
-                  `Contacto — ${officeName}`
-                );
+                  openApplyModal(
+                    `Contacto — ${officeName}`
+                  );
 
-              } else {
+                } else {
 
-                console.warn(
-                  "openApplyModal não está disponível."
-                );
+                  console.warn(
+                    "openApplyModal não está disponível."
+                  );
+
+                }
 
               }
+            );
 
-            }
-          );
+          }
+        );
 
-        });
-
-
-      // ========================================================
-      // VER OPORTUNIDADES DO POLO
-      // ========================================================
 
       container
         .querySelectorAll(
           ".public-office-jobs-btn"
         )
-        .forEach(button => {
+        .forEach(
+          button => {
 
-          button.onclick = function () {
+            button.onclick =
+              function () {
 
-            const officeId =
-              this.getAttribute(
-                "data-office-id"
-              );
-
-
-            const officeCity =
-              this.getAttribute(
-                "data-office-city"
-              ) || "";
+                const officeId =
+                  this.getAttribute(
+                    "data-office-id"
+                  );
 
 
-            console.log(
-              "Polo selecionado:",
-              officeId,
-              officeCity
-            );
+                const officeCity =
+                  this.getAttribute(
+                    "data-office-city"
+                  ) || "";
 
 
-            if (
-              typeof window.showOpportunitiesForOffice ===
-              "function"
-            ) {
+                console.log(
+                  "Polo selecionado:",
+                  officeId,
+                  officeCity
+                );
 
-              window.showOpportunitiesForOffice(
-                officeId,
-                officeCity
-              );
 
-            }
+                if (
+                  typeof window
+                    .showOpportunitiesForOffice ===
+                  "function"
+                ) {
 
-          };
+                  window.showOpportunitiesForOffice(
+                    officeId,
+                    officeCity
+                  );
 
-        });
+                }
+
+              };
+
+          }
+        );
 
 
     } catch (error) {
@@ -3402,9 +3306,7 @@ function initScrollAnimations() {
         <div class="md:col-span-2 lg:col-span-3 py-12 text-center">
 
           <p class="text-sm text-slate-500">
-
             Ocorreu um erro ao carregar os polos.
-
           </p>
 
         </div>
@@ -3416,7 +3318,7 @@ function initScrollAnimations() {
 
 
   // ==========================================================
-  // DOM READY
+  // CARREGAR POLOS AO ABRIR A PÁGINA
   // ==========================================================
 
   document.addEventListener(
@@ -3430,7 +3332,7 @@ function initScrollAnimations() {
 
 
   // ==========================================================
-  // FILTRAR OPORTUNIDADES POR POLO
+  // VER OPORTUNIDADES DE UM POLO
   // ==========================================================
 
   window.showOpportunitiesForOffice =
@@ -3440,8 +3342,7 @@ function initScrollAnimations() {
     ) {
 
       window.algartempoSelectedOfficeId =
-        officeId ||
-        null;
+        officeId || null;
 
 
       const searchInput =
@@ -3478,19 +3379,6 @@ function initScrollAnimations() {
       }
 
 
-      /*
-       * IMPORTANTE:
-       *
-       * Não usamos a cidade do escritório
-       * como filtro de localização da vaga.
-       *
-       * Exemplo:
-       * uma vaga pode estar em "Quinta do Lago"
-       * mas pertencer ao Polo de Quarteira.
-       *
-       * O filtro correto é office_id.
-       */
-
       if (locationSelect) {
 
         const officeValue =
@@ -3523,7 +3411,8 @@ function initScrollAnimations() {
 
 
       if (
-        typeof window.filterPublicOpportunities ===
+        typeof window
+          .filterPublicOpportunities ===
         "function"
       ) {
 
@@ -3538,33 +3427,16 @@ function initScrollAnimations() {
         );
 
 
-      if (opportunityContainer) {
+      if (
+        opportunityContainer
+      ) {
 
-        const opportunitySection =
-          document.getElementById(
-            "vagas"
-          );
-
-
-        if (opportunitySection) {
-
-          opportunitySection.scrollIntoView(
-            {
-              behavior: "smooth",
-              block: "start"
-            }
-          );
-
-        } else {
-
-          opportunityContainer.scrollIntoView(
-            {
-              behavior: "smooth",
-              block: "start"
-            }
-          );
-
-        }
+        opportunityContainer.scrollIntoView(
+          {
+            behavior: "smooth",
+            block: "start"
+          }
+        );
 
       }
 
