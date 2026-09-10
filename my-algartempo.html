@@ -14,6 +14,43 @@
 <script src="supabase-config.js?v=2"></script>
 </head>
 <body>
+
+<!-- Algartempo page loader -->
+<div id="alg-page-loader" class="alg-page-loader" aria-label="A carregar o site" role="status">
+  <div class="alg-page-loader__inner">
+    <img class="alg-page-loader__logo" src="logo.png" alt="Algartempo">
+    <p class="alg-page-loader__label">A preparar o seu caminho</p>
+    <div class="alg-page-loader__track" aria-hidden="true"><div class="alg-page-loader__bar"></div></div>
+    <div class="alg-page-loader__dot" aria-hidden="true"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var loader = document.getElementById('alg-page-loader');
+  if (!loader) return;
+
+  /* Mantém a entrada visível tempo suficiente para ser elegante. */
+  var minimumTime = 1800;
+  var started = Date.now();
+
+  function hideLoader() {
+    var wait = Math.max(0, minimumTime - (Date.now() - started));
+    setTimeout(function () {
+      loader.classList.add('is-hidden');
+      setTimeout(function () {
+        if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+      }, 800);
+    }, wait);
+  }
+
+  if (document.readyState === 'complete') {
+    hideLoader();
+  } else {
+    window.addEventListener('load', hideLoader, { once: true });
+  }
+})();
+</script>
+
 <div id="auth-screen" class="auth-screen">
   <div class="auth-decoration auth-decoration--one"></div><div class="auth-decoration auth-decoration--two"></div>
   <div class="auth-card">
