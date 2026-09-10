@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Algartempo — Portal do Colaborador</title>
+<meta name="description" content="Portal do colaborador My Algartempo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="my-algartempo.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js?v=2"></script>
+</head>
+<body>
+<div id="auth-screen" class="auth-screen">
+  <div class="auth-decoration auth-decoration--one"></div><div class="auth-decoration auth-decoration--two"></div>
+  <div class="auth-card">
+    <a class="portal-brand" href="index.html"><img src="logo.png" alt="Algartempo"></a>
+    <span class="portal-kicker">PORTAL DO COLABORADOR</span>
+    <h1>My <span>Algartempo</span></h1>
+    <p class="auth-lead">Tudo o que precisa, num só lugar.</p>
+    <form id="login-form" class="auth-form">
+      <label>Email<input id="login-email" type="email" autocomplete="email" placeholder="o.seu@email.pt" required></label>
+      <label>Palavra-passe<input id="login-password" type="password" autocomplete="current-password" placeholder="••••••••" required></label>
+      <button class="primary-btn" type="submit"><span>Entrar no My Algartempo</span><i class="fa-solid fa-arrow-right"></i></button>
+      <button type="button" id="forgot-password" class="text-btn">Esqueci-me da palavra-passe</button>
+      <p id="auth-message" class="form-message" aria-live="polite"></p>
+    </form>
+    <a class="back-site" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao site</a>
+  </div>
+</div>
+
+<div id="portal-app" class="portal-app hidden">
+  <aside class="portal-sidebar" id="portal-sidebar">
+    <div class="sidebar-top">
+      <a class="portal-brand portal-brand--sidebar" href="index.html"><img src="logo.png" alt="Algartempo"></a>
+      <div class="my-brand">MY <strong>ALGARTEMPO</strong></div>
+    </div>
+    <nav class="portal-nav" aria-label="Área pessoal">
+      <button class="portal-nav__item active" data-view="dashboard"><i class="fa-solid fa-house"></i><span>Início</span></button>
+      <button class="portal-nav__item" data-view="profile"><i class="fa-solid fa-user"></i><span>O meu perfil</span></button>
+      <button class="portal-nav__item" data-view="schedule"><i class="fa-regular fa-calendar"></i><span>Horários</span></button>
+      <button class="portal-nav__item" data-view="hours"><i class="fa-regular fa-clock"></i><span>Horas</span></button>
+      <button class="portal-nav__item" data-view="leave"><i class="fa-regular fa-sun"></i><span>Férias e ausências</span></button>
+      <button class="portal-nav__item" data-view="payroll"><i class="fa-solid fa-receipt"></i><span>Vencimentos</span></button>
+      <button class="portal-nav__item" data-view="documents"><i class="fa-regular fa-folder-open"></i><span>Documentos</span></button>
+      <button class="portal-nav__item" data-view="requests"><i class="fa-regular fa-comments"></i><span>Pedidos</span></button>
+      <button class="portal-nav__item" data-view="notifications"><i class="fa-regular fa-bell"></i><span>Notificações</span><b id="nav-badge" class="nav-badge hidden">0</b></button>
+    </nav>
+    <div class="sidebar-bottom"><a href="index.html"><i class="fa-solid fa-globe"></i> Site Algartempo</a><button id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Terminar sessão</button></div>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-header">
+      <button id="mobile-nav" class="icon-btn"><i class="fa-solid fa-bars"></i></button>
+      <div><span class="portal-kicker">MY ALGARTEMPO</span><div id="page-title" class="page-title">Início</div></div>
+      <div class="header-user"><button class="notification-btn" data-view="notifications"><i class="fa-regular fa-bell"></i><b id="header-badge" class="nav-badge hidden">0</b></button><div id="header-avatar" class="avatar">A</div><div class="header-user__text"><strong id="header-name">Colaborador</strong><small id="header-role">Colaborador</small></div></div>
+    </header>
+
+    <div id="toast" class="toast"></div>
+    <div class="portal-content">
+      <section id="view-dashboard" class="portal-view active">
+        <div class="welcome-row"><div><span class="portal-kicker">ÁREA PESSOAL</span><h1>Olá, <span id="welcome-name">Colaborador</span> 👋</h1><p>Bem-vindo ao My Algartempo.</p></div><button class="quick-btn" data-view="requests"><i class="fa-regular fa-paper-plane"></i> Pedir ajuda</button></div>
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-icon"><i class="fa-regular fa-calendar-check"></i></div><div><small>Próximo turno</small><strong id="dash-next-shift">—</strong><span id="dash-next-shift-meta">Sem horário agendado</span></div></article>
+          <article class="stat-card"><div class="stat-icon"><i class="fa-regular fa-clock"></i></div><div><small>Horas este mês</small><strong id="dash-hours">0h</strong><span>Registo confirmado</span></div></article>
+          <article class="stat-card"><div class="stat-icon"><i class="fa-solid fa-receipt"></i></div><div><small>Último recibo</small><strong id="dash-payroll">—</strong><span id="dash-payroll-meta">Consulte os seus documentos</span></div></article>
+          <article class="stat-card"><div class="stat-icon"><i class="fa-regular fa-file-lines"></i></div><div><small>Documentos</small><strong id="dash-docs">0</strong><span>Disponíveis</span></div></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel panel--placement"><div class="panel-heading"><div><span class="panel-kicker">ATUALMENTE</span><h2>A minha colocação</h2></div><button class="link-btn" data-view="profile">Ver perfil <i class="fa-solid fa-arrow-right"></i></button></div><div id="placement-card" class="placement-empty">Ainda não existe uma colocação ativa registada.</div></article>
+          <article class="panel"><div class="panel-heading"><div><span class="panel-kicker">ATENÇÃO</span><h2>O que precisa da sua atenção?</h2></div></div><div id="attention-list" class="attention-list"><div class="empty-state">Tudo em ordem. 👌</div></div></article>
+        </div>
+        <div class="dashboard-grid dashboard-grid--bottom"><article class="panel"><div class="panel-heading"><div><span class="panel-kicker">PRÓXIMOS DIAS</span><h2>Próximos horários</h2></div><button class="link-btn" data-view="schedule">Ver todos <i class="fa-solid fa-arrow-right"></i></button></div><div id="dash-shifts" class="mini-list"></div></article><article class="panel"><div class="panel-heading"><div><span class="panel-kicker">RECENTE</span><h2>Notificações</h2></div><button class="link-btn" data-view="notifications">Ver todas <i class="fa-solid fa-arrow-right"></i></button></div><div id="dash-notifications" class="mini-list"></div></article></div>
+      </section>
+
+      <section id="view-profile" class="portal-view"><div class="section-intro"><span class="portal-kicker">DADOS PESSOAIS</span><h1>O meu perfil</h1><p>Mantenha os seus dados atualizados.</p></div><form id="profile-form" class="panel form-panel"><div class="form-grid"><label>Nome completo<input id="profile-name" required></label><label>Email<input id="profile-email" type="email" readonly></label><label>Telefone<input id="profile-phone"></label><label>Morada<input id="profile-address"></label><label>NIF<input id="profile-nif"></label><label>N.º Segurança Social<input id="profile-ssn"></label><label>IBAN<input id="profile-iban"></label><label>Polo Algartempo<input id="profile-polo"></label><label>Função<input id="profile-role"></label><label>Contacto de emergência<input id="profile-emergency-name"></label><label>Telefone de emergência<input id="profile-emergency-phone"></label></div><div class="form-actions"><span id="profile-message" class="form-message"></span><button class="primary-btn primary-btn--small" type="submit">Guardar alterações <i class="fa-solid fa-check"></i></button></div></form></section>
+
+      <section id="view-schedule" class="portal-view"><div class="section-intro"><span class="portal-kicker">ORGANIZAÇÃO</span><h1>Os meus horários</h1><p>Consulte os seus próximos turnos.</p></div><div class="toolbar"><div class="month-label" id="schedule-month"></div><button class="secondary-btn" id="schedule-today">Hoje</button></div><div id="schedule-list" class="schedule-list"></div></section>
+
+      <section id="view-hours" class="portal-view"><div class="section-intro"><span class="portal-kicker">TEMPO DE TRABALHO</span><h1>Registo de horas</h1><p>Acompanhe as horas registadas e horas extra.</p></div><div class="stat-grid stat-grid--three"><article class="stat-card"><div class="stat-icon"><i class="fa-regular fa-clock"></i></div><div><small>Horas trabalhadas</small><strong id="hours-total">0h</strong></div></article><article class="stat-card"><div class="stat-icon"><i class="fa-solid fa-plus"></i></div><div><small>Horas extra</small><strong id="hours-overtime">0h</strong></div></article><article class="stat-card"><div class="stat-icon"><i class="fa-regular fa-calendar"></i></div><div><small>Dias registados</small><strong id="hours-days">0</strong></div></article></div><div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Data</th><th>Entrada</th><th>Saída</th><th>Horas</th><th>Extra</th><th>Estado</th></tr></thead><tbody id="hours-table"></tbody></table></div></div></section>
+
+      <section id="view-leave" class="portal-view"><div class="section-intro"><span class="portal-kicker">AUSÊNCIAS</span><h1>Férias e ausências</h1><p>Faça pedidos e acompanhe o seu estado.</p></div><div class="leave-grid"><article class="panel leave-balance"><span class="panel-kicker">FÉRIAS</span><strong id="leave-balance">—</strong><span>Dias disponíveis</span><small>O saldo pode ser atualizado pela equipa de RH.</small></article><article class="panel"><div class="panel-heading"><div><span class="panel-kicker">NOVO PEDIDO</span><h2>Pedir férias</h2></div></div><form id="leave-form" class="form-grid form-grid--compact"><label>De<input id="leave-start" type="date" required></label><label>Até<input id="leave-end" type="date" required></label><label class="full">Observação<textarea id="leave-reason" rows="3" placeholder="Opcional"></textarea></label><div class="full form-actions"><span></span><button class="primary-btn primary-btn--small" type="submit">Enviar pedido <i class="fa-solid fa-arrow-right"></i></button></div></form></article></div><div class="panel"><div class="panel-heading"><div><span class="panel-kicker">HISTÓRICO</span><h2>Pedidos de férias</h2></div></div><div id="leave-list" class="request-list"></div></div></section>
+
+      <section id="view-payroll" class="portal-view"><div class="section-intro"><span class="portal-kicker">PAGAMENTOS</span><h1>Os meus vencimentos</h1><p>Os seus recibos e documentos salariais.</p></div><div id="payroll-list" class="document-grid"><div class="empty-state">Ainda não existem recibos disponíveis.</div></div></section>
+
+      <section id="view-documents" class="portal-view"><div class="section-intro"><span class="portal-kicker">ARQUIVO PESSOAL</span><h1>Os meus documentos</h1><p>Contratos, declarações e documentos da Algartempo.</p></div><div class="document-filters"><button class="filter-pill active" data-doc-filter="all">Todos</button><button class="filter-pill" data-doc-filter="contract">Contratos</button><button class="filter-pill" data-doc-filter="payroll">Vencimentos</button><button class="filter-pill" data-doc-filter="declaration">Declarações</button><button class="filter-pill" data-doc-filter="other">Outros</button></div><div id="documents-list" class="document-grid"></div></section>
+
+      <section id="view-requests" class="portal-view"><div class="section-intro"><span class="portal-kicker">APOIO</span><h1>Pedidos à Algartempo</h1><p>Envie uma questão e acompanhe a resposta.</p></div><div class="request-layout"><form id="request-form" class="panel form-panel"><div class="panel-heading"><div><span class="panel-kicker">NOVO PEDIDO</span><h2>Como podemos ajudar?</h2></div></div><label>Assunto<input id="request-subject" required placeholder="Ex.: Declaração de trabalho"></label><label>Categoria<select id="request-category"><option value="data">Alterar dados pessoais</option><option value="document">Enviar / pedir documento</option><option value="payroll">Questão sobre vencimento</option><option value="schedule">Questão sobre horário</option><option value="absence">Comunicar ausência</option><option value="other">Outro assunto</option></select></label><label>Mensagem<textarea id="request-message" rows="6" required placeholder="Escreva a sua mensagem..."></textarea></label><div class="form-actions"><span id="request-message-status" class="form-message"></span><button class="primary-btn primary-btn--small" type="submit">Enviar pedido <i class="fa-solid fa-paper-plane"></i></button></div></form><div><div class="panel-heading"><div><span class="panel-kicker">HISTÓRICO</span><h2>Os meus pedidos</h2></div></div><div id="requests-list" class="request-list"></div></div></div></section>
+
+      <section id="view-notifications" class="portal-view"><div class="section-intro"><span class="portal-kicker">INFORMAÇÃO</span><h1>Notificações</h1><p>Fique a par das novidades da Algartempo.</p></div><div id="notifications-list" class="notification-list"></div></section>
+    </div>
+  </main>
+</div>
+<script src="my-algartempo.js?v=2"></script>
+</body>
+</html>

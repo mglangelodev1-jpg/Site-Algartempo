@@ -10,3 +10,6 @@ const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
+
+// Disponibiliza também no objeto window para páginas como o My Algartempo.
+window.supabaseClient = supabaseClient;
