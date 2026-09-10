@@ -2326,6 +2326,39 @@ function initScrollAnimations() {
 
       filterPublicOpportunities();
 
+      // Se viemos de "Ver oportunidades" num polo, aplica o polo automaticamente.
+      const params = new URLSearchParams(window.location.search);
+      const officeIdFromUrl = params.get("office_id");
+
+      if (officeIdFromUrl) {
+        const office = publicOffices.find(
+          item => String(item.id) === String(officeIdFromUrl)
+        );
+
+        if (office) {
+          window.algartempoSelectedOfficeId = String(office.id);
+
+          const locationSelect = document.getElementById("filter-location");
+          const officeValue = `office:${office.id}`;
+
+          if (locationSelect) {
+            locationSelect.value = officeValue;
+          }
+
+          filterPublicOpportunities();
+
+          requestAnimationFrame(() => {
+            const jobsSection = document.getElementById("vagas");
+            if (jobsSection) {
+              jobsSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+            }
+          });
+        }
+      }
+
     } catch (error) {
 
       console.error(
@@ -2507,6 +2540,75 @@ function initScrollAnimations() {
   );
 
 })();
+
+
+// ============================================================
+// CONTACTO DE UM POLO
+// Modal independente para a página "Onde Estamos".
+// ============================================================
+
+window.openOfficeContactModal = function (officeName, email, phone) {
+  const existing = document.getElementById("office-contact-modal");
+  if (existing) existing.remove();
+
+  const safeName = String(officeName || "Polo Algartempo");
+  const safeEmail = String(email || "");
+  const safePhone = String(phone || "");
+  const phoneHref = safePhone.replace(/[^0-9+]/g, "");
+  const subject = encodeURIComponent(`Contacto — ${safeName}`);
+
+  const modal = document.createElement("div");
+  modal.id = "office-contact-modal";
+  modal.className = "fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm";
+  modal.innerHTML = `
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative">
+      <button type="button" aria-label="Fechar" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center" data-close-office-contact>
+        <i class="fas fa-times"></i>
+      </button>
+
+      <span class="inline-block px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider mb-3">Contacto</span>
+      <h3 class="text-2xl font-heading font-bold text-slate-900 pr-10">${escapeHtml(safeName)}</h3>
+      <p class="text-sm text-slate-500 mt-2 mb-6">Fale diretamente com a equipa deste polo.</p>
+
+      <div class="space-y-3">
+        ${safePhone ? `
+          <a href="tel:${escapeHtml(phoneHref)}" class="flex items-center gap-3 p-4 rounded-2xl bg-[#faf8f5] border border-[#e2d9cc] hover:border-sky-400 transition-colors">
+            <span class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center"><i class="fas fa-phone"></i></span>
+            <span><small class="block text-[10px] uppercase tracking-wider font-bold text-slate-400">Telefone</small><strong class="text-sm text-slate-800">${escapeHtml(safePhone)}</strong></span>
+          </a>
+        ` : ""}
+
+        ${safeEmail ? `
+          <a href="mailto:${escapeHtml(safeEmail)}?subject=${subject}" class="flex items-center gap-3 p-4 rounded-2xl bg-[#faf8f5] border border-[#e2d9cc] hover:border-sky-400 transition-colors">
+            <span class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center"><i class="fas fa-envelope"></i></span>
+            <span class="min-w-0"><small class="block text-[10px] uppercase tracking-wider font-bold text-slate-400">Email</small><strong class="text-sm text-slate-800 break-all">${escapeHtml(safeEmail)}</strong></span>
+          </a>
+        ` : ""}
+      </div>
+
+      <button type="button" data-close-office-contact class="w-full mt-5 py-3 rounded-full border border-slate-200 text-slate-700 font-heading font-bold text-xs uppercase tracking-wider hover:bg-slate-50">Fechar</button>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+  document.body.style.overflow = "hidden";
+
+  const close = () => {
+    modal.remove();
+    document.body.style.overflow = "";
+  };
+
+  modal.querySelectorAll("[data-close-office-contact]").forEach(btn => btn.addEventListener("click", close));
+  modal.addEventListener("click", event => {
+    if (event.target === modal) close();
+  });
+  document.addEventListener("keydown", function escHandler(event) {
+    if (event.key === "Escape") {
+      close();
+      document.removeEventListener("keydown", escHandler);
+    }
+  });
+};
 
 
 // ============================================================
@@ -3163,36 +3265,20 @@ function initScrollAnimations() {
                       <button
                         type="button"
                         class="public-office-contact-btn w-full py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
-                        data-office-name="${escapeOfficeHtml(
-                          office.name
-                        )}"
+                        onclick="openOfficeContactModal(${JSON.stringify(String(office.name || 'Polo Algartempo'))}, ${JSON.stringify(String(office.email || ''))}, ${JSON.stringify(String(office.phone || ''))})"
                       >
-
-                        <span>
-                          Falar com a Equipa
-                        </span>
-
+                        <span>Falar com a Equipa</span>
                         <i class="fas fa-arrow-right"></i>
-
                       </button>
 
 
-                      <button
-                        type="button"
-                        class="public-office-jobs-btn w-full py-2.5 mt-2 rounded-full border border-sky-600 text-sky-700 hover:bg-sky-50 font-heading font-bold text-xs uppercase tracking-wider transition-colors"
-                        data-office-id="${office.id}"
-                        data-office-city="${escapeOfficeHtml(
-                          office.city || ""
-                        )}"
+                      <a
+                        href="oportunidades.html?office_id=${encodeURIComponent(office.id)}#vagas"
+                        class="public-office-jobs-btn w-full py-2.5 mt-2 rounded-full border border-sky-600 text-sky-700 hover:bg-sky-50 font-heading font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center"
                       >
-
-                        <span>
-                          Ver oportunidades
-                        </span>
-
+                        <span>Ver oportunidades</span>
                         <i class="fas fa-arrow-right ml-2"></i>
-
-                      </button>
+                      </a>
 
                     </div>
 
@@ -3206,92 +3292,9 @@ function initScrollAnimations() {
           .join("");
 
 
-      container
-        .querySelectorAll(
-          ".public-office-contact-btn"
-        )
-        .forEach(
-          button => {
-
-            button.addEventListener(
-              "click",
-              () => {
-
-                const officeName =
-                  button.dataset.officeName ||
-                  "Polo Algartempo";
-
-
-                if (
-                  typeof openApplyModal ===
-                  "function"
-                ) {
-
-                  openApplyModal(
-                    `Contacto — ${officeName}`
-                  );
-
-                } else {
-
-                  console.warn(
-                    "openApplyModal não está disponível."
-                  );
-
-                }
-
-              }
-            );
-
-          }
-        );
-
-
-      container
-        .querySelectorAll(
-          ".public-office-jobs-btn"
-        )
-        .forEach(
-          button => {
-
-            button.onclick =
-              function () {
-
-                const officeId =
-                  this.getAttribute(
-                    "data-office-id"
-                  );
-
-
-                const officeCity =
-                  this.getAttribute(
-                    "data-office-city"
-                  ) || "";
-
-
-                console.log(
-                  "Polo selecionado:",
-                  officeId,
-                  officeCity
-                );
-
-
-                if (
-                  typeof window
-                    .showOpportunitiesForOffice ===
-                  "function"
-                ) {
-
-                  window.showOpportunitiesForOffice(
-                    officeId,
-                    officeCity
-                  );
-
-                }
-
-              };
-
-          }
-        );
+      // Os botões dos polos são links reais:
+      // - Falar com a Equipa -> email/telefone do polo
+      // - Ver oportunidades -> oportunidades.html?office_id=...
 
 
     } catch (error) {
